@@ -27,22 +27,16 @@
     <!--
     <div class="site-branding-area">
     --> 
-    <div class="header-area">
+    <div class="site-branding-area area-logo">
         <div class="container">
             <div class="row">
-                <!--
-                <div class="col-sm-2">
-                    <div class="logo">
-                        <h1> <a href="#"><img src="assets/frontend/img/logoViaMar.jpeg" width="190" ></a></h1>
-                    </div>
-                </div>
-                -->
-                
+    
                 <div class="col-sm-12">
-                    <div class="logo2">
-                        <h1> <a href="#"><img src="assets/frontend/img/logo6.png" width="500" ></a></h1>
+                    <div class="logo">
+                        <h1> <a href="#"><img src="assets/frontend/img/logo4.png" width="1250" ></a></h1>
                     </div>
                 </div>
+              
             </div>
         </div>
     </div> <!-- End site branding area -->

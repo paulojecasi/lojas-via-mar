@@ -31,13 +31,18 @@ body { font-family:Arial, Helvetica, sans-serif; }
 
 
 .header-area {
-    /*background: none repeat scroll 0 0 #f4f4f4;*/
-    background: #FFFF00; 
-    padding: 5px; 
+    background: none repeat scroll 0 0 #f4f4f4;
+    /* background: #FFFF00; */
+    padding: 2px; 
 }
 .header-area a {
     color: #888;
     padding: 10px; 
+}
+
+.area-logo{
+  background: none repeat scroll 0 0 #f4f4f4;
+    /*background: #FFFF00;*/
 }
 .user-menu ul {
     list-style: outside none none;
@@ -77,8 +82,8 @@ body { font-family:Arial, Helvetica, sans-serif; }
 }
 
 .mainmenu-area {
-    /* background: none repeat scroll 0 0 #fbfbfb; */
-    background: #FFFF00;
+    background: none repeat scroll 0 0 #f4f4f4; 
+    /*background: #FFFF00;  */
     font-family: "Roboto Condensed",sans-serif;
     text-transform: uppercase;
     width: 100%;
@@ -87,8 +92,8 @@ body { font-family:Arial, Helvetica, sans-serif; }
 
 .logo h1 {
     font-size: 40px;
-    margin: 0px 0;
-    font-weight: 400;
+    margin: 3px 0;
+    font-weight: 400; 
 
 }
 .logo h1 a {
@@ -168,8 +173,10 @@ body { font-family:Arial, Helvetica, sans-serif; }
 
 .mainmenu-area ul.navbar-nav li a {
     color: #6e6a6a;
-    font-size: 17px;
-    padding: 13px;
+    font-size: 15px;
+    padding: 10px;
+    padding-left: 20px;  
+    padding-right: 20px; 
 }
 
 .mainmenu-area ul.navbar-nav li:hover a, .mainmenu-area ul.navbar-nav li.active a 
@@ -1173,5 +1180,6 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 .single-shop-product {margin-bottom: 50px}
 
 .pagination > li > a, .pagination > li > span {
-  color: #e67e22;
+    color: #e67e22;
 }
+

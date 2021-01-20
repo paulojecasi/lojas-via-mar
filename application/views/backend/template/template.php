@@ -2,14 +2,24 @@
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
+            <div class="navbar-header col-sm-8">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Navegação</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Painel Administrativo</a>
+                <a class="navbar-brand" href="index.html">
+                    LOJAS VIA MAR - Administração do Site
+                </a>
+            </div>
+
+            <div class="navbar-header col-sm-4">
+                <a href="#"> 
+                    <?php echo "Usuário -- ".$this->session->userdata('userLogado')->nome; ?>
+                </a>
+                |
+                <a href=" <?php echo base_url('admin/usuarios/logout') ?>"><i class="fa fa-sign-out fa-fw"></i> Sair do Sistema</a>
             </div>
             <!-- /.navbar-top-links -->
 
@@ -20,7 +30,7 @@
                             <a href="<?php echo base_url('admin/categoria') ?>"><i class="fa fa-sitemap fa-fw"></i> Categorias</a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url('admin/postagem') ?>"><i class="fa fa-edit fa-fw"></i> Postagens</a>
+                            <a href="<?php echo base_url('admin/produto') ?>"><i class="fa fa-edit fa-fw"></i> Produtos </a>
                         </li>
                         <li>
                             <a href="<?php echo base_url('admin/usuarios') ?>"><i class="fa fa-wrench fa-fw"></i> Usuários</a>
