@@ -15,7 +15,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 layout-campos">
 
                         <!-- nao vamos utilizar a abertura do form, vamos usar o HELPER do
                         framework (form_open) --> 
@@ -28,38 +28,6 @@
                                         // apontando para:admin/controlador/metodo
                             echo form_open('admin/produto/inserir');
             
-                            // BLOCO DE MENSAGENS 
-                            if (!is_null($this->session->userdata('mensagem'))) 
-                            { 
-                            ?>
-                                <div class="alert alert-success" role="alert">
-                                    <b> 
-                                        <?php
-                                         echo $this->session->userdata('mensagem'); 
-                                        ?>
-                                    </b>
-                                </div>
-                                <?php 
-                                // encerrar a secao
-                                $this->session->unset_userdata('mensagem'); 
-                            }
-                            ?> 
-
-                            <?php
-                            if (!is_null($this->session->userdata('mensagemErro'))) 
-                            { 
-                            ?>
-                                <div class="alert alert-danger" role="alert">
-                                    <b> 
-                                        <?php
-                                         echo $this->session->userdata('mensagemErro'); 
-                                        ?>
-                                    </b>
-                                </div>
-                                <?php 
-                                // encerrar a secao
-                                $this->session->unset_userdata('mensagemErro'); 
-                            }
                             ?> 
 
                             <div class="form-group">
@@ -69,13 +37,20 @@
 
                             <div class="form-group">
                                 <div class="form-group">
-                                  <label for="idcor"> Cor do Produto </label>
-                                  <select class="form-control" id="idcor" name="idcor">
+                                  <label for="corproduto"> Cor do Produto </label>
+                                  <select class="form-control" id="corproduto" name="corproduto">
                                 
                                     <?php 
                                     foreach ($cores as $cor) 
                                     { ?> 
-                                        <option  value =" <?php echo $cor->idcor ?> ">
+                                        <option  value =" <?php echo $cor->idcor ?> "
+                                            <?php 
+                                            if ($cor->descor=="PADRAO"): ?>
+                                                    selected
+                                                <?php                                  
+                                            endif;
+                                            ?>
+                                        >
                                             <?php echo $cor->descor ?>
                                         </option>
                                     <?php
@@ -93,7 +68,14 @@
                                     <?php 
                                     foreach ($categorias as $categoria) 
                                     { ?> 
-                                        <option value ="<?php echo $categoria->id ?> ">
+                                        <option value ="<?php echo $categoria->id ?> " 
+                                            <?php 
+                                            if ($categoria->titulo=="OUTROS"): ?>
+                                                    selected
+                                                <?php                                  
+                                            endif;
+                                            ?>
+                                        >
                                             <?php echo $categoria->titulo ?>
                                         </option>
                                     <?php
@@ -129,7 +111,7 @@
                             <div class="form-group">                          
                                 <div class="form-group">
                                   <label for="produtoativo"> Produto Ativo? </label>
-                                  <select class="form-control" id="txt-produtoativo" name="txt-produtoativo">
+                                  <select class="form-control" id="produtoativo" name="produtoativo">
                                 
                                     <?php foreach ($opcoes as $opcao)
                                     {
@@ -148,7 +130,7 @@
                             <div class="form-group">
                                 <div class="form-group">
                                   <label for="produtodestaque"> Produto Destaque? </label>
-                                  <select class="form-control" id="txt-produtodestaque" name="txt-produtodestaque">
+                                  <select class="form-control" id="produtodestaque" name="produtodestaque">
                                 
                                     <?php foreach ($opcoes as $opcao)
                                     {
@@ -167,7 +149,7 @@
                             <div class="form-group">
                                 <div class="form-group">
                                   <label for="actproduct"> Produto no Site? </label>
-                                  <select class="form-control" id="txt-produtosite" name="txt-produtosite">
+                                  <select class="form-control" id="produtosite" name="produtosite">
                                 
                                     <?php foreach ($opcoes as $opcao)
                                     {
@@ -182,11 +164,6 @@
                                   
                                   </select>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label> Foto do Produto </label>
-                                <input type="text" class="form-control" id="txt-img" name="txt-img" placeholder="Selecione Foto">
-
                             </div>
 
                             <br> 
@@ -218,24 +195,29 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 fotos-lista-produtos">
                   
                             <!-- gerar tabela de categorias pela framework PJCS --> 
                             <?php
-                            $this->table->set_heading("Id-Produto","Nome do Produto",
-                                                        "Alterar",
-                                                        "Excluir"); 
+                            $semFoto = "assets/frontend/img/products/sem_foto.jpg";
+
+                            $this->table->set_heading("Imagem","Nome do Produto","Alterar", "Excluir"); 
 
                             foreach ($produtos as $produto)
                             {   
-                                $idproduto= $produto->idproduto;
+                                if ($produto->img !=''){
+                                    $foto   = img($produto->img);
+                                }else{
+                                    $foto   = img($semFoto);
+                                }
+                
                                 $desproduto= $produto->desproduto;
                                 $botaoalterar = anchor(base_url('admin/produto/alterar/'.md5($produto->idproduto)),
                                     '<i class="fas fa-edit"> </i> Alterar');
                                 $botaoexcluir = anchor(base_url('admin/produto/excluir/'.md5($produto->idproduto)),
                                     '<i class="fa fa-remove fa-fw"> </i> Excluir');
 
-                                $this->table->add_row($idproduto, $desproduto,$botaoalterar,$botaoexcluir); 
+                                $this->table->add_row($foto, $desproduto,$botaoalterar,$botaoexcluir); 
                             }
 
                             $this->table->set_template(array(

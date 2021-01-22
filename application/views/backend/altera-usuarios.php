@@ -16,7 +16,6 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-
                             <?php
                             // aqui vamos vericar os erros de validação
                             echo validation_errors('<div class="alert alert-warning">','</div>'); 
@@ -25,43 +24,8 @@
                                         // apontando para:admin/controlador/metodo
                             echo form_open('admin/usuarios/salvar_alteracoes');
             
-                            // BLOCO DE MENSAGENS 
-                            if (!is_null($this->session->userdata('mensagem'))) 
-                            { 
+                            foreach ($lista_usuario as $usuario_alt)  :
                             ?>
-                                <div class="alert alert-success" role="alert">
-                                    <b> 
-                                        <?php
-                                         echo $this->session->userdata('mensagem'); 
-                                        ?>
-                                    </b>
-                                </div>
-                                <?php 
-                                // encerrar a secao
-                                $this->session->unset_userdata('mensagem'); 
-                            }
-                            ?> 
-
-                            <?php
-                            if (!is_null($this->session->userdata('mensagemErro'))) 
-                            { 
-                            ?>
-                                <div class="alert alert-danger" role="alert">
-                                    <b> 
-                                        <?php
-                                         echo $this->session->userdata('mensagemErro'); 
-                                        ?>
-                                    </b>
-                                </div>
-                                <?php 
-                                // encerrar a secao
-                                $this->session->unset_userdata('mensagemErro'); 
-                            }
-
-                            foreach ($lista_usuario as $usuario_alt)  {
-            
-                            ?> 
-
                             <div class = "form-group">
                                 <label> Nome do Usuario </label>
                                 <input id="txt-nome" name="txt-nome" type="text"class = "form-control" placeholder ="Digite o nome do Usuario"
@@ -98,13 +62,11 @@
                             <input  type="hidden" id="txt-id" name="txt-id" value= "<?php echo $usuario_alt->id ?>" 
                             >
                             <button type="submit" class="btn btn-primary" > Alterar </button> 
-                            
                       
                             <?php 
                             // fechar o formulario 
                             echo form_close();
                             ?> 
-                            
                         </div>
                         
                     </div>
@@ -125,27 +87,44 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <?php
-                            $divopen = '<div class="form-group">';
-                            $divclose= '</div>';
-                            $btnclass= 'class="btn btn-primary"';
-                            echo form_open_multipart('admin/usuarios/nova_imagem'); 
-                            echo form_hidden('id', md5($usuario_alt->id)); 
-                            echo $divopen;
-                            $imagem = array('name'=>'userfile', 
-                                            'id'=>'userfile',
-                                            'class'=>'form-control'); 
-                            echo form_upload($imagem);
-                            echo $divclose;
-                            echo $divopen;
-                            $button = array('name'=>'btn-adicionar', 
-                                            'id'=>'btn-adicionar',
-                                            'class'=>'btn btn-default',
-                                            'value'=>'Adicionar Imagem'); 
-                            echo form_submit($button);
-                            echo $divclose; 
-                            echo form_close(); 
-                            }  // fechamento do ultimo foreach 
+                            <?php 
+                            $semFoto = "assets/frontend/img/usuarios/sem_foto.jpg";
+                            if ($usuario_alt->img!=''){
+                                echo img($usuario_alt->img); 
+                            } else {
+                                echo img($semFoto);
+                            }
+                        
+                            ?>
+                        </div>
+                    </div>
+                    <br> 
+                    <div class="row">
+                        <div class="col-lg-12">
+                                <?php
+
+                                $divopen = '<div class="form-group">';
+                                $divclose= '</div>';
+
+                                echo form_open_multipart('admin/usuarios/nova_imagem'); 
+                                echo form_hidden('id', md5($usuario_alt->id)); 
+                                echo $divopen;
+                                $imagem = array('name'=>'userfile', 
+                                                'id'=>'userfile',
+                                                'class'=>'form-control'); 
+                                echo form_upload($imagem);
+                                echo $divclose;
+
+                                echo $divopen;
+                                $button = array('name'=>'btn-adicionar', 
+                                                'id'=>'btn-adicionar',
+                                                'class'=>'btn btn-default',
+                                                'value'=>'Adicionar Imagem'); 
+                                echo form_submit($button);
+                                echo $divclose; 
+                                echo form_close();
+                                 
+                            endforeach;  // fechamento do ultimo foreach 
                             ?>
                         </div>
                         
@@ -155,21 +134,7 @@
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-       
+        </div>     
     </div>
     <!-- /.row -->
 </div>

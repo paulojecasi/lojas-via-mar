@@ -71,6 +71,13 @@ class Usuarios_model extends CI_Model {
 		return $this->db->update('usuario',$dados);
 	}
 
+	public function alterar_img($id, $dir_imagem){
+		$dados['img'] = $dir_imagem; // identifica que o usuario ja tem foto 
+
+		$this->db->where('md5(id)=', $id);
+		return $this->db->update('usuario',$dados);
+	}
+
 
 
 }

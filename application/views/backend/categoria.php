@@ -28,40 +28,8 @@
                             // vamos abrir o formulário,
                                         // apontando para:admin/controlador/metodo
                             echo form_open('admin/categoria/inserir');
-            
-                            // BLOCO DE MENSAGENS 
-                            if (!is_null($this->session->userdata('mensagem'))) 
-                            { 
+        
                             ?>
-                                <div class="alert alert-success" role="alert">
-                                    <b> 
-                                        <?php
-                                         echo $this->session->userdata('mensagem'); 
-                                        ?>
-                                    </b>
-                                </div>
-                                <?php 
-                                // encerrar a secao
-                                $this->session->unset_userdata('mensagem'); 
-                            }
-                            ?> 
-
-                            <?php
-                            if (!is_null($this->session->userdata('mensagemErro'))) 
-                            { 
-                            ?>
-                                <div class="alert alert-danger" role="alert">
-                                    <b> 
-                                        <?php
-                                         echo $this->session->userdata('mensagemErro'); 
-                                        ?>
-                                    </b>
-                                </div>
-                                <?php 
-                                // encerrar a secao
-                                $this->session->unset_userdata('mensagemErro'); 
-                            }
-                            ?> 
 
                             <label> Nome da Categoria </label>
                             <input id="txt-categoria" name="txt-categoria" type="text"class = "form-control" placeholder ="Digite o nome da categoria">

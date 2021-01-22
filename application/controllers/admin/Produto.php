@@ -44,6 +44,7 @@ class Produto extends CI_Controller {
 
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/template');
+		$this->load->view('backend/mensagem');
 		$this->load->view('backend/produto');
 		$this->load->view('backend/template/html-footer'); 
 
@@ -58,29 +59,28 @@ class Produto extends CI_Controller {
 		'txt-desproduto',          // name do input (template)
 		'Descrição do Produto',		 // nome da label (template)
 		'required|min_length[3]'); 
+		$this->form_validation->set_rules('corproduto','Cor do Produto','required');
 
 		$this->form_validation->set_rules('idcategoria','Categoria do Produto','required');
 
 		$this->form_validation->set_rules('vlpreco','Preço','required');
 
-		$this->form_validation->set_rules('vllargura','Largura','required');
+		$this->form_validation->set_rules('vllargura','Largura');
 
-		$this->form_validation->set_rules('vlaltura','Altura','required');
+		$this->form_validation->set_rules('vlaltura','Altura');
 
-		$this->form_validation->set_rules('vlcomprimento','Comprimento','required');
+		$this->form_validation->set_rules('vlcomprimento','Comprimento');
 
-		$this->form_validation->set_rules('vlpeso','Peso','required');
+		$this->form_validation->set_rules('vlpeso','Peso');
 
-		$this->form_validation->set_rules('vlpromocao','Valor Promoção','required');
+		$this->form_validation->set_rules('vlpromocao','Valor Promoção');
 
-		$this->form_validation->set_rules('txt-produtoativo','Produto Ativo?','required');
+		$this->form_validation->set_rules('produtoativo','Produto Ativo?','required');
 
-		$this->form_validation->set_rules('txt-produtodestaque','Produto Destaque?',
+		$this->form_validation->set_rules('produtodestaque','Produto Destaque?',
 			'required');
 
-		$this->form_validation->set_rules('txt-produtosite','Produto no Site?','required');
-
-		$this->form_validation->set_rules('txt-img','Foto do Produto','required');
+		$this->form_validation->set_rules('produtosite','Produto no Site?','required');
 
 		if ($this->form_validation->run() == FALSE){
 
@@ -88,117 +88,194 @@ class Produto extends CI_Controller {
 
 		} else {
 
-			$addproduto= $this->input->post(
-				'idcategoria',
-				'txt-desproduto',
-				'vlpreco',
-				'vllargura',
-				'vlaltura',
-				'vlcomprimento',
-				'vlpeso',
-				'vlpromocao',
-				'txt-img', 
-				'txt-produtoativo',
-				'txt-produtodestaque',
-				'txt-produtosite');
+			$idcategoria= $this->input->post('idcategoria');
+			$desproduto= $this->input->post('txt-desproduto');
+			$corproduto= $this->input->post('corproduto');
+			$vlpreco= $this->input->post('vlpreco');
+			$vllargura= $this->input->post('vllargura');	
+			$vlaltura= $this->input->post('vlaltura');
+			$vlcomprimento= $this->input->post('vlcomprimento');
+			$vlpeso= $this->input->post('vlpeso');
+			$vlpromocao= $this->input->post('vlpromocao');
+			$produtoativo= $this->input->post('produtoativo');
+			$produtodestaque= $this->input->post('produtodestaque');
+			$produtosite= $this->input->post('produtosite');
 
-			if ($this->modelproduto->adicionar($addproduto)){
-				$mensagem ="Categoria Adicionada Com Sucesso !"; 
+			if ($this->modelproduto->adicionar($idcategoria,$desproduto,$corproduto, $vlpreco,$vllargura,$vlaltura,$vlcomprimento,$vlpeso,$vlpromocao,$produtoativo,$produtodestaque,$produtosite)){
 
-				// usando seção da framework (session)
+				$mensagem ="Produto Adicionado Com Sucesso !"; 
 				$this->session->set_userdata('mensagem',$mensagem); 
 				
 			} else {
 
-				$mensagem = "Houve um erro ao adicionar Categoria !"; 
-
+				$mensagem = "Houve um erro ao adicionar Produto !"; 
 				$this->session->set_userdata('mensagemErro',$mensagem); 
 
 			}
 
 			redirect(base_url('admin/produto'));
-
 		}
-
 	}
 
-	/*
-	public function excluir($id){
+	public function alterar($id)
+	{
+		// vamos carregar a biblioteca de TABELAS
+		$produto = $this->modelproduto->listar_produto($id); 
 
-		if ($this->modelcategorias->excluir($id)){
-
-			$mensagem ="Categoria Excluida Com Sucesso !"; 
-
-			$this->session->set_userdata('mensagem',$mensagem); 
-
-		} else {
-
-			$mensagem ="Houve um ERRO ao Excluir Categoria !";
-
-			$this->session->set_userdata('mensagemErro',$mensagem); 
-
-		}
-
-		redirect(base_url('admin/categoria'));
-
-	}
-
-	public function alterar($id){
-
-		$dados['categoria'] = $this->modelcategorias->listar_categoria($id); 
-
-		// dados a serem enviados para o cabeçalho
-		$dados['titulo'] 		= 'Painel de Controle';
-		$dados['subtitulo'] = 'Categoria - Alteração';
+		$dados = array(
+			'produto' 		=> $produto, 
+		  'categorias' 	=> $this->categorias,
+			'titulo' 			=> 'Painel de Controle',
+			'subtitulo' 	=> 'Manutenção de Produtos', 
+			'opcoes'			=> $this->opcoes,
+			'cores'				=> $this->cores 
+		); 
 
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/template');
-		$this->load->view('backend/alterar-categoria');
+		$this->load->view('backend/mensagem');
+		$this->load->view('backend/altera-produto');
 		$this->load->view('backend/template/html-footer'); 
-
 	}
 
+	public function excluir($id){
+
+		if ($this->modelproduto->excluir($id)) {
+			$mensagem ="Produto Excluido Com Sucesso!"; 
+			$this->session->set_userdata('mensagem',$mensagem); 
+		} else {
+			$mensagem ="Erro ao Excluir Produto!"; 
+			$this->session->set_userdata('mensagemErro',$mensagem);
+		}
+
+		redirect(base_url('admin/produto'));
+	}
 
 	public function salvar_alteracoes(){
+
 		// validar form
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules(
-		'txt-categoria',        // id do input (template)
-		'Nome da Categoria',		// nome da label (template)
-		'required|min_length[3]|is_unique[categoria.titulo]'); //requerido|minimo 3 caract|
-																													 //unico(nao repete o titulo
-				
+		'txt-desproduto',          // name do input (template)
+		'Descrição do Produto',		 // nome da label (template)
+		'required|min_length[3]'); 
+		$this->form_validation->set_rules('corproduto','Cor do Produto','required');
+
+		$this->form_validation->set_rules('idcategoria','Categoria do Produto','required');
+
+		$this->form_validation->set_rules('vlpreco','Preço','required');
+
+		$this->form_validation->set_rules('vllargura','Largura');
+
+		$this->form_validation->set_rules('vlaltura','Altura');
+
+		$this->form_validation->set_rules('vlcomprimento','Comprimento');
+
+		$this->form_validation->set_rules('vlpeso','Peso');
+
+		$this->form_validation->set_rules('vlpromocao','Valor Promoção');
+
+		$this->form_validation->set_rules('produtoativo','Produto Ativo?','required');
+
+		$this->form_validation->set_rules('produtodestaque','Produto Destaque?',
+			'required');
+
+		$this->form_validation->set_rules('produtosite','Produto no Site?','required');
+
 		if ($this->form_validation->run() == FALSE){
-
-			$this->index();   // se nao validar, retorna para a pagina
-
+				// se nao validar, retorna para a pagina
+				$this->alterar($this->input->post('idproduto'));   
 		} else {
+			$idproduto= $this->input->post('idproduto');
+			$idcategoria= $this->input->post('idcategoria');
+			$desproduto= $this->input->post('txt-desproduto');
+			$corproduto= $this->input->post('corproduto');
+			$vlpreco= $this->input->post('vlpreco');
+			$vllargura= $this->input->post('vllargura');	
+			$vlaltura= $this->input->post('vlaltura');
+			$vlcomprimento= $this->input->post('vlcomprimento');
+			$vlpeso= $this->input->post('vlpeso');
+			$vlpromocao= $this->input->post('vlpromocao');
+			$produtoativo= $this->input->post('produtoativo');
+			$produtodestaque= $this->input->post('produtodestaque');
+			$produtosite= $this->input->post('produtosite');
 
-			$alterar_categoria= $this->input->post('txt-categoria');
-			$id= $this->input->post('txt-id');
+			if ($this->modelproduto->alterar($idproduto,$idcategoria,$desproduto,$corproduto, $vlpreco,$vllargura,$vlaltura,$vlcomprimento,$vlpeso,$vlpromocao,$produtoativo,$produtodestaque,$produtosite)){
 
-			if ($this->modelcategorias->alterar($alterar_categoria, $id)){
-
-				$mensagem ="Categoria Alterada Com Sucesso !"; 
-
-				// usando seção da framework (session)
+				$mensagem ="Produto Alterado Com Sucesso !"; 
 				$this->session->set_userdata('mensagem',$mensagem); 
-
+				
 			} else {
 
-				$mensagem = "Houve um erro ao Alterar Categoria!"; 
-
+				$mensagem = "Houve um erro ao Alterar Produto !"; 
 				$this->session->set_userdata('mensagemErro',$mensagem); 
 
 			}
 
+			redirect(base_url('admin/produto/alterar/'.md5($idproduto)));
 
-			redirect(base_url('admin/categoria'));
+		}
+
+
+	}
+
+	public function nova_imagem(){
+
+		if (!$this->session->userdata('logado')){
+				redirect(base_url('admin/login')); 
+		}
+
+		$idproduto = $this->input->post('id_produto'); 
+		$config['upload_path']= './assets/frontend/img/products'; 
+		$config['allowed_types']= 'jpg'; 
+		$config['file_name']= $idproduto.'.jpg';
+		$config['overwrite']= TRUE;  // sobrepor a imagem sempre que for alterada(mesmo ID)
+		$this->load->library('upload', $config); 
+
+		$redirect = base_url('admin/produto/alterar/'.$idproduto);
+
+		if (!$this->upload->do_upload()){
+
+				$mensagem = "ERRO!".$this->upload->display_errors(); 
+				$this->session->set_userdata('mensagemErro',$mensagem);
+
+				redirect($redirect);
+
+		} else {
+
+				$config2['source_image']= './assets/frontend/img/products/'.$idproduto.'.jpg';
+				$config2['create_thumb']= FALSE;
+				$config2['width']= 800;   // largura da imagem
+				$config2['height']= 600; 	// altura da imagem
+
+				$this->load->library('image_lib', $config2); 
+
+				if ($this->image_lib->resize()){
+
+						$dir_imagem = $config2['source_image'];
+
+						if ($this->modelproduto->alterar_img($idproduto, $dir_imagem)){
+
+								$mensagem = "Upload da Imagem Realizado Com Sucesso!";
+								$this->session->set_userdata('mensagem',$mensagem);
+						} else{
+								$mensagem = "Erro ao Realizar o Upload da Imagem!";
+								$this->session->set_userdata('mensagemErro',$mensagem);
+						}
+
+						redirect($redirect); 
+
+				} else {
+
+						$mensagem = "ERRO!".$this->image_lib->display_errors();
+						$this->session->set_userdata('mensagemErro',$mensagem);
+
+						redirect($redirect); 
+						
+				}
 
 		}
 
 	}
-
-	*/
 
 }

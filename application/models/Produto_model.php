@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Produto_model extends CI_Model {
+class Produto_model extends CI_Model
+{
 
 	public $id;
 	public $desproduto; 
@@ -12,7 +13,8 @@ class Produto_model extends CI_Model {
 
 	}
 
-	public function listar_produtos(){
+	public function listar_produtos()
+	{
 
 		//consulta no banco ondenando pelo titulo (ASC= Crescente, DESC= Decrescente)
 		$this->db->order_by('desproduto','ASC'); 
@@ -22,38 +24,63 @@ class Produto_model extends CI_Model {
 
 	}
 
-
-	public function adicionar($addproduto){
-
-		$dados["produto"]= $addproduto; 
-		return $this->db->insert('produto',$dados); 
+	public function listar_produto($id)
+	{
+		$this->db->where('md5(idproduto)=', $id); 
+		return $this->db->get('produto')->result(); 
 
 	}
 
-/*
+	public function adicionar($idcategoria,$desproduto,$corproduto,$vlpreco,$vllargura,$vlaltura,$vlcomprimento,$vlpeso,$vlpromocao,$produtoativo,$produtodestaque,$produtosite)
+	{
+
+		$dados["idcategoria"]	= $idcategoria;
+		$dados["desproduto"]	= $desproduto;
+		$dados["corproduto"]	= $corproduto;
+		$dados["vlpreco"]			= $vlpreco;
+		$dados["vllargura"]		= $vllargura;
+		$dados["vlaltura"]		= $vlaltura;
+		$dados["vlcomprimento"]= $vlcomprimento;
+		$dados["vlpeso"]			= $vlpeso;
+		$dados["vlpromocao"]	= $vlpromocao;
+		$dados["produtoativo"]= $produtoativo;
+		$dados["produtodestaque"]= $produtodestaque;
+		$dados["produtosite"]= $produtosite;
+
+		return $this->db->insert('produto',$dados); 
+	}
+
+	public function alterar($idproduto,$idcategoria,$desproduto,$corproduto,$vlpreco,$vllargura,$vlaltura,$vlcomprimento,$vlpeso,$vlpromocao,$produtoativo,$produtodestaque,$produtosite)
+	{
+		$dados["idcategoria"]	= $idcategoria;
+		$dados["desproduto"]	= $desproduto;
+		$dados["corproduto"]	= $corproduto;
+		$dados["vlpreco"]			= $vlpreco;
+		$dados["vllargura"]		= $vllargura;
+		$dados["vlaltura"]		= $vlaltura;
+		$dados["vlcomprimento"]= $vlcomprimento;
+		$dados["vlpeso"]			= $vlpeso;
+		$dados["vlpromocao"]	= $vlpromocao;
+		$dados["produtoativo"]= $produtoativo;
+		$dados["produtodestaque"]= $produtodestaque;
+		$dados["produtosite"]= $produtosite;
+
+		$this->db->where('idproduto=', $idproduto); 
+		return $this->db->update('produto',$dados); 
+	}
+
 	public function excluir($id){
 
-		$this->db->where('md5(id)=', $id);
-		return $this->db->delete('categoria');  
+		$this->db->where('md5(idproduto)=', $id);
+		return $this->db->delete('produto'); 
 
 	}
 
-	public function listar_categoria($id){
+	public function alterar_img($idproduto, $dir_imagem){
+		$dados['img'] = $dir_imagem; // identifica que o usuario ja tem foto 
 
-		$this->db->from('categoria');
-		$this->db->where('md5(id)=', $id);
-		return $this->db->get()->result(); 
-		
+		$this->db->where('md5(idproduto)=', $idproduto);
+		return $this->db->update('produto',$dados);
 	}
-
-	public function alterar($alterar_categoria, $id){
-		
-		$dados["titulo"]= $alterar_categoria; 
-		$this->db->where('id=', $id); 
-		return $this->db->update('categoria', $dados); 
-
-	}
-
-	-*/
 
 }

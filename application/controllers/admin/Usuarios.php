@@ -30,6 +30,7 @@ class Usuarios extends CI_Controller {
 
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/template');
+		$this->load->view('backend/mensagem');
 		$this->load->view('backend/usuarios');
 		$this->load->view('backend/template/html-footer'); 
 
@@ -130,6 +131,7 @@ public function inserir()
 
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/template');
+		$this->load->view('backend/mensagem');
 		$this->load->view('backend/altera-usuarios');
 		$this->load->view('backend/template/html-footer');
 
@@ -196,18 +198,71 @@ public function inserir()
 
 	}
 
-	public function page_login()
-	{
+	public function nova_imagem(){
 
 		if (!$this->session->userdata('logado')){
 				redirect(base_url('admin/login')); 
 		}
+
+		$id = $this->input->post('id'); 
+		$config['upload_path']= './assets/frontend/img/usuarios'; 
+		$config['allowed_types']= 'jpg'; 
+		$config['file_name']= $id.'.jpg';
+		$config['overwrite']= TRUE;  // sobrepor a imagem sempre que for alterada(mesmo ID)
+		$this->load->library('upload', $config); 
+
+		if (!$this->upload->do_upload()){
+
+				$mensagem = "ERRO!".$this->upload->display_errors(); 
+				$this->session->set_userdata('mensagemErro',$mensagem);
+
+				redirect(base_url('admin/usuarios/alterar/'.$id));
+
+		} else {
+
+				$config2['source_image']= './assets/frontend/img/usuarios/'.$id.'.jpg';
+				$config2['create_thumb']= FALSE;
+				$config2['width']= 200;   // largura da imagem
+				$config2['height']= 200; 	// altura da imagem
+
+				$this->load->library('image_lib', $config2); 
+
+				if ($this->image_lib->resize()){
+
+						$dir_imagem = $config2['source_image'];
+
+						if ($this->modelusuarios->alterar_img($id, $dir_imagem)){
+								$mensagem = "Upload da Imagem Realizado Com Sucesso!";
+								$this->session->set_userdata('mensagem',$mensagem);
+						} else{
+								$mensagem = "Erro ao Realizar o Upload da Imagem!";
+								$this->session->set_userdata('mensagemErro',$mensagem);
+						}
+
+						redirect(base_url('admin/usuarios/alterar/'.$id)); 
+
+				} else {
+
+						$mensagem = "ERRO!".$this->image_lib->display_errors();
+						$this->session->set_userdata('mensagemErro',$mensagem);
+
+						redirect(base_url('admin/usuarios/alterar/'.$id)); 
+						
+				}
+
+		}
+
+	}
+
+	public function page_login()
+	{
 
 		$dados['titulo'] 		= 'Painel de Controle';
 		$dados['subtitulo'] = 'Entrar no Sistema';
 
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/login');
+		$this->load->view('backend/mensagem');
 		$this->load->view('backend/template/html-footer');
 
 	}
@@ -243,7 +298,7 @@ public function inserir()
 						$dadosSessao['logado'] = FALSE; 
 						$this->session->unset_userdata($dadosSessao); 
 
-						$mensagem ="Usuario ou senha invalido"; 
+						$mensagem ="Usuario ou senha invalidos"; 
 						$this->session->set_userdata('mensagemErro',$mensagem); 
 
 						redirect(base_url('admin/login')); 
@@ -260,47 +315,6 @@ public function inserir()
 		$this->session->unset_userdata($dadosSessao,'userLogado'); 
 		$this->session->unset_userdata($dadosSessao,'logado');
 		redirect(base_url('admin/login')); 
-
-	}
-
-	public function nova_imagem(){
-
-		if (!$this->session->userdata('logado')){
-				redirect(base_url('admin/login')); 
-		}
-
-		$id = $this->input->post('id'); 
-		$config['upload_path']= './assets/frontend/img/usuarios'; 
-		$config['allowed_types']= 'jpg'; 
-		$config['file_name']= $id.".jpg";
-		$config['overwrite']= TRUE;  // sobrepor a imagem sempre que for alterada(mesmo ID)
-		$this->load->library('upload', $config); 
-
-		if (!$this->upload->do_upload()){
-
-				echo $this->upload->display_errors(); 
-
-		} else {
-
-				$config2['souce_image']= './assets/frontend/img/usuarios'.$id.'jpg';
-				$config2['create_thumb']= FALSE;
-				$config2['width']= 200;   // altura da imagem
-				$config2['height']= 200; 	// largura da imagem
-
-				$this->load->library('image_lib', $config2); 
-
-				if ($this->image_lib->resize()){
-
-						redirect(base_url('admin/usuarios/alterar/'.$id)); 
-
-				} else {
-
-						echo $this->image_lib->display_errors();
-						
-				}
-
-
-		}
 
 	}
 

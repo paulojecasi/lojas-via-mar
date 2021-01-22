@@ -28,42 +28,9 @@
                             // vamos abrir o formulário,
                                         // apontando para:admin/controlador/metodo
                             echo form_open('admin/usuarios/inserir');
-            
-                            // BLOCO DE MENSAGENS 
-                            if (!is_null($this->session->userdata('mensagem'))) 
-                            { 
-                            ?>
-                                <div class="alert alert-success" role="alert">
-                                    <b> 
-                                        <?php
-                                         echo $this->session->userdata('mensagem'); 
-                                        ?>
-                                    </b>
-                                </div>
-                                <?php 
-                                // encerrar a secao
-                                $this->session->unset_userdata('mensagem'); 
-                            }
+        
                             ?> 
-
-                            <?php
-                            if (!is_null($this->session->userdata('mensagemErro'))) 
-                            { 
-                            ?>
-                                <div class="alert alert-danger" role="alert">
-                                    <b> 
-                                        <?php
-                                         echo $this->session->userdata('mensagemErro'); 
-                                        ?>
-                                    </b>
-                                </div>
-                                <?php 
-                                // encerrar a secao
-                                $this->session->unset_userdata('mensagemErro'); 
-                            }
-                            ?> 
-
-
+                            
                             <div class = "form-group">
                                 <label> Nome do Usuario </label>
                                 <input id="txt-nome" name="txt-nome" type="text"class = "form-control" placeholder ="Digite o nome do Usuario"
@@ -134,17 +101,24 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 fotos-usuarios">
                   
                             <!-- gerar tabela de usuarios pela framework PJCS --> 
                             <?php
+                            $semFoto = "assets/frontend/img/usuarios/sem_foto.jpg";
+
                             $this->table->set_heading(  "Foto", "Nome",
                                                         "Alterar",
                                                         "Excluir"); 
 
                             foreach ($lista_usuarios as $usuario)
-                            { 
-                                $foto       = $usuario->img;
+                            {   
+                                if ($usuario->img !=''){
+                                    $foto   = img($usuario->img);
+                                }else{
+                                    $foto   = img($semFoto);
+                                }
+
                                 $nomeuser   = $usuario->nome;
                                 $botaoalterar = anchor(base_url('admin/usuarios/alterar/'.md5($usuario->id)),
                                     '<i class="fas fa-edit"> </i> Alterar');

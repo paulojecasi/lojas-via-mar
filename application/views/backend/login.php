@@ -20,25 +20,6 @@
 
                     ?>
 
-
-                    <?php
-                    // MENSAGEM 
-                    if (!is_null($this->session->userdata('mensagemErro'))) 
-                    { 
-                    ?>
-                        <div class="alert alert-danger" role="alert">
-                            <b> 
-                                <?php
-                                 echo $this->session->userdata('mensagemErro'); 
-                                ?>
-                            </b>
-                        </div>
-                        <?php 
-                        // encerrar a secao
-                        $this->session->unset_userdata('mensagemErro'); 
-                    }
-                    ?> 
-
                         <fieldset>
                             <div class="form-group">
                                 <input class="form-control" placeholder="Usuário" name="txt-user" type="text" autofocus>

@@ -21,8 +21,6 @@
     <!-- Custom Fonts -->
     <link href="<?php echo base_url('assets/backend/css/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css">
 
-    
-
     <!-- para icones  -->
     <script src="https://kit.fontawesome.com/006642858d.js"></script>
 

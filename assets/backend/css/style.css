@@ -12,7 +12,36 @@
 		margin-top:  30px;
 }
 
-.campos-produtos div option{
+.layout-campos div input{
+		/*text-transform: uppercase; */
+}
+
+.layout-campos div option{
 		background-color: #000000;
 		color: #FFFF00; 
 }
+
+.foto-perfil a img{
+  	width: 45px;            
+}
+
+.fotos-usuarios img{
+  	width: 30px;            
+}
+
+.product-img{  
+  	background: #DCDCDC;      
+}
+
+.product-img img{
+  	width: 280px;   
+  	height:280px;         
+}
+
+.fotos-lista-produtos img{
+		width: 35px;
+		height: 35px;
+}
+      
+      
+    
