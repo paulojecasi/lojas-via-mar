@@ -13,13 +13,29 @@ class Produto_model extends CI_Model
 
 	}
 
-	public function listar_produtos()
+	public function listar_produtos($pular=null, $produtos_por_pagina=null)
 	{
 
-		//consulta no banco ondenando pelo titulo (ASC= Crescente, DESC= Decrescente)
-		$this->db->order_by('desproduto','ASC'); 
+		//echo "pular =".$pular;
+		//echo "qt = ".$produtos_por_pagina;
+		//exit;  
 
-		// vamos informar a tabela e trazer o resultado 
+		if ($pular && $produtos_por_pagina){
+			$this->db->limit($produtos_por_pagina, $pular);
+		} else {
+			$this->db->limit($this->session->userdata('itensPorPagina')); 
+		}
+
+		// vamos ver o tipo de listagem escolhido
+		// se nao vier preenchido, vamos carregar como TODOS OS PRODUTOS 
+		// geralmente acontece ao acessar o ADMIN, pois a SESSION ainda não
+		// foi preenchida - PJCS 
+		if (!$this->session->userdata('tipolista')){
+			$this->session->set_userdata('tipolista','todos');
+		} 
+		$this->listagem_produto_escolha(); 
+		
+		$this->db->order_by('desproduto','ASC'); 
 		return $this->db->get('produto')->result(); 
 
 	}
@@ -28,6 +44,24 @@ class Produto_model extends CI_Model
 	{
 		$this->db->where('md5(idproduto)=', $id); 
 		return $this->db->get('produto')->result(); 
+
+	}
+
+	public function listagem_produto_escolha(){
+
+		if ($this->session->userdata('tipolista')=="destsim"){
+			$this->db->where('produtodestaque=',1); 
+		} elseif ($this->session->userdata('tipolista')=="destnao"){
+			$this->db->where('produtodestaque=',2); 
+		} elseif ($this->session->userdata('tipolista')=="sitesim"){
+			$this->db->where('produtosite=',1); 
+		} elseif ($this->session->userdata('tipolista')=="sitenao"){
+			$this->db->where('produtosite=',2); 
+		} elseif ($this->session->userdata('tipolista')=="ativos"){
+			$this->db->where('produtoativo=',1);
+		} elseif ($this->session->userdata('tipolista')=="inativos"){
+			$this->db->where('produtoativo=',2);
+		}
 
 	}
 
@@ -82,5 +116,35 @@ class Produto_model extends CI_Model
 		$this->db->where('md5(idproduto)=', $idproduto);
 		return $this->db->update('produto',$dados);
 	}
+
+	public function contar(){
+		// vamos ver o tipo de listagem escolhido para contagem 
+		$this->listagem_produto_escolha();
+		$this->db->from('produto'); 
+		return $this->db->count_all_results(); 
+	}
+
+
+	/* ================== FRONTEND ===============*/
+
+	public function produtos_ativos(){
+
+		$this->db->where('produtoativo',1);
+		return $this->db->get('produto'); 
+
+	}
+
+	public function produtos_destaques(){
+
+		//$this->db->where('produtoativo=', 1);
+		$this->db->where('produtodestaque=',1);
+		$this->db->where('produtoativo=',1);
+		$this->db->where('vlpreco > ',0); 
+		$this->db->where('img!=',""); 
+
+		return  $this->db->get('produto')->result();
+
+	}
+
 
 }

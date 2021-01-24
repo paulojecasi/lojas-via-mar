@@ -36,7 +36,7 @@ class Usuarios extends CI_Controller {
 
 	}
 
-public function inserir()
+	public function inserir()
 	{
 		if (!$this->session->userdata('logado')){
 				redirect(base_url('admin/login')); 
@@ -314,6 +314,10 @@ public function inserir()
 		$this->session->set_userdata($dadosSessao); 
 		$this->session->unset_userdata($dadosSessao,'userLogado'); 
 		$this->session->unset_userdata($dadosSessao,'logado');
+		$this->session->unset_userdata('itensPorPagina');
+		$this->session->unset_userdata('qtdItensInfo');
+		$this->session->unset_userdata('tipolista');
+
 		redirect(base_url('admin/login')); 
 
 	}

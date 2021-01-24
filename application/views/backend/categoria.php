@@ -30,9 +30,30 @@
                             echo form_open('admin/categoria/inserir');
         
                             ?>
+                            <div class="form-group"> 
+                                <label> Nome da Categoria </label>
+                                <input id="txt-categoria" name="txt-categoria" type="text"class = "form-control" placeholder ="Digite o nome da categoria">
+                            </div>
 
-                            <label> Nome da Categoria </label>
-                            <input id="txt-categoria" name="txt-categoria" type="text"class = "form-control" placeholder ="Digite o nome da categoria">
+                            <div class="form-group">                          
+                                <div class="form-group">
+                                  <label for="categoriadest"> Destacar no Site? </label>
+                                  <select class="form-control" id="categoriadest" name="categoriadest">
+                                
+                                    <?php foreach ($opcoes as $opcao)
+                                    {
+                                    ?>
+                                        <option value ="<?php echo $opcao->idopcao ?> ">
+                                           <?php echo $opcao->desopcao ?>
+                                        </option>
+                
+                                    <?php 
+                                    }
+                                    ?>
+                                  
+                                  </select>
+                                </div>
+                            </div>
                             <br>
                             <a href="">
                                 <button class="btn btn-primary" > 
@@ -66,19 +87,27 @@
                   
                             <!-- gerar tabela de categorias pela framework PJCS --> 
                             <?php
-                            $this->table->set_heading(  "Nome da Categoria",
+                            $this->table->set_heading("Nome da Categoria", "Dtq", 
                                                         "Alterar",
                                                         "Excluir"); 
 
                             foreach ($categorias as $categoria)
                             { 
                                 $nomecategoria= $categoria->titulo;
+
+
+                                if ($categoria->categoriadest==1){
+                                    $destaque = "S";
+                                }else{
+                                    $destaque= "N";
+                                }
+
                                 $botaoalterar = anchor(base_url('admin/categoria/alterar/'.md5($categoria->id)),
                                     '<i class="fas fa-edit"> </i> Alterar');
                                 $botaoexcluir = anchor(base_url('admin/categoria/excluir/'.md5($categoria->id)),
                                     '<i class="fa fa-remove fa-fw"> </i> Excluir');
 
-                                $this->table->add_row($nomecategoria,$botaoalterar,$botaoexcluir); 
+                                $this->table->add_row($nomecategoria,$destaque,$botaoalterar,$botaoexcluir); 
                             }
 
                             $this->table->set_template(array(

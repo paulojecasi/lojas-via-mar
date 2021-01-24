@@ -20,27 +20,44 @@ class Produto extends CI_Controller {
 		$this->load->model('picklist_model','modellistaescolha'); 
 
 				// vamos cria uma var e carrega-la com o resultado 
-		$this->produtos 	= $this->modelproduto->listar_produtos(); 
+		//$this->produtos 	= $this->modelproduto->listar_produtos(); 
 		$this->categorias = $this->modelcategorias->listar_categorias(); 
 		$this->opcoes 		= $this->modellistaescolha->lista_opcoes(); 
 		$this->cores 			= $this->modellistaescolha->lista_cores(); 
 
 	}
 
-	public function index()
+	public function index($pular=null, $produtos_por_pagina=null)
 	{
 
 		// vamos carregar a biblioteca de TABELAS
-		$this->load->library('table'); 
+		$this->load->library('table');
+		$this->load->library('pagination');  
+
+		// vamos verificar a quantidade de itens da pagina
+		if (!$this->session->userdata('itensPorPagina')){
+			$this->itensporpagina();
+		}
+
+		// configuração de paginação 
+		// OBS. NAO ESQUECER DE COLAR O "pagination.php" na pasta "config"
+		$config['base_url']= base_url("admin/produto");
+		$config['total_rows']= $this->modelproduto->contar();
+		$produtos_por_pagina = $this->session->userdata('itensPorPagina'); 
+		$config['per_page']= $produtos_por_pagina;
+
+		$this->pagination->initialize($config);
 
 		$dados = array(
-			'produtos' 		=> $this->produtos, 
+			'produtos' 		=>
+						 $this->modelproduto->listar_produtos($pular,$produtos_por_pagina), 
 		  'categorias' 	=> $this->categorias,
 			'titulo' 			=> 'Painel de Controle',
 			'subtitulo' 	=> 'Produtos', 
 			'opcoes'			=> $this->opcoes,
-			'cores'				=> $this->cores 
-		); 
+			'cores'				=> $this->cores,
+			'links_paginacao' => $this->pagination->create_links()
+		);
 
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/template');
@@ -50,6 +67,61 @@ class Produto extends CI_Controller {
 
 	}
 
+	public function itensporpagina($info=null){
+
+		if ($info == 'a'){
+				$qtditens = 5;
+		} elseif ($info == 'b'){
+				$qtditens = 10;
+		} elseif ($info == 'c'){
+				$qtditens = 15;
+		} elseif ($info == 'd'){
+				$qtditens = 20;
+		} elseif ($info == 'e'){
+				$qtditens = 25;
+		} elseif ($info == 'f'){
+				$qtditens = 30;
+		} elseif ($info == 'g'){
+				$qtditens = 40;
+		} elseif ($info == 'h'){
+				$qtditens = 50;
+		} else {
+				$info = 'c'; 
+				$qtditens = 15; 
+		}
+
+		$this->session->set_userdata('itensPorPagina',$qtditens);
+		$this->session->set_userdata('qtdItensInfo',$info);
+		// depois de selecionar a quantidade de itens, vamos para a pagina principal
+		redirect(base_url('admin/produto'));
+
+	}
+
+	public function tipolistagem($tipolista){
+
+		$this->session->set_userdata('tipolista',$tipolista);
+		// vamos redirecionar para "admin/produto", que a listagemem será refeita no
+		// modelproduto->listar_produtos, que sera invocado no metodo construtor
+		//e fara a lista baseado no tipo carregado na SESSION - PJCS 
+		redirect(base_url('admin/produto'));
+		
+	}
+
+	public function cadastro(){
+			$dados = array(
+			'titulo' 			=> 'Painel de Controle',
+			'subtitulo' 	=> 'Manutenção de Produtos - Cadastro', 
+			'categorias' 	=> $this->categorias,
+			'opcoes'			=> $this->opcoes,
+			'cores'				=> $this->cores 
+		); 
+
+		$this->load->view('backend/template/html-header', $dados);
+		$this->load->view('backend/template/template');
+		$this->load->view('backend/mensagem');
+		$this->load->view('backend/cadastro-produto');
+		$this->load->view('backend/template/html-footer'); 
+	}
 
 	public function inserir()
 	{
@@ -82,9 +154,10 @@ class Produto extends CI_Controller {
 
 		$this->form_validation->set_rules('produtosite','Produto no Site?','required');
 
+
 		if ($this->form_validation->run() == FALSE){
 
-				$this->index();   // se nao validar, retorna para a pagina
+				$this->cadastro();   // se nao validar, retorna para a pagina
 
 		} else {
 
@@ -128,7 +201,8 @@ class Produto extends CI_Controller {
 			'titulo' 			=> 'Painel de Controle',
 			'subtitulo' 	=> 'Manutenção de Produtos', 
 			'opcoes'			=> $this->opcoes,
-			'cores'				=> $this->cores 
+			'cores'				=> $this->cores
+		
 		); 
 
 		$this->load->view('backend/template/html-header', $dados);
@@ -215,7 +289,6 @@ class Produto extends CI_Controller {
 			redirect(base_url('admin/produto/alterar/'.md5($idproduto)));
 
 		}
-
 
 	}
 

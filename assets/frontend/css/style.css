@@ -1183,3 +1183,8 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
     color: #e67e22;
 }
 
+/* minhas estilizações CSS - PJCS */ 
+.img-destaque ul li img {
+    width: 350px;   
+    height:350px;         
+}

@@ -28,10 +28,36 @@
                             foreach ($categoria as $categoria_alt)  {
             
                             ?> 
+                                <div class="form-group">
+                                    <label> Nome da Categoria </label>
+                                    <input id="txt-categoria" name="txt-categoria" type="text" class = "form-control" placeholder ="Digite o nome da categoria"  value= "<?php echo $categoria_alt->titulo ?>" >
+                                </div>
+         
+                                <div class="form-group">
+                                    <label for="categoriadest"> Destacar no Site? </label>
+                                    <select class="form-control" id="categoriadest" name="categoriadest">
+                                  
+                                      <?php 
+                                      foreach ($opcoes as $opcao):
+                                      ?>
+                                          <option value ="<?php echo $opcao->idopcao ?> "
+                                            <?php 
+                                            if ($opcao->idopcao== $categoria_alt->categoriadest):?>
+                                                    selected
+                                                    <?php                               
+                                            endif
+                                              ?> 
+                                          >
+                                             <?php echo $opcao->desopcao ?>
+                                          </option>
 
-                                <label> Nome da Categoria </label>
-                                <input id="txt-categoria" name="txt-categoria" type="text" class = "form-control" placeholder ="Digite o nome da categoria"  value= "<?php echo $categoria_alt->titulo ?>" 
-                                >
+                                      <?php 
+                                      endforeach; 
+                                      ?>
+                                    
+                                    </select>
+                                </div>
+
                                 <br>
                               
                                 <!-- INPUT OCULTO PARA ENVIAR O ID--> 

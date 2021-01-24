@@ -13,25 +13,32 @@ class Home extends CI_Controller {
 				// como fosse:
 				// modelcategorias = new Categorias_model(); 
 		$this->load->model('categorias_model','modelcategorias');
+		$this->load->model('produto_model','modelprodutos'); 
+		
 
 				// vamos cria uma var "$categorias" e carrega-la com o resultado 
 		$this->categorias = $this->modelcategorias->listar_categorias(); 
+		$this->ativos     = $this->modelprodutos->produtos_ativos();
+		$this->destaques  = $this->modelprodutos->produtos_destaques(); 
+
+
+
 	}
 
 	public function index()
 	{
 
 		// vamos carregar os "$dados" com a variavel "$categoria" carregado no CONSTRUTOR
-		$dados['categorias'] = $this->categorias; 
-
-		//como se fosse:  modelpublicacoes = new Publicacoes_model();
-		$this->load->model('publicacoes_model','modelpublicacoes'); 
-		$dados['postagens'] = $this->modelpublicacoes->destaques_home(); 
+		$dados = array(
+			'categorias' 	=> $this->categorias, 
+			'ativos' 			=> $this->ativos,
+			'destaques' 	=>	$this->destaques
+		) ;
 
 		// dados a serem enviados para o cabeçalho
-		$dados['nomeblog'] 	= "Blog do Paulão"; 
-		$dados['titulo'] 		= 'Pagina Inicial';
-		$dados['subtitulo'] = 'Postagens Recentes';
+		//$dados['nomeblog'] 	= "Blog do Paulão"; 
+		//$dados['titulo'] 		= 'Pagina Inicial';
+		//$dados['subtitulo'] = 'Postagens Recentes';
 
 		$this->load->view('frontend/template/html-header', $dados);
 		$this->load->view('frontend/template/header');

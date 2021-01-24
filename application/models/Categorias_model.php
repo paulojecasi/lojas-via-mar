@@ -22,9 +22,13 @@ class Categorias_model extends CI_Model {
 
 	}
 
-	public function adicionar($addcategoria_titulo){
+	public function adicionar($addcategoria_titulo, $destaquenosite){
 
-		$dados["titulo"]= $addcategoria_titulo; 
+		$dados = array (
+			"titulo" 				=> $addcategoria_titulo, 
+			"categoriadest" => $destaquenosite,
+		); 
+
 		return $this->db->insert('categoria',$dados); 
 
 	}
@@ -44,9 +48,12 @@ class Categorias_model extends CI_Model {
 		
 	}
 
-	public function alterar($alterar_categoria, $id){
-		
-		$dados["titulo"]= $alterar_categoria; 
+	public function alterar($alterar_categoria, $destaquenosite, $id){
+	
+		$dados = array (
+			"titulo" 				=> $alterar_categoria, 
+			"categoriadest" => $destaquenosite,
+		); 
 		$this->db->where('id=', $id); 
 		return $this->db->update('categoria', $dados); 
 

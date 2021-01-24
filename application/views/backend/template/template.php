@@ -10,7 +10,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="">
                     LOJAS VIA MAR - Administração do Site
                 </a>
             </div>

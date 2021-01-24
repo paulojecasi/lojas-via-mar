@@ -17,9 +17,11 @@ class Categoria extends CI_Controller {
 				// como fosse:
 				// modelcategorias = new Categorias_model(); 
 		$this->load->model('categorias_model','modelcategorias');
+		$this->load->model('picklist_model','modellistaescolha');
 
 				// vamos cria uma var "$categorias" e carrega-la com o resultado 
 		$this->categorias = $this->modelcategorias->listar_categorias(); 
+		$this->opcoes 		= $this->modellistaescolha->lista_opcoes();
 
 	}
 
@@ -29,11 +31,12 @@ class Categoria extends CI_Controller {
 		// vamos carregar a biblioteca de TABELAS
 		$this->load->library('table'); 
 
-		$dados['categorias'] = $this->categorias; 
-
-		// dados a serem enviados para o cabeçalho
-		$dados['titulo'] 		= 'Painel de Controle';
-		$dados['subtitulo'] = 'Categoria';
+		$dados = array(
+			'categorias' 	=> $this->categorias,  
+			'titulo' 		 	=> 'Painel de Controle',
+			'subtitulo'  	=> 'Categoria',
+			'opcoes'   		=> $this->opcoes
+		);
 
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/template');
@@ -50,8 +53,10 @@ class Categoria extends CI_Controller {
 		$this->form_validation->set_rules(
 		'txt-categoria',        // id do input (template)
 		'Nome da Categoria',		// nome da label (template)
-		'required|min_length[3]|is_unique[categoria.titulo]'); //requerido|minimo 3 caract|
-																													 //unico(nao repete o titulo
+		'required|min_length[3]|is_unique[categoria.titulo]'); 
+		$this->form_validation->set_rules(
+		'categoriadest','Destacar no Site?','required'); 
+
 		if ($this->form_validation->run() == FALSE){
 
 				$this->index();   // se nao validar, retorna para a pagina
@@ -59,8 +64,9 @@ class Categoria extends CI_Controller {
 		} else {
 
 			$addcategoria_titulo= $this->input->post('txt-categoria');
+			$destaquenosite   	= $this->input->post('categoriadest');
 
-			if ($this->modelcategorias->adicionar($addcategoria_titulo)){
+			if ($this->modelcategorias->adicionar($addcategoria_titulo, $destaquenosite)){
 				$mensagem ="Categoria Adicionada Com Sucesso !"; 
 
 				// usando seção da framework (session)
@@ -102,11 +108,12 @@ class Categoria extends CI_Controller {
 
 	public function alterar($id){
 
-		$dados['categoria'] = $this->modelcategorias->listar_categoria($id); 
-
-		// dados a serem enviados para o cabeçalho
-		$dados['titulo'] 		= 'Painel de Controle';
-		$dados['subtitulo'] = 'Categoria - Alteração';
+		$dados = array(
+			'categoria' 	=> $this->modelcategorias->listar_categoria($id),  
+			'titulo' 		 	=> 'Painel de Controle',
+			'subtitulo'  	=> 'Categoria - Alteração',
+			'opcoes'   		=> $this->opcoes
+		);
 
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/template');
@@ -123,8 +130,9 @@ class Categoria extends CI_Controller {
 		$this->form_validation->set_rules(
 		'txt-categoria',        // id do input (template)
 		'Nome da Categoria',		// nome da label (template)
-		'required|min_length[3]|is_unique[categoria.titulo]'); //requerido|minimo 3 caract|
-																													 //unico(nao repete o titulo
+		'required|min_length[3]'); //requerido|minimo 3 caract|
+		$this->form_validation->set_rules(
+		'categoriadest','Destacar no Site?','required'); 
 				
 		if ($this->form_validation->run() == FALSE){
 
@@ -133,9 +141,10 @@ class Categoria extends CI_Controller {
 		} else {
 
 			$alterar_categoria= $this->input->post('txt-categoria');
+			$destaquenosite   = $this->input->post('categoriadest');
 			$id= $this->input->post('txt-id');
 
-			if ($this->modelcategorias->alterar($alterar_categoria, $id)){
+			if ($this->modelcategorias->alterar($alterar_categoria, $destaquenosite, $id)){
 
 				$mensagem ="Categoria Alterada Com Sucesso !"; 
 

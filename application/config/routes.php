@@ -58,3 +58,4 @@ $route['postagem/(:num)/(:any)']  = 'postagens/index/$1/$2';
 $route['autor/(:num)/(:any)']     = 'sobrenos/autores/$1/$2';
 //--------------------= 'dir/controlador/metodo - PJCS'
 $route['admin/login'] = 'admin/usuarios/page_login';
+$route['admin/produto/(:num)']    = 'admin/produto/index/$1';  // da paginação 
