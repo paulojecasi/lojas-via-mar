@@ -32,7 +32,7 @@
                                 <?php
                             endif;
                             ?>
-                        >   todos   </a>
+                        >   TODOS   </a>
                         <a href="<?php echo $tipolistprod."/destsim" ?>"
                             <?php
                             if ($tipolistacurrent=='destsim'): 

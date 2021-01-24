@@ -47,6 +47,9 @@
 		font-size: 15px;
 		font-weight: bold;
 		padding: 3px;  
+		border-style: solid;
+	 	border-width: 1px;
+	 	border-radius: 10px;
 }
 
 .filtro-list-produtos{
@@ -57,16 +60,27 @@
 	 	text-align:  center; 
 }
 
-.filtro-list-produtos div a {
-		font-size: 13px; 
-		font-weight: bold; 
-		padding: 3px; 
-}
-
 .filtro-list-produtos div {
-		margin-top: -4px; 
+		margin-top: -3px; 
 		padding-bottom: 5px; 
 }
+
+.filtro-list-produtos div a {
+		border-style: solid;
+	 	border-width: 1px;
+	 	border-radius: 10px; 
+		font-size: 13px; 
+		font-weight: bold; 
+		padding: 5px; 
+}
+
+
+.filtro-list-produtos h4 {
+		font-size: 15px; 
+
+}
+
+
 
 
       
