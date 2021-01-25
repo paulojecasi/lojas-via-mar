@@ -22,7 +22,10 @@
 }
 
 .foto-perfil a img{
-  	width: 45px;            
+  	width: 45px;  
+  	border-style: solid;
+	 	border-width: 3px;
+	 	border-radius: 10px;          
 }
 
 .fotos-usuarios img{
@@ -78,6 +81,10 @@
 .filtro-list-produtos h4 {
 		font-size: 15px; 
 
+}
+
+.boas-vindas{
+	text-align:  center; 
 }
 
 

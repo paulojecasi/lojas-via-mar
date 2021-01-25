@@ -19,7 +19,7 @@ class Home extends CI_Controller {
 
 		// dados a serem enviados para o cabeçalho
 		$dados['titulo'] 		= 'Painel de Controle';
-		$dados['subtitulo'] = 'Home';
+		$dados['subtitulo'] = 'Administração do Site - Lojas Via Mar';
 
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/template');

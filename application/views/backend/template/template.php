@@ -10,14 +10,14 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="<?php echo base_url('/admin') ?>">
                     LOJAS VIA MAR - Administração do Site
                 </a>
             </div>
 
              <div class="navbar-header col-sm-1 foto-perfil">
 
-                <a href="#"> 
+                <a href="<?php echo base_url('/admin/usuarios') ?>"> 
                     <?php
 
                     $semFoto = "assets/frontend/img/usuarios/sem_foto.jpg";
@@ -33,7 +33,7 @@
 
             <div class="navbar-header col-sm-2">
                 <p class="text-left">
-                    <a href="#"> 
+                    <a href="<?php echo base_url('/admin/usuarios') ?>"> 
                         <?php echo "Usuário -- ".$this->session->userdata('userLogado')->nome;?>
                     </a>
                 </p>
@@ -57,6 +57,9 @@
                         </li>
                         <li>
                             <a href="<?php echo base_url('admin/usuarios') ?>"><i class="fa fa-wrench fa-fw"></i> Usuários</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-television"></i> Ir para o Site</a>
                         </li>
                         <li>
                             <a href=" <?php echo base_url('admin/usuarios/logout') ?>"><i class="fa fa-sign-out fa-fw"></i> Sair do Sistema</a>

@@ -146,5 +146,14 @@ class Produto_model extends CI_Model
 
 	}
 
+	public function produtos_da_categoria(){	
+
+		$this->db->select('*');
+		$this->db->from('produto');
+		$this->db->join('categoria','categoria.id = produto.idcategoria');
+		return  $this->db->get()->result();
+
+	}
+
 
 }

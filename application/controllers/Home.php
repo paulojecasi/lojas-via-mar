@@ -20,6 +20,7 @@ class Home extends CI_Controller {
 		$this->categorias = $this->modelcategorias->listar_categorias(); 
 		$this->ativos     = $this->modelprodutos->produtos_ativos();
 		$this->destaques  = $this->modelprodutos->produtos_destaques(); 
+		$this->produtosdacategoria = $this->modelprodutos->produtos_da_categoria(); 
 
 
 
@@ -32,7 +33,8 @@ class Home extends CI_Controller {
 		$dados = array(
 			'categorias' 	=> $this->categorias, 
 			'ativos' 			=> $this->ativos,
-			'destaques' 	=>	$this->destaques
+			'destaques' 	=>	$this->destaques,
+			'produtoscategoria'	=> $this->produtosdacategoria
 		) ;
 
 		// dados a serem enviados para o cabeçalho

@@ -100,321 +100,55 @@ endif;
     </div>
 </div> <!-- End promo area -->
 
-<div class="maincontent-area">
-    <div class="zigzag-bottom"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="latest-product">
-                    <h2 class="section-title">Produtos</h2>
-                    <a href="#""> 
-                        <h2 class="display4"> Bijuterias </h2>
-                    </a>
-                    <div class="product-carousel">
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/caderno.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i>+ detalhes </a>
-                                </div>
-                            </div>
-                            
-                            <h2><a href="#">CADERNO 20 MATÉRIAS  – 320 FOLHAS-Tilibra</a></h2>
-                            
-                            <div class="product-carousel-price">
-                                <ins>$25.00</ins> <del>$30.00</del>
-                            </div> 
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/brincos.jpg" alt="">
-                                <div class="product-hover">
-      
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> + Detalhes </a>
-                                </div>
-                            </div>
-                            
-                            <h2>Kit com 10 Brincos Tay Day</h2>
-                            <div class="product-carousel-price">
-                                <ins>$45.00</ins> <del>$70.00</del>
-                            </div> 
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/product-3.jpg" alt="">
-                                <div class="product-hover">
-            
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> + Detalhes </a>
-                                </div>
-                            </div>
-                            
-                            <h2>LG Leon 2015</h2>
+<h2 class="section-title">Produtos</h2>
 
-                            <div class="product-carousel-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                                 
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/product-4.jpg" alt="">
-                                <div class="product-hover">
+<?php
+foreach ($categorias as $categoria): 
+    if ($categoria->categoriadest ==1): 
+        ?>
+        <div class="maincontent-area">
+            <div class="zigzag-bottom"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="latest-product">
+                           
+                            <a href="#""> 
+                                <h2 class="display4">
+                                    <?php echo $categoria->titulo ?>
+                                </h2>
+                            </a>
+                            <div class="product-carousel">
+                                <div class="single-product">
+                                    <div class="product-f-image">
+                                        <img src="assets/frontend/img/caderno.jpg" alt="">
+                                        <div class="product-hover">
+                                            <a href="#" class="view-details-link"><i class="fa fa-link"></i>+ detalhes </a>
+                                        </div>
+                                    </div>
                                     
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> + Detalhes</a>
+                                    <h2><a href="#">CADERNO 20 MATÉRIAS  – 320 FOLHAS-Tilibra</a></h2>
+                                    
+                                    <div class="product-carousel-price">
+                                        <ins>$25.00</ins> <del>$30.00</del>
+                                    </div> 
                                 </div>
+                                
                             </div>
-                            
-                            <h2><a href="#">Sony microsoft</a></h2>
-
-                            <div class="product-carousel-price">
-                                <ins>$200.00</ins> <del>$225.00</del>
-                            </div>                            
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/product-5.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> + Detalhes </a>
-                                </div>
-                            </div>
-                            
-                            <h2>iPhone 6</h2>
-
-                            <div class="product-carousel-price">
-                                <ins>$1200.00</ins> <del>$1355.00</del>
-                            </div>                                 
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/product-6.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-                            
-                            <h2><a href="#">Samsung gallaxy note 4</a></h2>
-
-                            <div class="product-carousel-price">
-                                <ins>$400.00</ins>
-                            </div>                            
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div> <!-- End main content area -->
+        </div> <!-- End main content area -->
 
-<div class="maincontent-area">
-    <div class="zigzag-bottom"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="latest-product">
-                    <a href="#""> 
-                        <h2 class="display4"> Material Escolar </h2>
-                    </a>
-                    <div class="product-carousel">
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/caderno.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i>+ detalhes </a>
-                                </div>
-                            </div>
-                            
-                            <h2><a href="#">CADERNO 20 MATÉRIAS  – 320 FOLHAS-Tilibra</a></h2>
-                            
-                            <div class="product-carousel-price">
-                                <ins>$25.00</ins> <del>$30.00</del>
-                            </div> 
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/brincos.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-                            
-                            <h2>Kit com 10 Brincos Tay Day</h2>
-                            <div class="product-carousel-price">
-                                <ins>$45.00</ins> <del>$70.00</del>
-                            </div> 
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/product-3.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-                            
-                            <h2>LG Leon 2015</h2>
+        <?php
+        endif; 
+endforeach;
+?>
 
-                            <div class="product-carousel-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                                 
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/product-4.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-                            
-                            <h2><a href="#">Sony microsoft</a></h2>
 
-                            <div class="product-carousel-price">
-                                <ins>$200.00</ins> <del>$225.00</del>
-                            </div>                            
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/product-5.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-                            
-                            <h2>iPhone 6</h2>
 
-                            <div class="product-carousel-price">
-                                <ins>$1200.00</ins> <del>$1355.00</del>
-                            </div>                                 
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/product-6.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-                            
-                            <h2><a href="#">Samsung gallaxy note 4</a></h2>
 
-                            <div class="product-carousel-price">
-                                <ins>$400.00</ins>
-                            </div>                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- End main content area -->
-
-<div class="maincontent-area">
-    <div class="zigzag-bottom"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="latest-product">
-                    <a href="#""> 
-                        <h2 class="display4"> Bolsas e Acessórios </h2>
-                    </a>
-                    <div class="product-carousel">
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/caderno.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i>+ detalhes </a>
-                                </div>
-                            </div>
-                            
-                            <h2><a href="#">CADERNO 20 MATÉRIAS  – 320 FOLHAS-Tilibra</a></h2>
-                            
-                            <div class="product-carousel-price">
-                                <ins>$25.00</ins> <del>$30.00</del>
-                            </div> 
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/brincos.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-                            
-                            <h2>Kit com 10 Brincos Tay Day</h2>
-                            <div class="product-carousel-price">
-                                <ins>$45.00</ins> <del>$70.00</del>
-                            </div> 
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/product-3.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-                            
-                            <h2>LG Leon 2015</h2>
-
-                            <div class="product-carousel-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                                 
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/product-4.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-                            
-                            <h2><a href="#">Sony microsoft</a></h2>
-
-                            <div class="product-carousel-price">
-                                <ins>$200.00</ins> <del>$225.00</del>
-                            </div>                            
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/product-5.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-                            
-                            <h2>iPhone 6</h2>
-
-                            <div class="product-carousel-price">
-                                <ins>$1200.00</ins> <del>$1355.00</del>
-                            </div>                                 
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="assets/frontend/img/product-6.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-                            
-                            <h2><a href="#">Samsung gallaxy note 4</a></h2>
-
-                            <div class="product-carousel-price">
-                                <ins>$400.00</ins>
-                            </div>                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- End main content area -->
 
 <div class="brands-area">
     <div class="zigzag-bottom"></div>
