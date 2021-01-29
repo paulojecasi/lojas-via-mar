@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>
-        <?php echo "Lojas Via Mar ".img(base_url('assets/frontend/img/LogoViaMar.jpeg'))?>     
+        <?php echo "Lojas Via Mar ".img(base_url('/assets/frontend/img/LogoViaMar.jpeg'))?>     
     </title>
     
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
@@ -17,15 +17,15 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
     
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/bootstrap.min.css') ?> ">
+    <link rel="stylesheet" href="<?php echo base_url('/assets/frontend/css/bootstrap.min.css') ?> ">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/font-awesome.min.css') ?> ">
+    <link rel="stylesheet" href="<?php echo base_url('/assets/frontend/css/font-awesome.min.css') ?> ">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/owl.carousel.css') ?> ">
-    <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/style.css') ?> ">
-    <link rel="stylesheet" href="<?php echo base_url('assets/frontend/css/responsive.css') ?> ">
+    <link rel="stylesheet" href="<?php echo base_url('/assets/frontend/css/owl.carousel.css') ?> ">
+    <link rel="stylesheet" href="<?php echo base_url('/assets/frontend/css/style.css') ?> ">
+    <link rel="stylesheet" href="<?php echo base_url('/assets/frontend/css/responsive.css') ?> ">
 
 
   </head>

@@ -1,4 +1,17 @@
-
+.floatleft { float: left }
+.floatright { float: right }
+.alignleft {
+    float: left;
+    margin-right: 15px;
+}
+.alignright {
+    float: right;
+    margin-left: 15px;
+}
+.aligncenter {
+    display: block;
+    margin: 0 auto 15px;
+}
 a:focus {
   outline: 0px solid 
 }
@@ -24,6 +37,7 @@ body { font-family:Arial, Helvetica, sans-serif; }
     background: none repeat scroll 0 0 #f4f4f4;
     /* background: #FFFF00; */
     padding: 2px; 
+
 }
 .header-area a {
     color: #888;
@@ -86,15 +100,18 @@ body { font-family:Arial, Helvetica, sans-serif; }
     margin: -7px 0;
     font-weight: 400; 
 
+
 }
 .logo h1 a {
     color: #999;
+
 }
 
 .logo h1 a:hover {text-decoration: none;opacity: .7}
 .logo h1 a span {
     color: #e67e22;
 }
+
 
 .shopping-item {
     border: 1px solid #ddd;
@@ -186,7 +203,7 @@ body { font-family:Arial, Helvetica, sans-serif; }
 
 .mainmenu-area ul.navbar-nav li:hover a.nav-aba, .mainmenu-area ul.navbar-nav li.active a 
 {
-  background: #0000FF; 
+  background: #A9A9A9; 
   color:#FFF;
 
 }
@@ -195,7 +212,13 @@ body { font-family:Arial, Helvetica, sans-serif; }
   color: #0000FF;
 }
 
-.slider-area { width:80%; position:relative; margin:0 auto; padding:5px;}
+.slider-area { 
+    width:86%; 
+    position:relative;
+    margin:0 auto; 
+    padding:5px;
+}
+
 /*-------------------------
 [9. Block slider]
 ---------------------------*/
@@ -410,17 +433,25 @@ body { font-family:Arial, Helvetica, sans-serif; }
 .promo2 { background:#ffd900;}
 .promo3 { background:#fa8072;}
 .promo4 { background:#4abebd;}
+
 .section-title {
   font-family: "Raleway",sans-serif;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 100;
-  margin-bottom: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
 
 .product-f-image {
     position: relative;
+}
+
+/*PJCS*/ 
+.product-f-image img {
+    width: 200px;
+    height: 200px;
 }
 .product-hover {
     height: 100%;
@@ -430,28 +461,28 @@ body { font-family:Arial, Helvetica, sans-serif; }
     width: 100%;overflow: hidden;border: 1px solid #ddd;
 }
 .product-hover:after {
-  background: none repeat scroll 0 0 #000;
+  background: none repeat scroll 0 0 #F5F5F5;
   content: "";
   height: 100%;
   left: -100%;
-  opacity: 0.6;
+  opacity: 0.5;
   position: absolute;
   top: 0;
   width: 100%;transition: .4s;
 }
 .product-hover a {
-    background: none repeat scroll 0 0 #e67e22;
+    background: none repeat scroll 0 0 #0000CD;
     border-radius: 5px;
     color: #fff;
     display: block;
-    font-size: 16px;
+    font-size: 14px;
     left: 10%;
     margin: 0;
     padding: 10px;
     position: absolute;
     text-align: center;
     text-transform: uppercase;
-    border: 1px solid #e67e22;
+    border: 1px solid #fff;
     width: 80%;z-index: 99;transition: .4s;
 }
 .product-hover a:hover {
@@ -459,11 +490,19 @@ body { font-family:Arial, Helvetica, sans-serif; }
   text-decoration: none;border-color: #444;
 }
 .product-carousel-price ins {
-  color: #e67e22;
+  color: #1C1C1C;
   font-weight: 700;
   margin-right: 5px;
   text-decoration: none;
+  font-size: 24px; /* PJCS */
 }
+
+/*PJCS*/ 
+.product-carousel-price del {
+  color: #696969;
+  font-size: 16px; 
+}
+
 .product-hover a i.fa {
     margin-right: 5px;
 }
@@ -478,6 +517,7 @@ body { font-family:Arial, Helvetica, sans-serif; }
 
 
 .single-product h2 a {
+    font-size: 16px;
     color: #222;
 }
 .single-product p {
@@ -495,7 +535,7 @@ body { font-family:Arial, Helvetica, sans-serif; }
 
 
 .product-carousel {
-  padding-top: 40px;
+  padding-top: 20px;
 }
 .latest-product .owl-nav {
   position: absolute;
@@ -533,7 +573,9 @@ body { font-family:Arial, Helvetica, sans-serif; }
   padding: 1px 10px;
 }
 
-.maincontent-area {padding-bottom: 50px; padding-top:20px;}
+.maincontent-area {
+  padding-bottom: 20px;
+  padding-top:20px;}
 
 .product-wid-title {
   font-family: raleway;
@@ -593,7 +635,7 @@ body { font-family:Arial, Helvetica, sans-serif; }
 .footer-top-area .zigzag-bottom{background: #f4f4f4}
 .footer-top-area {background: none repeat scroll 0 0 #333;
 color: #999;
-padding: 35px 0 180px;}
+padding: 35px 0 50px;}
 
 
 .footer-bottom-area {background: #000;color: #fff}
@@ -723,14 +765,16 @@ width: 10px;
   margin: 10px 0 0;
 }
 
-.product-big-title-area {background: url("../img/crossword.png") repeat scroll 0 0 #e67e22}
+.product-big-title-area {
+  background: url("../img/crossword.png") repeat scroll 0 0 #0000FF /* #e67e22*/
+} 
 
 .product-bit-title h2 {
   font-family: raleway;
-  font-size: 50px;
-  font-weight: 200;
+  font-size: 35px;
+  font-weight: 500;
   margin: 0;
-  padding: 50px 0;color: #fff;
+  padding: 9px 0;color: #FFFF00;
 }
 
 .single-product-area .zigzag-bottom {background-color: #f4f4f4}
@@ -1177,14 +1221,21 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 }
 
 .single-shop-product h2 {
-    font-size: 20px;
+
+    font-size: 19px;
+    color: black;
     margin: 10px 0;
+}
+
+/*PJCS*/
+.single-shop-product h2 a {
+    color: #000000;
 }
 .product-option-shop {
     margin-top: 15px;
 }
 
-.single-shop-product {margin-bottom: 50px}
+.single-shop-product {margin-bottom: 120px}
 
 .pagination > li > a, .pagination > li > span {
     color: #e67e22;
@@ -1192,6 +1243,68 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 
 /* minhas estilizações CSS - PJCS */ 
 .img-destaque ul li img {
-    width: 350px;   
-    height:350px;         
+    width: 330px;   
+    height:330px;         
 }
+
+.display4{
+  margin-bottom: 0px;
+  margin-top: 0px;
+  border-top: 1px solid; 
+  border-color: #C0C0C0; 
+  padding-top: 10px; 
+  color: #808080;
+}
+
+.display4:hover {
+    color: blue;
+}
+
+.section-title-dest {
+  font-family: "Raleway",sans-serif;
+  font-size: 30px;
+  font-weight: 100;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.merchan-promo img {
+   width: 600px;   /* largura */ 
+   align-items: center;   /* alinhamento vertical */
+}
+
+.caption-group{
+  margin-top: -30px; 
+}
+
+.title-product-destaque{
+  font-size: 27px;
+}
+
+/* contorno nas letras */ 
+.title{
+   /*text-shadow: 1px -1px  white;  */
+   text-shadow:#fff 2px -2px, #fff -2px 2px, #fff 2px 2px, #fff -2px -2px; 
+}
+
+.img-lista-produto img{
+  border: 1px solid;
+  color: #DCDCDC; 
+  width: 240px;   
+  height:240px;
+  margin-top: -30px; 
+  margin-bottom: -25px; 
+}
+
+.img-lista-produto img:hover{
+  text-decoration: none;
+  opacity: .8; 
+  color: #DCDCDC;
+} 
+
+.categorias-menu a{
+  line-height: 33px;
+}
+
+

@@ -18,11 +18,8 @@ class Home extends CI_Controller {
 
 				// vamos cria uma var "$categorias" e carrega-la com o resultado 
 		$this->categorias = $this->modelcategorias->listar_categorias(); 
-		$this->ativos     = $this->modelprodutos->produtos_ativos();
 		$this->destaques  = $this->modelprodutos->produtos_destaques(); 
 		$this->produtosdacategoria = $this->modelprodutos->produtos_da_categoria(); 
-
-
 
 	}
 
@@ -32,10 +29,10 @@ class Home extends CI_Controller {
 		// vamos carregar os "$dados" com a variavel "$categoria" carregado no CONSTRUTOR
 		$dados = array(
 			'categorias' 	=> $this->categorias, 
-			'ativos' 			=> $this->ativos,
 			'destaques' 	=>	$this->destaques,
 			'produtoscategoria'	=> $this->produtosdacategoria
 		) ;
+
 
 		// dados a serem enviados para o cabeçalho
 		//$dados['nomeblog'] 	= "Blog do Paulão"; 
@@ -45,6 +42,24 @@ class Home extends CI_Controller {
 		$this->load->view('frontend/template/html-header', $dados);
 		$this->load->view('frontend/template/header');
 		$this->load->view('frontend/home');
+		$this->load->view('frontend/template/aside');
+		$this->load->view('frontend/template/footer');
+		$this->load->view('frontend/template/html-footer'); 
+
+	}
+
+	public function lista_produtos($categoria){
+
+		
+		$dados = array(
+			'categoria' => $this->modelcategorias->listar_categoria($categoria),
+			'categorias' 	=> $this->categorias, 
+			'listaprodutossite'	=> $this->modelprodutos->lista_produtos_site($categoria)
+		) ;
+
+		$this->load->view('frontend/template/html-header', $dados);
+		$this->load->view('frontend/template/header');
+		$this->load->view('frontend/lista-produtos');
 		$this->load->view('frontend/template/aside');
 		$this->load->view('frontend/template/footer');
 		$this->load->view('frontend/template/html-footer'); 

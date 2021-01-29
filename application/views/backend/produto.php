@@ -41,7 +41,7 @@
                                 <?php
                             endif;
                             ?>
-                        > Destaque(S)  </a>
+                        > Destaque S  </a>
                         <a href="<?php echo $tipolistprod."/destnao" ?>"
                             <?php
                             if ($tipolistacurrent=='destnao'): 
@@ -50,7 +50,7 @@
                                 <?php
                             endif;
                             ?>
-                        > Destaque(N)  </a>
+                        > Destaque N  </a>
                         <a href="<?php echo $tipolistprod."/sitesim" ?>"
                             <?php
                             if ($tipolistacurrent=='sitesim'): 
@@ -59,7 +59,7 @@
                                 <?php
                             endif;
                             ?>
-                        > Site(S)  </a>
+                        > Site S  </a>
                         <a href="<?php echo $tipolistprod."/sitenao" ?>"
                             <?php
                             if ($tipolistacurrent=='sitenao'): 
@@ -68,7 +68,7 @@
                                 <?php
                             endif;
                             ?>
-                        > Site(N)  </a>
+                        > Site N  </a>
                         <a href="<?php echo $tipolistprod."/ativos" ?>"
                             <?php
                             if ($tipolistacurrent=='ativos'): 
@@ -87,6 +87,24 @@
                             endif;
                             ?>
                         > Inativos </a>
+                        <a href="<?php echo $tipolistprod."/destcatsim" ?>"
+                            <?php
+                            if ($tipolistacurrent=='destcatsim'): 
+                                ?>
+                                class="btn btn-info" 
+                                <?php
+                            endif;
+                            ?>
+                        > DestaqueCat S  </a>
+                        <a href="<?php echo $tipolistprod."/destcatnao" ?>"
+                            <?php
+                            if ($tipolistacurrent=='destcatnao'): 
+                                ?>
+                                class="btn btn-info" 
+                                <?php
+                            endif;
+                            ?>
+                        > DestaqueCat N  </a>
                     </div>
                 </div>
             </div>
@@ -212,7 +230,7 @@
                             <?php
                             $semFoto = "assets/frontend/img/products/sem_foto.jpg";
 
-                            $this->table->set_heading("Imagem","Nome do Produto","Site","Ativo","Destaq","Detalhes","Alterar", "Excluir"); 
+                            $this->table->set_heading("Imagem","Nome do Produto","Site","Ativo","Dtq Princ","Dtq Categ","Detalhes","Alterar", "Excluir"); 
 
                             foreach ($produtos as $produto)
                             {   
@@ -223,7 +241,7 @@
                                     $foto   = img($semFoto);
                                 }
                          
-                                $desproduto= $produto->desproduto; 
+                                $nomeproduto= $produto->nomeproduto; 
                                
                                 if ($produto->produtosite==1){
                                     $site = "SIM";
@@ -243,6 +261,12 @@
                                     $destaque = "NAO";
                                 }
 
+                                if ($produto->destaquenacategoria==1){
+                                    $destaquecat = "SIM";
+                                }else{
+                                    $destaquecat = "NAO";
+                                }
+
                                 $detalhes = anchor(base_url('admin/produto/alterar/'.md5($produto->idproduto)),
                                     '<i class="fas fa-details"> </i> Detalhes');
                                 $botaoalterar = anchor(base_url('admin/produto/alterar/'.md5($produto->idproduto)),
@@ -250,7 +274,7 @@
                                 $botaoexcluir = anchor(base_url('admin/produto/excluir/'.md5($produto->idproduto)),
                                     '<i class="fa fa-remove fa-fw"> </i> Excluir');
 
-                                $this->table->add_row($foto, $desproduto,$site,$ativo,$destaque,$detalhes, $botaoalterar,$botaoexcluir); 
+                                $this->table->add_row($foto, $nomeproduto,$site,$ativo,$destaque,$destaquecat, $detalhes, $botaoalterar,$botaoexcluir); 
                             }
 
                             $this->table->set_template(array(

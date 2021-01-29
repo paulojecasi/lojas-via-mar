@@ -80,6 +80,9 @@ class Categoria extends CI_Controller {
 
 			}
 
+			//-carregar html de categorias 
+			$this->modelcategorias->carrega_categorias_html(); 
+
 			redirect(base_url('admin/categoria'));
 
 		}
@@ -102,6 +105,9 @@ class Categoria extends CI_Controller {
 
 		}
 
+		//-carregar html de categorias 
+		$this->modelcategorias->carrega_categorias_html();
+
 		redirect(base_url('admin/categoria'));
 
 	}
@@ -118,7 +124,7 @@ class Categoria extends CI_Controller {
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/template');
 		$this->load->view('backend/mensagem');
-		$this->load->view('backend/alterar-categoria');
+		$this->load->view('backend/categoria-altera');
 		$this->load->view('backend/template/html-footer'); 
 
 	}
@@ -158,6 +164,9 @@ class Categoria extends CI_Controller {
 				$this->session->set_userdata('mensagemErro',$mensagem); 
 
 			}
+			
+			//-carregar html de categorias 
+			$this->modelcategorias->carrega_categorias_html();
 
 			redirect(base_url('admin/categoria'));
 

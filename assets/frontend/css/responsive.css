@@ -203,5 +203,58 @@ div.coupon input[type="text"] {
 @media only screen and (min-width: 480px) and (max-width: 767px) { 
     
   
-    
+}
+
+/* minhas estilizações CSS - PJCS */ 
+@media only screen and (max-width: 600px) {
+  .product-f-image img {
+      width: 500px;
+      height: 500px;
+  }
+
+  .title-product-destaque{
+    font-size: 20px;
+    margin-left: 80px; 
+  }
+}
+
+@media only screen and (max-width: 767px) { 
+
+
+  /* desabilita a logo pra substituir por outra */ 
+  .logo {
+      display: none !important;
+  }
+  .logo2 {
+      display: normal !important;
+  }
+
+
+  .img-lista-produto img{
+      border: 1px solid;
+      color: #DCDCDC; 
+      width: 400px;   
+      height:400px;
+  }
+
+  .merchan-promo img {
+      background-color: transparent; 
+      align-items: center;   /* alinhamento vertical */
+ 
+  }
+
+  .title-product-destaque{
+    font-size: 20px;
+    margin-left: 80px; 
+  }
+}
+@media only screen and (min-width: 767px) {
+  /* desabilita a logo pra substituir por outra */ 
+  .logo {
+      display: normal !important;
+  }
+  .logo2 {
+      display: none !important;
+  }
+
 }

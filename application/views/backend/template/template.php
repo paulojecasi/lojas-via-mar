@@ -15,7 +15,7 @@
                 </a>
             </div>
 
-             <div class="navbar-header col-sm-1 foto-perfil">
+             <div class="navbar-header col-lg-1 foto-perfil">
 
                 <a href="<?php echo base_url('/admin/usuarios') ?>"> 
                     <?php
@@ -31,7 +31,7 @@
                 </a>
             </div>
 
-            <div class="navbar-header col-sm-2">
+            <div class="navbar-header col-lg-2">
                 <p class="text-left">
                     <a href="<?php echo base_url('/admin/usuarios') ?>"> 
                         <?php echo "Usuário -- ".$this->session->userdata('userLogado')->nome;?>

@@ -21,15 +21,18 @@
     <div class="site-branding-area">
     --> 
     <div class="site-branding-area area-logo">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-    
+                <!-- imagens serão ajustadas Pc ou Mobile - responsive.css PJCS  --> 
                 <div class="col-sm-12">
-                    <div class="logo">
-                        <h1> <a href="#"><img src="assets/frontend/img/logo4.png" width="1250" ></a></h1>
+                    <div class="logo text-center">
+                        <h1> <a href="<?php echo base_url('home'); ?>"><img src="<?php echo base_url('/assets/frontend/img/logo4.png') ?>" width="1250" ></a></h1>
                     </div>
-                </div>
-              
+
+                    <div class="logo2 text-center">
+                        <h1> <a href="<?php echo base_url('home'); ?>"><img src="<?php echo base_url('/assets/frontend/img/logo5.png') ?>" width="1300" ></a></h1>
+                    </div>
+                </div>              
             </div>
         </div>
     </div> <!-- End site branding area -->
@@ -50,23 +53,16 @@
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li> <a class="nav-aba" href="#"><i class="fa fa-home"> </i>
+                        <li> <a class="nav-aba" href="<?php echo base_url('home'); ?>"><i class="fa fa-home"> </i>
                              Home </a></li>
                     
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle nav-aba nav-aba-produto" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" >
                               Produtos 
                             </a>
-                            <div class="dropdown-menu" >
+                            <div class="dropdown-menu categorias-menu" >
                                 <?php 
-                                foreach ($categorias as $categoria):
-                                ?>
-                                    <a class="dropdown-item" href="#">
-                                        <?php echo "-".$categoria->titulo ?> 
-                                    </a>
-                                    <br> 
-                                <?php
-                                endforeach; 
+                                    $this->load->view('frontend/template/categorias-menu');
                                 ?>
                             </div>
   

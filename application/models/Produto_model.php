@@ -61,11 +61,15 @@ class Produto_model extends CI_Model
 			$this->db->where('produtoativo=',1);
 		} elseif ($this->session->userdata('tipolista')=="inativos"){
 			$this->db->where('produtoativo=',2);
+		} elseif ($this->session->userdata('tipolista')=="destcatsim"){
+			$this->db->where('destaquenacategoria=',1);
+		} elseif ($this->session->userdata('tipolista')=="destcatnao"){
+			$this->db->where('destaquenacategoria=',2);
 		}
 
 	}
 
-	public function adicionar($idcategoria,$desproduto,$corproduto,$vlpreco,$vllargura,$vlaltura,$vlcomprimento,$vlpeso,$vlpromocao,$produtoativo,$produtodestaque,$produtosite)
+	public function adicionar($idcategoria,$nomeproduto,$desproduto,$corproduto,$vlpreco,$vllargura,$vlaltura,$vlcomprimento,$vlpeso,$vlpromocao,$produtoativo,$produtodestaque,$destaquenacategoria,$produtosite)
 	{
 
 		$dados["idcategoria"]	= $idcategoria;
@@ -79,12 +83,13 @@ class Produto_model extends CI_Model
 		$dados["vlpromocao"]	= $vlpromocao;
 		$dados["produtoativo"]= $produtoativo;
 		$dados["produtodestaque"]= $produtodestaque;
+		$dados["destaquenacategoria"]= $destaquenacategoria;
 		$dados["produtosite"]= $produtosite;
 
 		return $this->db->insert('produto',$dados); 
 	}
 
-	public function alterar($idproduto,$idcategoria,$desproduto,$corproduto,$vlpreco,$vllargura,$vlaltura,$vlcomprimento,$vlpeso,$vlpromocao,$produtoativo,$produtodestaque,$produtosite)
+	public function alterar($idproduto,$idcategoria,$nomeproduto,$desproduto,$corproduto,$vlpreco,$vllargura,$vlaltura,$vlcomprimento,$vlpeso,$vlpromocao,$produtoativo,$produtodestaque,$destaquenacategoria,$produtosite)
 	{
 		$dados["idcategoria"]	= $idcategoria;
 		$dados["desproduto"]	= $desproduto;
@@ -97,6 +102,7 @@ class Produto_model extends CI_Model
 		$dados["vlpromocao"]	= $vlpromocao;
 		$dados["produtoativo"]= $produtoativo;
 		$dados["produtodestaque"]= $produtodestaque;
+		$dados["destaquenacategoria"]= $destaquenacategoria;
 		$dados["produtosite"]= $produtosite;
 
 		$this->db->where('idproduto=', $idproduto); 
@@ -127,28 +133,43 @@ class Produto_model extends CI_Model
 
 	/* ================== FRONTEND ===============*/
 
-	public function produtos_ativos(){
-
-		$this->db->where('produtoativo',1);
-		return $this->db->get('produto'); 
+	// seleciona somente produtos aptos para o site
+	public function valida_produtos(){
+		$this->db->where('produtoativo=',1);
+		$this->db->where('produtosite=',1);
+		$this->db->where('nomeproduto!=',"");
+		$this->db->where('vlpreco > ',0); 
+		$this->db->where('img!=',"");
 
 	}
 
+	public function lista_produtos_site($categoria=null){
+
+		if ($categoria) {
+				$this->db->where('md5(idcategoria)=',$categoria);
+		}
+
+		$this->valida_produtos(); 
+		return $this->db->get('produto')->result(); 
+
+	}
+
+	// lista os produtos em destaques no site 
 	public function produtos_destaques(){
 
-		//$this->db->where('produtoativo=', 1);
+		$this->valida_produtos(); 
 		$this->db->where('produtodestaque=',1);
-		$this->db->where('produtoativo=',1);
-		$this->db->where('vlpreco > ',0); 
-		$this->db->where('img!=',""); 
 
 		return  $this->db->get('produto')->result();
 
 	}
 
+	// pra listar as categorias que ficarao em destaques no site
 	public function produtos_da_categoria(){	
-
-		$this->db->select('*');
+		
+		$this->valida_produtos(); 
+		$this->db->where('categoriadest=',1); 
+		$this->db->where('destaquenacategoria=',1); 
 		$this->db->from('produto');
 		$this->db->join('categoria','categoria.id = produto.idcategoria');
 		return  $this->db->get()->result();

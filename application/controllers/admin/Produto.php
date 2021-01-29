@@ -119,7 +119,7 @@ class Produto extends CI_Controller {
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/template');
 		$this->load->view('backend/mensagem');
-		$this->load->view('backend/cadastro-produto');
+		$this->load->view('backend/produto-cadastro');
 		$this->load->view('backend/template/html-footer'); 
 	}
 
@@ -129,8 +129,8 @@ class Produto extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules(
 		'txt-desproduto',          // name do input (template)
-		'Descrição do Produto',		 // nome da label (template)
-		'required|min_length[3]'); 
+		'Descrição do Produto'); 
+		$this->form_validation->set_rules('nomeproduto','Nome do Produto','required|min_length[3]');
 		$this->form_validation->set_rules('corproduto','Cor do Produto','required');
 
 		$this->form_validation->set_rules('idcategoria','Categoria do Produto','required');
@@ -149,8 +149,9 @@ class Produto extends CI_Controller {
 
 		$this->form_validation->set_rules('produtoativo','Produto Ativo?','required');
 
-		$this->form_validation->set_rules('produtodestaque','Produto Destaque?',
-			'required');
+		$this->form_validation->set_rules('produtodestaque','Produto Destaque Principal?','required');
+
+		$this->form_validation->set_rules('destaquenacategoria','Produto Destaque Categoria?', 'required');
 
 		$this->form_validation->set_rules('produtosite','Produto no Site?','required');
 
@@ -162,6 +163,7 @@ class Produto extends CI_Controller {
 		} else {
 
 			$idcategoria= $this->input->post('idcategoria');
+			$nomeproduto= $this->input->post('nomeproduto');
 			$desproduto= $this->input->post('txt-desproduto');
 			$corproduto= $this->input->post('corproduto');
 			$vlpreco= $this->input->post('vlpreco');
@@ -172,9 +174,10 @@ class Produto extends CI_Controller {
 			$vlpromocao= $this->input->post('vlpromocao');
 			$produtoativo= $this->input->post('produtoativo');
 			$produtodestaque= $this->input->post('produtodestaque');
+			$destaquenacategoria= $this->input->post('destaquenacategoria');
 			$produtosite= $this->input->post('produtosite');
 
-			if ($this->modelproduto->adicionar($idcategoria,$desproduto,$corproduto, $vlpreco,$vllargura,$vlaltura,$vlcomprimento,$vlpeso,$vlpromocao,$produtoativo,$produtodestaque,$produtosite)){
+			if ($this->modelproduto->adicionar($idcategoria,$nomeproduto,$desproduto,$corproduto, $vlpreco,$vllargura,$vlaltura,$vlcomprimento,$vlpeso,$vlpromocao,$produtoativo,$produtodestaque,$destaquenacategoria,$produtosite)){
 
 				$mensagem ="Produto Adicionado Com Sucesso !"; 
 				$this->session->set_userdata('mensagem',$mensagem); 
@@ -208,7 +211,7 @@ class Produto extends CI_Controller {
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/template');
 		$this->load->view('backend/mensagem');
-		$this->load->view('backend/altera-produto');
+		$this->load->view('backend/produto-altera');
 		$this->load->view('backend/template/html-footer'); 
 	}
 
@@ -231,8 +234,9 @@ class Produto extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules(
 		'txt-desproduto',          // name do input (template)
-		'Descrição do Produto',		 // nome da label (template)
-		'required|min_length[3]'); 
+		'Descrição do Produto'	 // nome da label (template)
+		); 
+		$this->form_validation->set_rules('nomeproduto','Nome do Produto','required|min_length[3]');
 		$this->form_validation->set_rules('corproduto','Cor do Produto','required');
 
 		$this->form_validation->set_rules('idcategoria','Categoria do Produto','required');
@@ -254,6 +258,8 @@ class Produto extends CI_Controller {
 		$this->form_validation->set_rules('produtodestaque','Produto Destaque?',
 			'required');
 
+		$this->form_validation->set_rules('destaquenacategoria','Produto Destaque Categoria?', 'required');
+
 		$this->form_validation->set_rules('produtosite','Produto no Site?','required');
 
 		if ($this->form_validation->run() == FALSE){
@@ -262,6 +268,7 @@ class Produto extends CI_Controller {
 		} else {
 			$idproduto= $this->input->post('idproduto');
 			$idcategoria= $this->input->post('idcategoria');
+			$nomeproduto= $this->input->post('nomeproduto');
 			$desproduto= $this->input->post('txt-desproduto');
 			$corproduto= $this->input->post('corproduto');
 			$vlpreco= $this->input->post('vlpreco');
@@ -272,9 +279,10 @@ class Produto extends CI_Controller {
 			$vlpromocao= $this->input->post('vlpromocao');
 			$produtoativo= $this->input->post('produtoativo');
 			$produtodestaque= $this->input->post('produtodestaque');
+			$destaquenacategoria= $this->input->post('destaquenacategoria');
 			$produtosite= $this->input->post('produtosite');
 
-			if ($this->modelproduto->alterar($idproduto,$idcategoria,$desproduto,$corproduto, $vlpreco,$vllargura,$vlaltura,$vlcomprimento,$vlpeso,$vlpromocao,$produtoativo,$produtodestaque,$produtosite)){
+			if ($this->modelproduto->alterar($idproduto,$idcategoria,$nomeproduto,$desproduto,$corproduto, $vlpreco,$vllargura,$vlaltura,$vlcomprimento,$vlpeso,$vlpromocao,$produtoativo,$produtodestaque,$destaquenacategoria,$produtosite)){
 
 				$mensagem ="Produto Alterado Com Sucesso !"; 
 				$this->session->set_userdata('mensagem',$mensagem); 
@@ -286,8 +294,8 @@ class Produto extends CI_Controller {
 
 			}
 
-			redirect(base_url('admin/produto/alterar/'.md5($idproduto)));
-
+			//redirect(base_url('admin/produto/alterar/'.md5($idproduto)));
+			redirect(base_url('admin/produto'));
 		}
 
 	}

@@ -30,7 +30,7 @@ class Categorias_model extends CI_Model {
 		); 
 
 		return $this->db->insert('categoria',$dados); 
-
+		
 	}
 
 	public function excluir($id){
@@ -56,6 +56,27 @@ class Categorias_model extends CI_Model {
 		); 
 		$this->db->where('id=', $id); 
 		return $this->db->update('categoria', $dados); 
+		
+
+	}
+
+	public function carrega_categorias_html(){
+
+		$this->db->order_by('titulo','ASC'); 
+		$categorias = $this->db->get('categoria')->result();  
+
+
+		$html_cat = []; 
+		$base_url = base_url('home/lista_produtos/'); 
+		foreach ($categorias as $row){
+			array_push($html_cat,'<a class="dropdown-item" href="'.$base_url.md5($row->id).'"> '.$row->titulo.' </a>');
+		}
+
+		file_put_contents("application"	. DIRECTORY_SEPARATOR . 
+											"views" 			. DIRECTORY_SEPARATOR . 	
+											"frontend" 		. DIRECTORY_SEPARATOR .
+											"template" 		. DIRECTORY_SEPARATOR .
+											"categorias-menu.php",$html_cat); 
 
 	}
 

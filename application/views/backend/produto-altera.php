@@ -2,7 +2,7 @@
 <div id="page-wrapper">
 	<div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header"> <?php echo $subtitulo." - Alteração" ?></h1>
+        <h2 class="page-header"> <?php echo $subtitulo." - Alteração" ?></h2>
     </div>
     <!-- /.col-lg-12 -->
 	</div>
@@ -10,9 +10,7 @@
 	<div class="row">
 	  <div class="col-lg-8">
 	    <div class="panel panel-default">
-	      <div class="panel-heading">
-	         <?php echo $subtitulo ?>
-	      </div>
+
 	      <div class="panel-body">
 	        <div class="row">
 	          <div class="col-lg-12 layout-campos">
@@ -31,13 +29,20 @@
 		          foreach ($produto as $produto_alt):
 		          ?> 
 
+		          <div class="form-group">
+                  <label> Nome do Produto </label>
+                  <input id="nomeproduto" name="nomeproduto" type="text"class = "form-control" placeholder ="Digite o nome do produto" value = "<?php echo $produto_alt->nomeproduto ?>">
+              </div>
+
 		            <div class="form-group">
 		                <label> Descrição do Produto </label>
-		                <input id="txt-desproduto" name="txt-desproduto" type="text"class = "form-control" placeholder ="Digite o nome do produto" value = "<?php echo $produto_alt->desproduto ?>">
+		                <textarea id="txt-desproduto" name="txt-desproduto" type="text"class = "form-control" placeholder ="Digite o nome do produto" >
+		                	<?php echo $produto_alt->desproduto ?>
+		                </textarea>
 		            </div>
 
 		           
-	              <div class="form-group">
+	              <div class="form-group col-lg-6">
 	                <label for="corproduto"> Cor do Produto </label>
 	                <select class="form-control" id="corproduto" name="corproduto">
 	              
@@ -60,7 +65,7 @@
 	                </select>
 	              </div>
 		        
-	              <div class="form-group">
+	              <div class="form-group col-lg-6">
 	                <label for="idcategoria"> Categoria do Produto </label>
 	                <select class="form-control" id="idcategoria" name="idcategoria">
 	                  <?php 
@@ -83,38 +88,38 @@
 	                </select>
 	              </div>
 
-		            <div class="form-group">  
+		            <div class="form-group col-lg-6">  
 		              <label> Preço </label>
 		              <input type="number" class="form-control" id="vlpreco" name="vlpreco" step="0.01" placeholder="0.00" value = "<?php echo $produto_alt->vlpreco ?>">
 		            </div>
 
-		            <div class="form-group"> 
+		            <div class="form-group col-lg-6"> 
 		              <label> Largura </label>
 		              <input type="number" class="form-control" id="vllargura" name="vllargura" step="0.01" placeholder="0.00" value = "<?php echo $produto_alt->vllargura ?>">
 		            </div>
 
-		            <div class="form-group">
+		            <div class="form-group col-lg-6">
 		              <label> Altura </label>
 		              <input type="number" class="form-control" id="vlaltura" name="vlaltura" step="0.01" placeholder="0.00" value = "<?php echo $produto_alt->vlaltura ?>">
 		            </div>
 
-		            <div class="form-group">
+		            <div class="form-group col-lg-6">
 		              <label> Comprimento </label>
 		              <input type="number" class="form-control" id="vlcomprimento" name="vlcomprimento" step="0.01" placeholder="0.00" value = "<?php echo $produto_alt->vlcomprimento ?>">
 		            </div>
 
-		            <div class="form-group">  
+		            <div class="form-group col-lg-6">  
 		              <label> Peso </label>
 		              <input type="number" class="form-control" id="vlpeso" name="vlpeso" step="0.01" placeholder="0.00" value = "<?php echo $produto_alt->vlpeso ?>">
 		            </div>
 
-		            <div class="form-group">
+		            <div class="form-group col-lg-6">
 		              <label> Valor Promoção </label>
 		              <input type="number" class="form-control" id="vlpromocao" name="vlpromocao" step="0.01" placeholder="0.00" value = "<?php echo $produto_alt->vlpromocao ?>">
 		            </div>
 
-	              <div class="form-group">
-	                <label for="produtoativo"> Produto Ativo? </label>
+	              <div class="form-group col-lg-6">
+	                <label for="produtoativo"> O Produto está Ativo / Ainda consta na loja?  </label>
 	                <select class="form-control" id="produtoativo" name="produtoativo">
 	              
 	                  <?php 
@@ -137,9 +142,33 @@
 	                </select>
 	              </div>
 	          
-		          	
-	              <div class="form-group">
-	                <label for="produtodestaque"> Produto Destaque? </label>
+	
+	              <div class="form-group col-lg-6">
+	                <label for="actproduct"> O Produto será exibido no Site? </label>
+	                <select class="form-control" id="produtosite" name="produtosite">
+	                  <?php 
+	                  foreach ($opcoes as $opcao):
+	                  ?>
+                      <option value ="<?php echo $opcao->idopcao ?> "
+                      	<?php 
+                      	if ($opcao->idopcao==$produto_alt->produtosite): ?>
+                      			selected
+                      			<?php                                          
+                      	endif;
+	                      ?>
+                      >
+                         <?php echo $opcao->desopcao ?>
+                      </option>
+
+	                  <?php 
+	                  endforeach;
+	                  ?>
+	                </select>
+	              </div>
+
+
+	              <div class="form-group col-lg-6">
+	                <label for="produtodestaque"> O Produto é Destaque na pagina Principal?  </label>
 	                <select class="form-control" id="produtodestaque" name="produtodestaque">
 	              
 	                  <?php 
@@ -163,38 +192,44 @@
 	                </select>
 	              </div>
 		        
-	              <div class="form-group">
-	                <label for="actproduct"> Produto no Site? </label>
-	                <select class="form-control" id="produtosite" name="produtosite">
+
+	              <div class="form-group col-lg-6">
+	                <label for="destaquenacategoria"> O Produto é Destaque na Parte de Categorias ?  </label>
+	                <select class="form-control" id="destaquenacategoria" name="destaquenacategoria">
+	              
 	                  <?php 
 	                  foreach ($opcoes as $opcao):
 	                  ?>
-                      <option value ="<?php echo $opcao->idopcao ?> "
-                      	<?php 
-                      	if ($opcao->idopcao==$produto_alt->produtosite): ?>
-                      			selected
-                      			<?php                                          
-                      	endif;
-	                      ?>
-                      >
-                         <?php echo $opcao->desopcao ?>
-                      </option>
+	                      <option value ="<?php echo $opcao->idopcao ?> "
+	                        <?php 
+	                      	if ($opcao->idopcao==$produto_alt->destaquenacategoria):?>
+	                      			selected
+	                      			<?php                                          
+	                      	endif
+		                      ?> 
+	                      >
+	                         <?php echo $opcao->desopcao ?>
+	                      </option>
 
 	                  <?php 
-	                  endforeach;
+	                  endforeach; 
 	                  ?>
+	                
 	                </select>
 	              </div>
+		        
 		       
 	            	<!-- INPUT OCULTO PARA ENVIAR O ID--> 
 	              <input  type="hidden" id="idproduto" name="idproduto" value= "<?php echo $produto_alt->idproduto ?>" 
 	              >
 		            <br> 
-		            <a href="">
-		                <button class="btn btn-primary" > 
-		                    Alterar
-		                </button> 
-		            </a>
+		            <div class="form-group col-lg-12 text-center">
+			            <a href="">
+			                <button class="btn btn-primary" > 
+			                    Salvar Alterações
+			                </button> 
+			            </a>
+			          </div>
 		      
 		            <?php 
 		            // fechar o formulario 

@@ -2,19 +2,19 @@
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sm-6">
+                <div class="col-md-4 col-sm-6">
                     <div class="footer-about-us">
-                        <h2>Hcode Store</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+                        <h2>Lojas Via Mar</h2>
+                        <p> As Lojas Via Mar, é uma empresa que nasceu em Viana-MA, nascida para proporcionar a facilidade de compras para seus clientes e a credibilidade em seus serviços. Possuimos uma variedades de produtos de seu interesse, venha conferir. Acesse nossas Redes Sociais e nos faça uma visita. </p>
                         <div class="footer-social">
                             <a href="https://www.facebook.com/hcodebr" target="_blank"><i class="fa fa-facebook"></i></a>
-                            <a href="https://twitter.com/hcodebr" target="_blank"><i class="fa fa-twitter"></i></a>
-                            <a href="https://www.youtube.com/channel/UCjWENuSH2gX55-y7QSZiWxA" target="_blank"><i class="fa fa-youtube"></i></a>
+                            <a href="https://twitter.com/hcodebr" target="_blank"><i class="fa fa-instagram"></i></a>
+                          
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-md-3 col-sm-6">
+                <div class="col-md-4 col-sm-6">
                     <div class="footer-menu">
                         <h2 class="footer-wid-title">Navegação </h2>
                         <ul>
@@ -25,31 +25,22 @@
                     </div>
                 </div>
                 
-                <div class="col-md-3 col-sm-6">
+                <div class="col-md-4 col-sm-6">
                     <div class="footer-menu">
                         <h2 class="footer-wid-title">Categorias</h2>
                         <ul>
-                            <li><a href="#">Categoria Um</a></li>
-                            <li><a href="#">Categoria Dois</a></li>
-                            <li><a href="#">Categoria Três</a></li>
-                            <li><a href="#">Categoria Quarto</a></li>
-                            <li><a href="#">Categoria Cinco</a></li>
+                            <li>
+                               
+                                <?php 
+                                    $this->load->view('frontend/template/categorias-menu');
+                                ?>
+                            
+                            </li>
+                           
                         </ul>                        
                     </div>
                 </div>
-                
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-newsletter">
-                        <h2 class="footer-wid-title">Newsletter</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus!</p>
-                        <div class="newsletter-form">
-                            <form action="#">
-                                <input type="email" placeholder="Type your email">
-                                <input type="submit" value="Subscribe">
-                            </form>
-                        </div>
-                    </div>
-                </div>
+             
             </div>
         </div>
     </div> <!-- End footer top area -->
@@ -60,7 +51,7 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="copyright">
-                        <p>&copy; 2017 Hcode Treinamentos. <a href="http://www.hcode.com.br" target="_blank">hcode.com.br</a></p>
+                        <p>&copy; Lojas Via Mar. <a href="http://www.hcode.com.br" target="_blank">lojasviamar@gmail.com</a></p>
                     </div>
                 </div>
                 

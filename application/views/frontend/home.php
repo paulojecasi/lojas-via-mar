@@ -1,70 +1,88 @@
 <?php 
 if ($destaques):
     ?> 
-    <div class="slider-area">
-        <a href="#""> 
-            <br>
-            <h2 class="display4 text-center" > Destaques </h2>
-        </a>
-            <!-- Slider -->
-            <div class="block-slider block-slider4 img-destaque">
-                <ul class="" id="bxslider-home4">
-
-                    <?php 
-                    foreach ($destaques as $destaque):  
-                        $img= $destaque->img; 
-                        $noproduto = $destaque->desproduto ;
-                        $vlproduto = $destaque->vlpreco; 
-                        $vlpromocao= $destaque->vlpromocao;
-                    ?>
-                        <li>
-                            <img src="<?php echo $img; ?>" alt="slide">
-                            <div class="caption-group">
-                                <h2 class="caption title">
-                                
-                                    <?php
-                                    //quebra linha a casa 33 crt, maximo 100 crt - PJCS 
-                                    echo substr(wordwrap($noproduto, 33,"<br />\n"),0,100);
-                                    ?> <br>
-                                </h2>
-                                <br> 
-                                <h1 class="caption title" >
-                                    <?php 
-                                    if ($vlpromocao > 0 && $vlpromocao < $vlproduto):
-                                    ?> 
-                                        <span class="primary"> 
-                                            <?php echo "De R$ ".$vlproduto; ?>
-                                            <strong>
-                                                <?php echo "Por R$ ".$vlpromocao; ?>
-                                            </strong>
-                                        </span>
-                                    <?php
-                                    else:
-                                    ?>
-                                        <span class="primary"> 
-                                            Apenas R$
-                                            <strong> <?php echo $vlproduto; ?> </strong>
-                                        </span>
-                                    <?php
-                                    endif;
-                                    ?>
-
-                                </h1>
-                                <h4 class="caption subtitle">Verifique desconto na etiqueta*</h4>
-                                <a class="caption button-radius" href="#">
-                                    <span class="icon"></span>
-                                    Mais detalhes
-                                </a>
-                            </div>
-                        </li>
-                    <?php
-                    endforeach;
-                    ?> 
-                </ul>
+   
+    <div class="row">
+        <div class="col-lg-12">
+            <div class= "merchan-promo text-center">
+                <a href="#">
+                    <img class="img-fluid" src=" <?php echo base_url('assets/frontend/img/promo2.png'); ?>"> 
+                </a>
             </div>
-            <!-- ./Slider -->
-    </div> <!-- End slider area -->
-    <?php
+        </div>
+    </div>
+   
+   
+    <div class="slider-area">
+        <a href="#"> 
+            <br> 
+           <!--
+            <h2 class="section-title-dest"> Destaques e Promoções </h2>
+            --> 
+        </a>
+        <!-- Slider -->
+        <div class="block-slider block-slider4 img-destaque">
+            <ul class="" id="bxslider-home4">
+
+                <?php 
+                foreach ($destaques as $destaque):  
+                    $img= $destaque->img; 
+                    $noproduto = $destaque->nomeproduto ;
+                    $vlproduto = $destaque->vlpreco; 
+                    $vlpromocao= $destaque->vlpromocao;
+                ?>
+                    <li>
+                        <img src="<?php echo $img; ?>" >
+                        <div class="caption-group">
+                            <h2 class="caption title title-product-destaque">
+                            
+                                <?php
+                                //quebra linha a casa 33 crt, maximo 100 crt - PJCS 
+                                echo substr(wordwrap($noproduto, 33,"<br />\n"),0,100);
+                                ?> <br>
+                            </h2>
+                            <br> 
+                            <h1 class="caption title" >
+                                <?php 
+                                if ($vlpromocao > 0 && $vlpromocao < $vlproduto):
+                                ?> 
+                                    <span class="primary"> 
+                                        <?php echo "De R$ ".$vlproduto; ?>
+                                        <br> 
+                                        <strong>
+                                            <?php echo "Por R$ ".$vlpromocao; ?>
+                                        </strong>
+                                    </span>
+                                <?php
+                                else:
+                                ?>
+                                    <span class="primary"> 
+                                        Apenas R$
+                                        <strong> <?php echo $vlproduto; ?> </strong>
+                                    </span>
+                                <?php
+                                endif;
+                                ?>
+
+                            </h1>
+                            <h4 class="caption subtitle">Verifique desconto na etiqueta*</h4>
+                            <a class="caption button-radius" href="#">
+                                <span class="icon"></span>
+                                Mais detalhes
+                            </a>
+                        </div>
+                    </li>
+                <?php
+                endforeach;
+                ?> 
+            </ul>
+        </div>
+        <!-- ./Slider -->
+    </div>
+        
+   
+<?php
+
 endif;
 ?> 
 
@@ -100,12 +118,30 @@ endif;
     </div>
 </div> <!-- End promo area -->
 
-<h2 class="section-title">Produtos</h2>
 
 <?php
-foreach ($categorias as $categoria): 
+if ($categorias):
+?> 
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2> Mais Produtos em Destaque </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php
+endif;
+
+foreach ($categorias as $categoria):    
+    // listar somente as categorias marcadas como DESTAQUES
+    // e se houver produtos selecionados para destaque da categoria 
     if ($categoria->categoriadest ==1): 
-        ?>
+        $idcategoria = $categoria->id; 
+        ?> 
         <div class="maincontent-area">
             <div class="zigzag-bottom"></div>
             <div class="container">
@@ -113,28 +149,63 @@ foreach ($categorias as $categoria):
                     <div class="col-md-12">
                         <div class="latest-product">
                            
-                            <a href="#""> 
+                            <a href="<?php echo base_url('home/lista_produtos/').md5($idcategoria); ?>"> 
                                 <h2 class="display4">
                                     <?php echo $categoria->titulo ?>
                                 </h2>
                             </a>
+                            
                             <div class="product-carousel">
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <img src="assets/frontend/img/caderno.jpg" alt="">
-                                        <div class="product-hover">
-                                            <a href="#" class="view-details-link"><i class="fa fa-link"></i>+ detalhes </a>
+                                <?php
+                                foreach ($produtoscategoria as $pro_cat): 
+                                   $descricao=substr($pro_cat->nomeproduto,0,50).'...'; 
+                                   $img_pro_cat = $pro_cat->img;
+                                   $vlpreco     = $pro_cat->vlpreco;
+                                   $vlpromocao     = $pro_cat->vlpromocao;
+
+                                    // vamos seleciona produtos da categoria 
+                                   if ($pro_cat->idcategoria == $categoria->id): 
+                                        ?>
+                                        <div class="single-product">
+                                            <div class="product-f-image">
+                                                <img src="<?php echo $img_pro_cat; ?>" alt="">
+                                                <div class="product-hover">
+                                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i>+ detalhes </a>
+                                                </div>
+                                            </div>
+                                            
+                                            <h2>
+                                                <a href="#">
+                                                    <?php echo $descricao?>
+                                                </a>
+                                            </h2>
+                                            
+                                            <div class="product-carousel-price">
+                                                <?php 
+                                                if ($vlpromocao > 0):
+                                                ?>
+                                                    <del>
+                                                        <?php echo "De R$ ".$vlpreco." por"?>
+                                                    </del>
+                                                    <br> 
+                                                    <ins><?php echo "R$ ".$vlpromocao?></ins>
+                                                    
+                                                <?php
+                                                else:
+                                                ?>
+                                                    <br> 
+                                                    <ins><?php echo "R$ ".$vlpreco?></ins>
+                                                <?php
+                                                endif;
+                                                ?>
+                                            </div> 
                                         </div>
-                                    </div>
-                                    
-                                    <h2><a href="#">CADERNO 20 MATÉRIAS  – 320 FOLHAS-Tilibra</a></h2>
-                                    
-                                    <div class="product-carousel-price">
-                                        <ins>$25.00</ins> <del>$30.00</del>
-                                    </div> 
-                                </div>
-                                
+                                        <?php 
+                                        endif; 
+                                endforeach;
+                                ?> 
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -145,29 +216,3 @@ foreach ($categorias as $categoria):
         endif; 
 endforeach;
 ?>
-
-
-
-
-
-<div class="brands-area">
-    <div class="zigzag-bottom"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="brand-wrapper">
-                    <div class="brand-list">
-                        <img src="assets/frontend/img/brand1.png" alt="">
-                        <img src="assets/frontend/img/brand2.png" alt="">
-                        <img src="assets/frontend/img/brand3.png" alt="">
-                        <img src="assets/frontend/img/brand4.png" alt="">
-                        <img src="assets/frontend/img/brand5.png" alt="">
-                        <img src="assets/frontend/img/brand6.png" alt="">
-                        <img src="assets/frontend/img/brand1.png" alt="">
-                        <img src="assets/frontend/img/brand2.png" alt="">                            
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- End brands area -->

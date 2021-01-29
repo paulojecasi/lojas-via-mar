@@ -1,7 +1,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header"> <?php echo $subtitulo ?></h1>
+            <h2 class="page-header"> <?php echo $subtitulo ?></h2>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -10,9 +10,6 @@
     <div class="row"> 
         <div class="col-lg-12">   
             <div class="panel panel-default">
-                <div class="panel-heading">
-                   <h4> <?php echo "Novo Produto" ?> </h4>
-                </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12 layout-campos">
@@ -31,11 +28,17 @@
                             ?> 
 
                             <div class="form-group">
-                                <label> Descrição do Produto </label>
-                                <input id="txt-desproduto" name="txt-desproduto" type="text"class = "form-control" placeholder ="Digite o nome do produto">
+                                <label> Nome do Produto </label>
+                                <input id="nomeproduto" name="nomeproduto" type="text"class = "form-control" placeholder ="Digite o nome do produto">
                             </div>
 
                             <div class="form-group">
+                                <label> Descrição do Produto </label>
+                                <textarea id="txt-desproduto" name="txt-desproduto" type="text" class = "form-control" placeholder ="Digite a Descrição do Produto"> 
+                                </textarea>
+                            </div>
+
+                            <div class="form-group col-lg-6">
                               <label for="corproduto"> Cor do Produto </label>
                               <select class="form-control" id="corproduto" name="corproduto">
                             
@@ -58,7 +61,7 @@
                               </select>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group col-lg-6">
                               <label for="idcategoria"> Categoria do Produto </label>
                               <select class="form-control" id="idcategoria" name="idcategoria">
                             
@@ -81,33 +84,33 @@
                               </select>
                             </div>
                            
-                            <div class="form-group">  
-                                <label> Preço </label>
+                            <div class="form-group col-lg-6">  
+                                <label>Valor Preço </label>
                                 <input type="number" class="form-control" id="vlpreco" name="vlpreco" step="0.01" placeholder="0.00">
                             </div>
-                            <div class="form-group"> 
+                            <div class="form-group col-lg-6">
+                                <label> Valor Preço Promoção </label>
+                                <input type="number" class="form-control" id="vlpromocao" name="vlpromocao" step="0.01" placeholder="0.00">
+                            </div>
+                            <div class="form-group col-lg-6"> 
                                 <label> Largura </label>
                                 <input type="number" class="form-control" id="vllargura" name="vllargura" step="0.01" placeholder="0.00">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-lg-6">
                                 <label> Altura </label>
                                 <input type="number" class="form-control" id="vlaltura" name="vlaltura" step="0.01" placeholder="0.00">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-lg-6">
                                 <label> Comprimento </label>
                                 <input type="number" class="form-control" id="vlcomprimento" name="vlcomprimento" step="0.01" placeholder="0.00">
                             </div>
-                            <div class="form-group">  
+                            <div class="form-group col-lg-6">  
                                 <label> Peso </label>
                                 <input type="number" class="form-control" id="vlpeso" name="vlpeso" step="0.01" placeholder="0.00">
                             </div>
-                            <div class="form-group">
-                                <label> Valor Promoção </label>
-                                <input type="number" class="form-control" id="vlpromocao" name="vlpromocao" step="0.01" placeholder="0.00">
-                            </div>
-                                                   
-                            <div class="form-group">
-                              <label for="produtoativo"> Produto Ativo? </label>
+                                        
+                            <div class="form-group col-lg-6">
+                              <label for="produtoativo"> O Produto está Ativo / Ainda consta na loja? </label>
                               <select class="form-control" id="produtoativo" name="produtoativo">
                             
                                 <?php foreach ($opcoes as $opcao)
@@ -124,26 +127,9 @@
                               </select>
                             </div>
                         
-                            <div class="form-group">
-                              <label for="produtodestaque"> Produto Destaque? </label>
-                              <select class="form-control" id="produtodestaque" name="produtodestaque">
-                            
-                                <?php foreach ($opcoes as $opcao)
-                                {
-                                ?>
-                                    <option value ="<?php echo $opcao->idopcao ?> ">
-                                       <?php echo $opcao->desopcao ?>
-                                    </option>
-            
-                                <?php 
-                                }
-                                ?>
-                              
-                              </select>
-                            </div>
-                        
-                            <div class="form-group">
-                              <label for="actproduct"> Produto no Site? </label>
+                                                    
+                            <div class="form-group col-lg-6">
+                              <label for="actproduct"> O Produto será exibido no Site? </label>
                               <select class="form-control" id="produtosite" name="produtosite">
                             
                                 <?php foreach ($opcoes as $opcao)
@@ -159,13 +145,51 @@
                               
                               </select>
                             </div>
+
+                            <div class="form-group col-lg-6">
+                              <label for="produtodestaque">O Produto é Destaque na pagina Principal? </label>
+                              <select class="form-control" id="produtodestaque" name="produtodestaque">
+                            
+                                <?php foreach ($opcoes as $opcao)
+                                {
+                                ?>
+                                    <option value ="<?php echo $opcao->idopcao ?> ">
+                                       <?php echo $opcao->desopcao ?>
+                                    </option>
+            
+                                <?php 
+                                }
+                                ?>
+                              
+                              </select>
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                              <label for="destaquenacategoria">O Produto é Destaque na Parte de Categorias ? </label>
+                              <select class="form-control" id="destaquenacategoria" name="destaquenacategoria">
+                            
+                                <?php foreach ($opcoes as $opcao)
+                                {
+                                ?>
+                                    <option value ="<?php echo $opcao->idopcao ?> ">
+                                       <?php echo $opcao->desopcao ?>
+                                    </option>
+            
+                                <?php 
+                                }
+                                ?>
+                              
+                              </select>
+                            </div>
                     
-                            <br> 
-                            <a href="">
-                                <button class="btn btn-primary" > 
-                                    Adicionar
-                                </button> 
-                            </a>
+
+                            <div class="form-group col-lg-12 text-center button-add-prod">
+                                <a href="">
+                                    <button class="btn btn-primary" > 
+                                        Adicionar Produto
+                                    </button> 
+                                </a>
+                            </div>
                       
                             <?php 
                             // fechar o formulario 
