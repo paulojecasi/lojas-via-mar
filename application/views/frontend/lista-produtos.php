@@ -46,7 +46,7 @@ endforeach;
                         <div class="single-shop-product">
                             <div class="product-upper">
                                 <h1 class="img-lista-produto">
-                                    <?php echo img($img); ?>
+                                    <?php echo img($img,'class="img-fluid"'); ?>
                                 </h1>
 
                             </div>

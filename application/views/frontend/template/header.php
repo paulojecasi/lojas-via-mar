@@ -1,7 +1,7 @@
     <div class="header-area">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-sm-12">
                     <div class="header-right text-right">
                         <a href="/www.facebook.com.br">
                             <i class="fa fa-facebook fa-1x"></i>
@@ -41,32 +41,113 @@
         <div class="container">
             <div class="row">
                 <!-- menu responsivo --> 
-                <div class = "navbar-header ">
-                    <button  type="button"  class="navbar-toggle" data-toggle="collapse"  data-target=".navbar-collapse ">
-                        <span  class= "sr-only" > Alternar navegação </span>
-                        <span  class= "icon-bar"> </span>
-                        <span  class= "icon-bar"> </span>
-                        <span  class= "icon-bar"> </span>
-                    </button >
-                </div>
-                
+                <div class="menu-mobile"> 
+                    <div class = "navbar-header">
+                        <button  type="button"  class="navbar-toggle" data-toggle="collapse"  data-target=".navbar-collapse ">
+                            <span  class= "sr-only" > Alternar navegação </span>
+                            <span  class= "icon-bar"> </span>
+                            <span  class= "icon-bar"> </span>
+                            <span  class= "icon-bar"> </span>
+                        </button >
+                    </div>
 
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li> <a class="nav-aba" href="<?php echo base_url('home'); ?>"><i class="fa fa-home"> </i>
-                             Home </a></li>
-                    
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle nav-aba nav-aba-produto" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" >
-                              Produtos 
-                            </a>
-                            <div class="dropdown-menu categorias-menu" >
-                                <?php 
-                                    $this->load->view('frontend/template/categorias-menu');
-                                ?>
+                    <div class="navbar-collapse collapse nav-mobile">
+                        <ul class="nav navbar-nav navbar-right">
+
+                            <div> 
+                                <button class="btn btn-secondary dropdown-toggle" type="button" >
+                                    <a class="nav-aba" href="<?php echo base_url('home'); ?>"><i class="fa fa-home"> </i>
+                                     Inicio 
+                                    </a>
+                                 </button>
                             </div>
-  
+              
+                            <div class="dropdown menu-itens-mobile">
+                                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a> Produtos </a>
+                                  </button>
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <li>
+                                            <?php 
+                                            $this->load->view('frontend/template/categorias-menu');
+                                            ?>
+
+                                        </li>
+                                  </div>
+                            </div>
+
+                            <div> 
+                                <button class="btn btn-secondary dropdown-toggle" type="button">
+                                    <a class="nav-aba" href="#fale-conosco"> <i class=""> </i>
+                                     Promoções  </a>
+                                </button>
+                            </div>
+
+                            <div> 
+                                <button class="btn btn-secondary dropdown-toggle" type="button">
+                                    <a class="nav-aba" href="#fale-conosco"> <i class="fa fa-phone-square"> </i>
+                                     Fale conosco </a>
+                                </button>
+                            </div>
+
+                            <div> 
+                                <button class="btn btn-secondary dropdown-toggle" type="button">
+                                    <a class="nav-aba" href="#sobre-nos"> <i class="fa fa-thumbs-o-up"> </i>
+                                     Sobre nós </a>
+                                </button>
+                            </div>
+
+                            <div> 
+                                <button class="btn btn-secondary dropdown-toggle" type="button">
+                                    <a class="nav-aba" href="#nossa-localizacao"> <i class="fa fa-map-marker"> </i>
+                                     Nossa Localização </a>
+                                </button>
+                            </div>
+                         
+                        </ul>
+                    </div>
+                </div>  
+
+
+                <div class="navbar-collapse collapse menu-pc">
+                    <ul class="nav navbar-nav navbar-right">
+          
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                              Produtos <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <?php 
+                                    $this->load->view('frontend/template/categorias-menu');
+                                    ?>
+
+                                </li>
+                             
+                            </ul>
                         </li>
+
+                        <li> <a class="nav-aba" href=""> 
+                             Promoções </a>
+                         </li>
+                     
+
+                        <li> <a class="nav-aba" href="#fale-conosco"> 
+                             <i class="fa fa-phone-square"> </i> Fale conosco </a>
+                         </li>
+                        
+                        <li> <a class="nav-aba" href="#sobre-nos"> 
+                             <i class="fa fa-thumbs-o-up"> </i> Sobre nós </a>
+                         </li>
+
+                         <li> <a class="nav-aba" href="#nossa-localizacao"> 
+                             <i class="fa fa-map-marker"> </i> Nossa Localização </a>
+                         </li>
+
+                        <li> <a class="nav-aba" href="<?php echo base_url('home'); ?>">
+                            <i class="fa fa-home"> </i>
+                             Inicio </a>
+                         </li>
                     </ul>
                 </div>  
             </div>

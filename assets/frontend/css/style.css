@@ -165,11 +165,12 @@ body { font-family:Arial, Helvetica, sans-serif; }
 .mainmenu-area ul.navbar-nav li a {
     color: #6e6a6a;
     font-size: 16px;
-    padding: 7px;
+    padding: 10px;
     margin-top: -8px; 
     padding-left: 20px;  
     padding-right: 20px; 
     padding-bottom: 7px; 
+    text-transform: none;
 }
 
 /*pjcs - parecer os itens no menu ao passar o mouse por cima */
@@ -197,8 +198,19 @@ body { font-family:Arial, Helvetica, sans-serif; }
 }
 
 /*pjcs*/
-.mainmenu-area ul.navbar-nav li div a:hover{
-    color: #808080;
+.mainmenu-area ul.navbar-nav li a:hover{
+    background: #A9A9A9; 
+    color:#FFF;
+}
+/*PJCS*/ 
+.mainmenu-area ul.navbar-nav li ul li a:hover{
+    color: #000;
+    background: #DCDCDC; 
+}
+
+.mainmenu-area ul.navbar-nav li ul li a:hover{
+    color: #000;
+    background: #DCDCDC; 
 }
 
 .mainmenu-area ul.navbar-nav li:hover a.nav-aba, .mainmenu-area ul.navbar-nav li.active a 
@@ -211,6 +223,7 @@ body { font-family:Arial, Helvetica, sans-serif; }
 .mainmenu-area .nav > li > a:focus {
   color: #0000FF;
 }
+
 
 .slider-area { 
     width:86%; 
@@ -520,6 +533,7 @@ body { font-family:Arial, Helvetica, sans-serif; }
     font-size: 16px;
     color: #222;
 }
+
 .single-product p {
     color: #e67e22;
     font-weight: 700;
@@ -613,7 +627,7 @@ body { font-family:Arial, Helvetica, sans-serif; }
     color: #222;
 }
 .single-wid-product h2 a:hover, .single-product h2 a:hover {
-    color: #e67e22;
+    color: blue;
 }
 .wid-view-more {
     background: none repeat scroll 0 0 #e67e22;
@@ -667,10 +681,10 @@ padding: 35px 0 50px;}
 
 
 .footer-social a {
-  background: none repeat scroll 0 0 #e67e22;
-  color: #fff;
+  background: none repeat scroll 0 0 #FFFF00;
+  color: #0000FF;
   display: inline-block;
-  font-size: 20px;
+  font-size: 15px;
   height: 40px;
   margin-bottom: 10px;
   margin-right: 10px;
@@ -709,7 +723,7 @@ a:hover, a:focus {color: #17a78b}
 .footer-bottom-area {
   background: none repeat scroll 0 0 #000;
   color: #fff;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 }
 
 
@@ -780,7 +794,7 @@ width: 10px;
 .single-product-area .zigzag-bottom {background-color: #f4f4f4}
 
 .single-product-area {
-  padding: 80px 0 130px;
+  padding: 80px 0 0px;
 }
 
 
@@ -1222,7 +1236,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 
 .single-shop-product h2 {
 
-    font-size: 19px;
+    font-size: 18px;
     color: black;
     margin: 10px 0;
 }
@@ -1235,19 +1249,25 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
     margin-top: 15px;
 }
 
-.single-shop-product {margin-bottom: 120px}
+.single-shop-product {
+    margin-bottom: 90px;
+    border-bottom: 1px solid;
+    border-color: #DCDCDC; 
+    padding: 10px;
+}
 
 .pagination > li > a, .pagination > li > span {
     color: #e67e22;
 }
 
-/* minhas estilizações CSS - PJCS */ 
+
+/*============= minhas estilizações CSS - PJCS ========================= */ 
 .img-destaque ul li img {
     width: 330px;   
     height:330px;         
 }
 
-.display4{
+h2.display4{
   margin-bottom: 0px;
   margin-top: 0px;
   border-top: 1px solid; 
@@ -1256,7 +1276,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
   color: #808080;
 }
 
-.display4:hover {
+h2.display4:hover {
     color: blue;
 }
 
@@ -1270,7 +1290,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 }
 
 .merchan-promo img {
-   width: 600px;   /* largura */ 
+   width: 55%;   /* largura */ 
    align-items: center;   /* alinhamento vertical */
 }
 
@@ -1306,5 +1326,60 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 .categorias-menu a{
   line-height: 33px;
 }
+
+.nav-mobile a {
+  font-size: 23px;
+  color: #000;
+  text-decoration: none;
+
+}
+
+.menu-itens-mobile div li{
+  padding: 15px;
+}
+.menu-itens-mobile div li a.dropdown-item{
+  font-size: 20px;
+  margin-top: 10px; 
+  border-bottom: 1px solid;
+  color:#0000FF ;
+}
+
+.nav-mobile button {
+   width: 100%;
+   height: 50px;
+   border:1px solid;
+   border-color: #C0C0C0; 
+   text-align: left;
+  
+}
+
+.menu-fal-cono div.footer-social{
+
+  margin: -1px; 
+  font-size: 17px; 
+
+}
+
+.nossa-localizacao{
+  width: 100%; 
+  height: 100%; 
+  border-top:1px solid;
+  border-color: #C0C0C0; 
+  text-align: center;
+
+
+  /* width="600" height="360" */
+}
+
+.nossa-localizacao iframe{
+  min-height: 360px;
+  min-width: 700px; 
+  padding-top: 30px; 
+  padding-bottom: 50px; 
+}
+
+
+
+
 
 

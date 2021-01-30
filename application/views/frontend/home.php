@@ -2,17 +2,12 @@
 if ($destaques):
     ?> 
    
-    <div class="row">
-        <div class="col-lg-12">
-            <div class= "merchan-promo text-center">
-                <a href="#">
-                    <img class="img-fluid" src=" <?php echo base_url('assets/frontend/img/promo2.png'); ?>"> 
-                </a>
-            </div>
-        </div>
+    <div class= "merchan-promo text-center">
+        <a href="#">
+            <img class="img-fluid" src=" <?php echo base_url('assets/frontend/img/promo2.png'); ?>"> 
+        </a>
     </div>
-   
-   
+    
     <div class="slider-area">
         <a href="#"> 
             <br> 
@@ -143,7 +138,7 @@ foreach ($categorias as $categoria):
         $idcategoria = $categoria->id; 
         ?> 
         <div class="maincontent-area">
-            <div class="zigzag-bottom"></div>
+           
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -167,7 +162,7 @@ foreach ($categorias as $categoria):
                                    if ($pro_cat->idcategoria == $categoria->id): 
                                         ?>
                                         <div class="single-product">
-                                            <div class="product-f-image">
+                                            <div class="product-f-image img-fluid">
                                                 <img src="<?php echo $img_pro_cat; ?>" alt="">
                                                 <div class="product-hover">
                                                     <a href="#" class="view-details-link"><i class="fa fa-link"></i>+ detalhes </a>

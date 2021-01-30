@@ -206,19 +206,14 @@ div.coupon input[type="text"] {
 }
 
 /* minhas estilizações CSS - PJCS */ 
-@media only screen and (max-width: 600px) {
-  .product-f-image img {
-      width: 500px;
-      height: 500px;
-  }
 
-  .title-product-destaque{
-    font-size: 20px;
-    margin-left: 80px; 
-  }
-}
 
 @media only screen and (max-width: 767px) { 
+   .product-f-image img {
+      width: 100% \9;
+      width: auto;
+      height: auto;
+  }
 
 
   /* desabilita a logo pra substituir por outra */ 
@@ -229,12 +224,20 @@ div.coupon input[type="text"] {
       display: normal !important;
   }
 
+  .menu-pc {
+      display: none !important;
+  }
+  .menu-mobile {
+      display: normal !important;
+  }
+
 
   .img-lista-produto img{
       border: 1px solid;
       color: #DCDCDC; 
-      width: 400px;   
-      height:400px;
+      width: 100% \9;
+      width: auto;
+      height: auto;
   }
 
   .merchan-promo img {
@@ -247,7 +250,53 @@ div.coupon input[type="text"] {
     font-size: 20px;
     margin-left: 80px; 
   }
+
+  .footer-top-area {
+    padding: 35px 0 0px;
+  }
+
+  .single-product h2 a {
+    font-size: 26px;
+  }
+
+  .product-carousel-price ins {
+
+    font-size: 30px; 
+  }
+
+  .product-carousel-price del {
+    font-size: 20px; 
+  }
+
+  .single-shop-product h2 {
+    font-size: 25px;
+  }
+
+  .merchan-promo img {
+   width: 100%;   /* largura */ 
+   align-items: center;   /* alinhamento vertical */
+  }
+
+  .footer-top-area h2.footer-wid-title, {
+    font-size: 35px;
+  }
+
+  .footer-top-area p {
+    font-size: 19px;
+  }
+
+  .menu-categ-footer ul li a {
+    font-size: 22px;
+  }
+
+  .nossa-localizacao iframe{
+    min-height: 460px;
+    min-width: 500px; 
+  
+  }
+
 }
+
 @media only screen and (min-width: 767px) {
   /* desabilita a logo pra substituir por outra */ 
   .logo {
@@ -257,4 +306,32 @@ div.coupon input[type="text"] {
       display: none !important;
   }
 
+  .menu-pc {
+      display: normal !important;
+  }
+  .menu-mobile {
+      display: none !important;
+  }
+
+}
+
+/*
+
+@media only screen and (min-width: 280px) and (max-width: 414px) { 
+  .nossa-localizacao iframe{
+    min-height: 300px;
+    min-width: 360px; 
+  
+  }
+  
+}
+
+@media only screen and (min-width: 180px) and (max-width: 280px) { 
+  .nossa-localizacao iframe{
+    min-height: 80px;
+    min-width: 80px; 
+  
+  }
+  */
+  
 }
