@@ -1366,16 +1366,21 @@ h2.display4:hover {
   border-top:1px solid;
   border-color: #C0C0C0; 
   text-align: center;
-
+  background-image: url('http://cursophp.com/lojasViaMar/assets/frontend/img/frentetransp0.1.png');
 
   /* width="600" height="360" */
 }
 
+.nossa-localizacao h3{
+  margin-top: 20px; 
+}
+
 .nossa-localizacao iframe{
-  min-height: 360px;
+  min-height: 370px;
   min-width: 700px; 
-  padding-top: 30px; 
+  padding-top: 10px; 
   padding-bottom: 50px; 
+ 
 }
 
 

@@ -14,12 +14,14 @@ class Home extends CI_Controller {
 				// modelcategorias = new Categorias_model(); 
 		$this->load->model('categorias_model','modelcategorias');
 		$this->load->model('produto_model','modelprodutos'); 
+		$this->load->model('loja_model','modelloja'); 
 		
 
 				// vamos cria uma var "$categorias" e carrega-la com o resultado 
 		$this->categorias = $this->modelcategorias->listar_categorias(); 
 		$this->destaques  = $this->modelprodutos->produtos_destaques(); 
 		$this->produtosdacategoria = $this->modelprodutos->produtos_da_categoria(); 
+		$this->loja 			= $this->modelloja->listar_loja(); 
 
 	}
 
@@ -30,7 +32,8 @@ class Home extends CI_Controller {
 		$dados = array(
 			'categorias' 	=> $this->categorias, 
 			'destaques' 	=>	$this->destaques,
-			'produtoscategoria'	=> $this->produtosdacategoria
+			'produtoscategoria'	=> $this->produtosdacategoria,
+			'loja' 				=> $this->loja
 		) ;
 
 
@@ -54,7 +57,8 @@ class Home extends CI_Controller {
 		$dados = array(
 			'categoria' => $this->modelcategorias->listar_categoria($categoria),
 			'categorias' 	=> $this->categorias, 
-			'listaprodutossite'	=> $this->modelprodutos->lista_produtos_site($categoria)
+			'listaprodutossite'	=> $this->modelprodutos->lista_produtos_site($categoria),
+			'loja' 				=> $this->loja
 		) ;
 
 		$this->load->view('frontend/template/html-header', $dados);
