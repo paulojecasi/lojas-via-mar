@@ -1,15 +1,29 @@
+<?php
+foreach ($loja as $lojasviamar):
+?>
+   
     <div class="header-area">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="header-right text-right">
-                        <a href="/www.facebook.com.br">
-                            <i class="fa fa-facebook fa-1x"></i>
-                        </a>
-
-                        <a href="/www.instagram.com">
-                            <i class="fa fa-instagram fa-1x"></i>
-                        </a>
+                        <?php
+                        if ($lojasviamar->facebooksite ==1):
+                        ?>
+                            <a href="/www.facebook.com.br">
+                                <i class="fa fa-facebook fa-1x"></i>
+                            </a>
+                        <?php
+                        endif;
+                        
+                        if ($lojasviamar->instagramsite ==1):
+                        ?> 
+                            <a href="/www.instagram.com">
+                                <i class="fa fa-instagram fa-1x"></i>
+                            </a>
+                        <?php
+                        endif;
+                        ?>
                     </div>
                 </div>
             </div>
@@ -76,33 +90,65 @@
                                   </div>
                             </div>
 
-                            <div> 
-                                <button class="btn btn-secondary dropdown-toggle" type="button">
-                                    <a class="nav-aba" href="#fale-conosco"> <i class=""> </i>
-                                     Promoções  </a>
-                                </button>
-                            </div>
+                            <?php
+                            if ($lojasviamar->promocaosite ==1):
+                            ?>
+                                <div> 
+                                    <button class="btn btn-secondary dropdown-toggle" type="button">
+                                        <a class="nav-aba" href="<?php echo base_url('home/lista_produtos_promocao') ?>"> <i class=""> </i>
+                                         Promoções  </a>
+                                    </button>
+                                </div>
 
-                            <div> 
-                                <button class="btn btn-secondary dropdown-toggle" type="button">
-                                    <a class="nav-aba" href="#fale-conosco"> <i class="fa fa-phone-square"> </i>
-                                     Fale conosco </a>
-                                </button>
-                            </div>
+                                <?php
+                            endif;
+                        
+                            if ($lojasviamar->fonefixosite==1
+                                ||
+                                $lojasviamar->fonecelsite==1
+                                ||
+                                $lojasviamar->facebooksite==1
+                                ||
+                                $lojasviamar->instagramsite==1
+                                ||
+                                $lojasviamar->emailsite==1
+                                ||
+                                $lojasviamar->whatsappsite==1
+                            ):  
+                            ?>
+                                <div> 
+                                    <button class="btn btn-secondary dropdown-toggle" type="button">
+                                        <a class="nav-aba" href="#fale-conosco"> <i class="fa fa-phone-square"> </i>
+                                         Fale conosco </a>
+                                    </button>
+                                </div>
+                                <?php
+                            endif;
+                            
+                            if ($lojasviamar->sobrenossite ==1):
+                                ?>
+                                <div> 
+                                    <button class="btn btn-secondary dropdown-toggle" type="button">
+                                        <a class="nav-aba" href="#sobre-nos"> <i class="fa fa-thumbs-o-up"> </i>
+                                         Sobre nós </a>
+                                    </button>
+                                </div>
 
-                            <div> 
-                                <button class="btn btn-secondary dropdown-toggle" type="button">
-                                    <a class="nav-aba" href="#sobre-nos"> <i class="fa fa-thumbs-o-up"> </i>
-                                     Sobre nós </a>
-                                </button>
-                            </div>
+                                <?php
+                            endif;
+                            
+                            if ($lojasviamar->localgooglesite ==1):
+                                ?>
 
-                            <div> 
-                                <button class="btn btn-secondary dropdown-toggle" type="button">
-                                    <a class="nav-aba" href="#nossa-localizacao"> <i class="fa fa-map-marker"> </i>
-                                     Nossa Localização </a>
-                                </button>
-                            </div>
+                                <div> 
+                                    <button class="btn btn-secondary dropdown-toggle" type="button">
+                                        <a class="nav-aba" href="#nossa-localizacao"> <i class="fa fa-map-marker"> </i>
+                                         Nossa Localização </a>
+                                    </button>
+                                </div>
+                                <?php
+                            endif;
+                            ?>
                          
                         </ul>
                     </div>
@@ -126,23 +172,51 @@
                              
                             </ul>
                         </li>
+                        <?php
+                        if ($lojasviamar->promocaosite ==1):
+                        ?>
+                            <li> <a class="nav-aba" href="<?php echo base_url('home/lista_produtos_promocao') ?>"> 
+                                 Promoções </a>
+                            </li>
+                            <?php
+                        endif;
+                    
+                        if ($lojasviamar->fonefixosite==1
+                            ||
+                            $lojasviamar->fonecelsite==1
+                            ||
+                            $lojasviamar->facebooksite==1
+                            ||
+                            $lojasviamar->instagramsite==1
+                            ||
+                            $lojasviamar->emailsite==1
+                            ||
+                            $lojasviamar->whatsappsite==1
+                        ):  
+                        ?>
 
-                        <li> <a class="nav-aba" href=""> 
-                             Promoções </a>
-                         </li>
-                     
-
-                        <li> <a class="nav-aba" href="#fale-conosco"> 
-                             <i class="fa fa-phone-square"> </i> Fale conosco </a>
-                         </li>
+                            <li> <a class="nav-aba" href="#fale-conosco"> 
+                                 <i class="fa fa-phone-square"> </i> Fale conosco </a>
+                            </li>
+                            <?php
+                        endif;
                         
-                        <li> <a class="nav-aba" href="#sobre-nos"> 
-                             <i class="fa fa-thumbs-o-up"> </i> Sobre nós </a>
-                         </li>
-
-                         <li> <a class="nav-aba" href="#nossa-localizacao"> 
-                             <i class="fa fa-map-marker"> </i> Nossa Localização </a>
-                         </li>
+                        if ($lojasviamar->sobrenossite ==1):
+                            ?>
+                            <li> <a class="nav-aba" href="#sobre-nos"> 
+                                 <i class="fa fa-thumbs-o-up"> </i> Sobre nós </a>
+                            </li>
+                            <?php
+                        endif;
+                            
+                        if ($lojasviamar->localgooglesite ==1):
+                            ?>
+                             <li> <a class="nav-aba" href="#nossa-localizacao"> 
+                                 <i class="fa fa-map-marker"> </i> Nossa Localização </a>
+                             </li>
+                            <?php
+                        endif; 
+                        ?>
 
                         <li> <a class="nav-aba" href="<?php echo base_url('home'); ?>">
                             <i class="fa fa-home"> </i>
@@ -154,3 +228,6 @@
         </div>
     </div> <!-- End mainmenu area -->
     
+<?php
+endforeach;
+?>

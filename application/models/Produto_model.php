@@ -69,6 +69,16 @@ class Produto_model extends CI_Model
 
 	}
 
+	public function listar_produtos_promocao()
+	{
+
+		$this->db->where('vlpromocao > ',0);
+		$this->db->where('vlpromocao < vlpreco'); 
+		$this->db->order_by('desproduto','ASC'); 
+		return $this->db->get('produto')->result(); 
+
+	}
+
 	public function adicionar($idcategoria,$nomeproduto,$desproduto,$corproduto,$vlpreco,$vllargura,$vlaltura,$vlcomprimento,$vlpeso,$vlpromocao,$produtoativo,$produtodestaque,$destaquenacategoria,$produtosite)
 	{
 

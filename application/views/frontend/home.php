@@ -1,12 +1,19 @@
 <?php 
 if ($destaques):
-    ?> 
    
-    <div class= "merchan-promo text-center">
-        <a href="#">
-            <img class="img-fluid" src=" <?php echo base_url('assets/frontend/img/promo2.png'); ?>"> 
-        </a>
-    </div>
+    foreach ($loja as $lojasviamar):
+        if ($lojasviamar->promocaosite == 1):
+            ?> 
+            <div class= "merchan-promo text-center">
+                <a href="<?php echo base_url('home/lista_produtos_promocao') ?>">
+                    <img class="img-fluid" src=" <?php echo base_url('assets/frontend/img/promo3.png'); ?>"> 
+                </a>
+            </div>
+            <?php
+        endif;
+    endforeach;
+?> 
+
     
     <div class="slider-area">
         <a href="#"> 

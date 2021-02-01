@@ -63,7 +63,24 @@ class Home extends CI_Controller {
 
 		$this->load->view('frontend/template/html-header', $dados);
 		$this->load->view('frontend/template/header');
-		$this->load->view('frontend/lista-produtos');
+		$this->load->view('frontend/produtos-lista');
+		$this->load->view('frontend/template/aside');
+		$this->load->view('frontend/template/footer');
+		$this->load->view('frontend/template/html-footer'); 
+
+	}
+
+	public function lista_produtos_promocao(){
+
+		
+		$dados = array(
+			'listaprodutosprom'	=> $this->modelprodutos->listar_produtos_promocao(),
+			'loja' 				=> $this->loja
+		) ;
+
+		$this->load->view('frontend/template/html-header', $dados);
+		$this->load->view('frontend/template/header');
+		$this->load->view('frontend/produtos-promocao');
 		$this->load->view('frontend/template/aside');
 		$this->load->view('frontend/template/footer');
 		$this->load->view('frontend/template/html-footer'); 
