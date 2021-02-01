@@ -122,8 +122,33 @@
                                 $nomeuser   = $usuario->nome;
                                 $botaoalterar = anchor(base_url('admin/usuarios/alterar/'.md5($usuario->id)),
                                     '<i class="fas fa-edit"> </i> Alterar');
-                                $botaoexcluir = anchor(base_url('admin/usuarios/excluir/'.md5($usuario->id)),
-                                    '<i class="fa fa-remove fa-fw"> </i> Excluir');
+
+                                $botaoexcluir= '<button type="button" class="btn btn-link" data-toggle="modal" data-target=".excluir-modal-'.$usuario->id.'"><i class="fa fa-remove fa-fw"></i> Excluir</button>';
+
+                                echo $modal= ' <div class="modal fade excluir-modal-'.$usuario->id.'" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel2"> <i class="fa fa-remove fa-fw"></i> Exclusão de Usuário </h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h4>Deseja Excluir o Usuário '.$usuario->nome.'?</h4>
+                                                <p>Após Excluida o Usuário <b>'.$usuario->nome.'</b> não ficara mais disponível no Sistema.</p>
+                                                <p>Todos os itens relacionados ao Usuário <b>'.$usuario->nome.'</b> serão afetados e não aparecerão no site até que sejam editados.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                <a type="button" class="btn btn-danger" href="'.base_url('admin/usuarios/excluir/'.md5($usuario->id)).'">Excluir</a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>';
+
+
 
                                 $this->table->add_row($foto,$nomeuser,$botaoalterar,$botaoexcluir); 
                             }

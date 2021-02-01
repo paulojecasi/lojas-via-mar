@@ -1383,6 +1383,37 @@ h2.display4:hover {
  
 }
 
+.produto-detalhes {
+  margin-top: -40px; 
+  width: 100%; 
+  height: 100%;
+  
+}
+
+.produto-detalhes h2{
+  text-align: center; 
+  padding-bottom: 30px; 
+}
+
+.produto-detalhes .img-detalhe-produto img{
+  width: 90%; 
+  height: 90%;
+  text-align: center; 
+  padding-bottom: 80px; 
+}
+
+.produto-detalhes div.descricao-pro label.label-des{
+  font-size: 17px; 
+
+}
+
+.produto-detalhes div.descricao-pro p.paragraf-des{
+  font-size: 16px; 
+  margin-left: 20px; 
+  margin-top: -5px; 
+}
+
+
 
 
 

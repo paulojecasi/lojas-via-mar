@@ -83,6 +83,7 @@ class Produto_model extends CI_Model
 	{
 
 		$dados["idcategoria"]	= $idcategoria;
+		$dados["nomeproduto"]	= $nomeproduto;
 		$dados["desproduto"]	= $desproduto;
 		$dados["corproduto"]	= $corproduto;
 		$dados["vlpreco"]			= $vlpreco;
@@ -102,6 +103,7 @@ class Produto_model extends CI_Model
 	public function alterar($idproduto,$idcategoria,$nomeproduto,$desproduto,$corproduto,$vlpreco,$vllargura,$vlaltura,$vlcomprimento,$vlpeso,$vlpromocao,$produtoativo,$produtodestaque,$destaquenacategoria,$produtosite)
 	{
 		$dados["idcategoria"]	= $idcategoria;
+		$dados["nomeproduto"]	= $nomeproduto;
 		$dados["desproduto"]	= $desproduto;
 		$dados["corproduto"]	= $corproduto;
 		$dados["vlpreco"]			= $vlpreco;
@@ -183,6 +185,13 @@ class Produto_model extends CI_Model
 		$this->db->from('produto');
 		$this->db->join('categoria','categoria.id = produto.idcategoria');
 		return  $this->db->get()->result();
+
+	}
+
+	public function detalhe_produto($idproduto){
+
+		$this->db->where('md5(idproduto)=',$idproduto);
+		return $this->db->get('produto')->result(); 
 
 	}
 

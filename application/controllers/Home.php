@@ -15,6 +15,7 @@ class Home extends CI_Controller {
 		$this->load->model('categorias_model','modelcategorias');
 		$this->load->model('produto_model','modelprodutos'); 
 		$this->load->model('loja_model','modelloja'); 
+		$this->load->model('cores_model','modelcores'); 
 		
 
 				// vamos cria uma var "$categorias" e carrega-la com o resultado 
@@ -22,6 +23,7 @@ class Home extends CI_Controller {
 		$this->destaques  = $this->modelprodutos->produtos_destaques(); 
 		$this->produtosdacategoria = $this->modelprodutos->produtos_da_categoria(); 
 		$this->loja 			= $this->modelloja->listar_loja(); 
+		$this->cores 			= $this->modelcores->listar_cores(); 
 
 	}
 
@@ -81,6 +83,23 @@ class Home extends CI_Controller {
 		$this->load->view('frontend/template/html-header', $dados);
 		$this->load->view('frontend/template/header');
 		$this->load->view('frontend/produtos-promocao');
+		$this->load->view('frontend/template/aside');
+		$this->load->view('frontend/template/footer');
+		$this->load->view('frontend/template/html-footer'); 
+
+	}
+
+	public function detalhe_produto($idproduto){
+
+		$dados = array(
+			'detalheproduto'	=> $this->modelprodutos->detalhe_produto($idproduto),
+			'loja' 				=> $this->loja, 
+			'cores'				=> $this->cores
+		) ;
+
+		$this->load->view('frontend/template/html-header', $dados);
+		$this->load->view('frontend/template/header');
+		$this->load->view('frontend/produto-detalhes');
 		$this->load->view('frontend/template/aside');
 		$this->load->view('frontend/template/footer');
 		$this->load->view('frontend/template/html-footer'); 

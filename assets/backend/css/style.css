@@ -89,7 +89,14 @@
 }
 
 .boas-vindas{
-	text-align:  center; 
+		text-align:  center; 
+}
+
+h4.modal-title{
+		color: red;
+	  font-size: 20px; 
+	  text-align: center; 
+
 }
 
 

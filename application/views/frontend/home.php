@@ -29,9 +29,10 @@ if ($destaques):
                 <?php 
                 foreach ($destaques as $destaque):  
                     $img= $destaque->img; 
+                    $idproduto = $destaque->idproduto; 
                     $noproduto = $destaque->nomeproduto ;
-                    $vlproduto = $destaque->vlpreco; 
-                    $vlpromocao= $destaque->vlpromocao;
+                    $vlproduto = number_format($destaque->vlpreco,2,",","."); 
+                    $vlpromocao= number_format($destaque->vlpromocao,2,",",".");
                 ?>
                     <li>
                         <img src="<?php echo $img; ?>" >
@@ -68,7 +69,7 @@ if ($destaques):
 
                             </h1>
                             <h4 class="caption subtitle">Verifique desconto na etiqueta*</h4>
-                            <a class="caption button-radius" href="#">
+                            <a class="caption button-radius" href="<?php echo base_url('home/detalhe_produto/').md5($idproduto); ?>">
                                 <span class="icon"></span>
                                 Mais detalhes
                             </a>
@@ -161,9 +162,10 @@ foreach ($categorias as $categoria):
                                 <?php
                                 foreach ($produtoscategoria as $pro_cat): 
                                    $descricao=substr($pro_cat->nomeproduto,0,50).'...'; 
+                                   $idproduto = $pro_cat->idproduto; 
                                    $img_pro_cat = $pro_cat->img;
-                                   $vlpreco     = $pro_cat->vlpreco;
-                                   $vlpromocao     = $pro_cat->vlpromocao;
+                                   $vlpreco     = number_format($pro_cat->vlpreco,2,",",".");
+                                   $vlpromocao  = number_format($pro_cat->vlpromocao,2,",",".");
 
                                     // vamos seleciona produtos da categoria 
                                    if ($pro_cat->idcategoria == $categoria->id): 
@@ -172,7 +174,7 @@ foreach ($categorias as $categoria):
                                             <div class="product-f-image img-fluid">
                                                 <img src="<?php echo $img_pro_cat; ?>" alt="">
                                                 <div class="product-hover">
-                                                    <a href="#" class="view-details-link"><i class="fa fa-link"></i>+ detalhes </a>
+                                                    <a href="<?php echo base_url('home/detalhe_produto/').md5($idproduto); ?>" class="view-details-link"><i class="fa fa-link"></i>+ detalhes </a>
                                                 </div>
                                             </div>
                                             

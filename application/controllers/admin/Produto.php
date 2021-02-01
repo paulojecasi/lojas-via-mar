@@ -126,11 +126,9 @@ class Produto extends CI_Controller {
 	public function inserir()
 	{
 		// validar form
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules(
-		'txt-desproduto',          // name do input (template)
-		'Descrição do Produto'); 
+		$this->load->library('form_validation'); 
 		$this->form_validation->set_rules('nomeproduto','Nome do Produto','required|min_length[3]');
+		$this->form_validation->set_rules('txt-desproduto','Descrição do Produto');
 		$this->form_validation->set_rules('corproduto','Cor do Produto','required');
 
 		$this->form_validation->set_rules('idcategoria','Categoria do Produto','required');
