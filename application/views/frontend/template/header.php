@@ -1,35 +1,6 @@
 <?php
 foreach ($loja as $lojasviamar):
 ?>
-   
-    <div class="header-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="header-right text-right">
-                        <?php
-                        if ($lojasviamar->facebooksite ==1):
-                        ?>
-                            <a href="/www.facebook.com.br">
-                                <i class="fa fa-facebook fa-1x"></i>
-                            </a>
-                        <?php
-                        endif;
-                        
-                        if ($lojasviamar->instagramsite ==1):
-                        ?> 
-                            <a href="/www.instagram.com">
-                                <i class="fa fa-instagram fa-1x"></i>
-                            </a>
-                        <?php
-                        endif;
-                        ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End header area -->
-
 
     <!--
     <div class="site-branding-area">
@@ -40,11 +11,19 @@ foreach ($loja as $lojasviamar):
                 <!-- imagens serão ajustadas Pc ou Mobile - responsive.css PJCS  --> 
                 <div class="col-sm-12">
                     <div class="logo text-center">
-                        <h1> <a href="<?php echo base_url('home'); ?>"><img src="<?php echo base_url('/assets/frontend/img/logo4.png') ?>" width="1250" ></a></h1>
+                        <h1> 
+                            <a href="<?php echo base_url('home'); ?>">
+                                <img class="img-fluid" src="<?php echo base_url('/assets/frontend/img/logo44.png') ?>" >
+                            </a>
+                        </h1>
                     </div>
 
                     <div class="logo2 text-center">
-                        <h1> <a href="<?php echo base_url('home'); ?>"><img src="<?php echo base_url('/assets/frontend/img/logo5.png') ?>" width="1300" ></a></h1>
+                        <h1> 
+                            <a href="<?php echo base_url('home'); ?>">
+                                <img src="<?php echo base_url('/assets/frontend/img/logo55.png') ?>" width="1300" >
+                            </a>
+                        </h1>
                     </div>
                 </div>              
             </div>
@@ -59,6 +38,7 @@ foreach ($loja as $lojasviamar):
                     <div class = "navbar-header">
                         <button  type="button"  class="navbar-toggle" data-toggle="collapse"  data-target=".navbar-collapse ">
                             <span  class= "sr-only" > Alternar navegação </span>
+                            <span  class= "icon-bar"> </span>
                             <span  class= "icon-bar"> </span>
                             <span  class= "icon-bar"> </span>
                             <span  class= "icon-bar"> </span>
@@ -83,7 +63,7 @@ foreach ($loja as $lojasviamar):
                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <li>
                                             <?php 
-                                            $this->load->view('frontend/template/categorias-menu');
+                                            $this->load->view('frontend/static/categorias-menu');
                                             ?>
 
                                         </li>
@@ -165,7 +145,7 @@ foreach ($loja as $lojasviamar):
                             <ul class="dropdown-menu">
                                 <li>
                                     <?php 
-                                    $this->load->view('frontend/template/categorias-menu');
+                                    $this->load->view('frontend/static/categorias-menu');
                                     ?>
 
                                 </li>

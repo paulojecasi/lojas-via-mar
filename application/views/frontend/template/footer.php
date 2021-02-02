@@ -137,7 +137,7 @@ endif;
                         <li>
                            
                             <?php 
-                                $this->load->view('frontend/template/categorias-menu');
+                                $this->load->view('frontend/static/categorias-menu');
                             ?>
                         
                         </li>
@@ -154,7 +154,7 @@ endif;
 <div class="footer-bottom-area">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 col-sm-8">
                 <div class="copyright">
                     <p>&copy; <?php echo $lojasviamar->nome ?>
                         <?php
@@ -171,13 +171,20 @@ endif;
                 </div>
             </div>
             
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-4">
                 <div class="footer-card-icon">
                     <i class="fa fa-cc-discover"></i>
                     <i class="fa fa-cc-mastercard"></i>
                     <i class="fa fa-cc-paypal"></i>
                     <i class="fa fa-cc-visa"></i>
                 </div>
+            </div>
+
+            <div class="col-md-12 text-center cactosdev">
+                <p class="des-por"> Desenvolvido por </p>
+                <h3> <img class="img-fluid cacto" src=" <?php echo base_url('assets/frontend/img/cactosdev.png'); ?>"> Cactos Dev </h3>
+                <p> <img class="img-fluid email" src=" <?php echo base_url('assets/frontend/img/email.png'); ?>"> cactosdev@gmail.com 
+                <img class="img-fluid whats" src=" <?php echo base_url('assets/frontend/img/whats.png'); ?>"> (86) 99973 3764 - (86) 99401 5454 </p>
             </div>
         </div>
     </div>
@@ -186,10 +193,10 @@ endif;
 
 
 <?php endforeach ?>
-<div >
+<div class="rela" >
     <a class="scrollToTop" > <i class="fa fa-angle-double-up"></i> <br> Topo </a>
     <br> 
-  
+
     <a class="scrollToHome" href = "<?php echo base_url('home'); ?>" > <i class="fa fa-home"></i> <br> Inicio  </a>
 </div>
 

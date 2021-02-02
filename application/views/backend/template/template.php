@@ -50,6 +50,10 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
+                            <a href="<?php echo base_url('admin/loja') ?>"><i class="fa fa-toggle-on"></i> Loja </a>
+                        </li>
+
+                        <li>
                             <a href="<?php echo base_url('admin/categoria') ?>"><i class="fa fa-sitemap fa-fw"></i> Categorias</a>
                         </li>
                         <li>

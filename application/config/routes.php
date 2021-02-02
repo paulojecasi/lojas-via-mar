@@ -54,7 +54,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 //------------------------------- = 'controlador/metodo/var1/var2 - PJCS'
 $route['categoria/(:num)/(:any)'] = 'categorias/index/$1/$2';
-$route['postagem/(:num)/(:any)']  = 'postagens/index/$1/$2';
 $route['autor/(:num)/(:any)']     = 'sobrenos/autores/$1/$2';
 //--------------------= 'dir/controlador/metodo - PJCS'
 $route['admin/login'] = 'admin/usuarios/page_login';

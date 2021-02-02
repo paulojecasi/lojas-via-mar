@@ -128,7 +128,7 @@ if ($categorias):
     <div class="product-big-title-area">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-sm-12">
                     <div class="product-bit-title text-center">
                         <h2> Mais Produtos em Destaque </h2>
                     </div>
@@ -149,7 +149,7 @@ foreach ($categorias as $categoria):
            
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-sm-12">
                         <div class="latest-product">
                            
                             <a href="<?php echo base_url('home/lista_produtos/').md5($idcategoria); ?>"> 

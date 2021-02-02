@@ -44,7 +44,7 @@
             			<h2> <?php echo $nome ?>  </h2>
 
 	                
-	                <div class="col-lg-5">
+	                <div class="col-sm-5">
 	                    <a href = "#"> 
 	      
                         <h1 class="img-detalhe-produto">
@@ -54,7 +54,7 @@
 	                    </a>
 	                </div>
 		
-	                <div class="col-lg-7 descricao-pro">
+	                <div class="col-sm-7 descricao-pro">
 	                	 
                         <label class="label-des"> Descrição: </label>
                         <p class="paragraf-des"> <?php echo $descricao; ?> </p> 

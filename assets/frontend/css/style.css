@@ -46,7 +46,7 @@ body { font-family:Arial, Helvetica, sans-serif; }
 
 .area-logo{
   background: none repeat scroll 0 0 #f4f4f4;
-    /*background: #FFFF00;*/
+  background: blue;
 }
 .user-menu ul {
     list-style: outside none none;
@@ -86,7 +86,7 @@ body { font-family:Arial, Helvetica, sans-serif; }
 }
 
 .mainmenu-area {
-    background: none repeat scroll 0 0 #f4f4f4; 
+    background: none repeat scroll 0 0 #00008B; 
     /*background: #FFFF00;  */
     font-family: "Roboto Condensed",sans-serif;
     text-transform: uppercase;
@@ -96,20 +96,22 @@ body { font-family:Arial, Helvetica, sans-serif; }
 
 .logo h1 {
     font-size: 40px;
-
-    margin: -7px 0;
+    margin: 0px 0;
     font-weight: 400; 
-
 
 }
 .logo h1 a {
     color: #999;
-
 }
 
 .logo h1 a:hover {text-decoration: none;opacity: .7}
 .logo h1 a span {
     color: #e67e22;
+}
+
+.logo img{
+  right: 100%;
+  width: 100%; 
 }
 
 
@@ -161,17 +163,54 @@ body { font-family:Arial, Helvetica, sans-serif; }
     background: none repeat scroll 0 0 #000;
 }
 
+.mainmenu-area {
+  background-color: blue; 
+  border-bottom: 5px solid; 
+  border-color: #fff; 
+}
 
+.mainmenu-area ul.navbar-nav{
+  background-color: blue; 
+}
 .mainmenu-area ul.navbar-nav li a {
-    color: #6e6a6a;
+    color: #fff;
     font-size: 16px;
     padding: 10px;
-    margin-top: -8px; 
-    padding-left: 20px;  
-    padding-right: 20px; 
-    padding-bottom: 7px; 
+    margin-top: 0px; 
+    padding-top: 5px; 
+    padding-left: 15px;  
+    padding-right: 15px; 
+    padding-bottom: 5px; 
     text-transform: none;
 }
+
+/*pjcs*/
+.mainmenu-area ul.navbar-nav li a:hover{
+    background: #00008B; 
+    color:#FFF;
+}
+
+/*PJCS - itens do menu PRODUTO*/ 
+.mainmenu-area ul.navbar-nav li ul li a{
+    color: #000;
+    background: #fff; 
+}
+.mainmenu-area ul.navbar-nav li ul li a:hover{
+    color: #999;
+    background: #fff; 
+}
+
+.mainmenu-area ul.navbar-nav li:hover a.nav-aba, .mainmenu-area ul.navbar-nav li.active a 
+{
+  background: #00008B; 
+  color:#FFF;
+
+}
+
+.mainmenu-area .nav > li > a:focus {
+  color: #00008B;
+}
+
 
 /*pjcs - parecer os itens no menu ao passar o mouse por cima */
 .mainmenu-area ul.navbar-nav li div{
@@ -195,33 +234,6 @@ body { font-family:Arial, Helvetica, sans-serif; }
 }
 .mainmenu-area ul.navbar-nav li:hover div {
     display: block;
-}
-
-/*pjcs*/
-.mainmenu-area ul.navbar-nav li a:hover{
-    background: #A9A9A9; 
-    color:#FFF;
-}
-/*PJCS*/ 
-.mainmenu-area ul.navbar-nav li ul li a:hover{
-    color: #000;
-    background: #DCDCDC; 
-}
-
-.mainmenu-area ul.navbar-nav li ul li a:hover{
-    color: #000;
-    background: #DCDCDC; 
-}
-
-.mainmenu-area ul.navbar-nav li:hover a.nav-aba, .mainmenu-area ul.navbar-nav li.active a 
-{
-  background: #A9A9A9; 
-  color:#FFF;
-
-}
-
-.mainmenu-area .nav > li > a:focus {
-  color: #0000FF;
 }
 
 
@@ -1336,13 +1348,21 @@ h2.display4:hover {
 
 .menu-itens-mobile div li{
   padding: 15px;
+  background-color: #fff; 
 }
 .menu-itens-mobile div li a.dropdown-item{
   font-size: 20px;
   margin-top: 10px; 
   border-bottom: 1px solid;
-  color:#0000FF ;
+  background-color: #fff; 
+  color:blue ;
 }
+
+
+.menu-mobile div.navbar-header button{
+  background-color: #fff;
+}
+
 
 .nav-mobile button {
    width: 100%;
@@ -1417,10 +1437,13 @@ h2.display4:hover {
 html {
   scroll-behavior: smooth;
 }
+.rela{
+  position:relative;
+}
 .scrollToTop{   
   position:fixed;
-  top:75px; 
-  right:40px;
+  top:225px; 
+  right:30px;
   display:none;
   font-size: 13px;
   text-align: center; 
@@ -1447,8 +1470,8 @@ a.scrollToTop{
 /* IR PARA O HOME DA PAGINA  - PJCS */
 .scrollToHome{   
   position:fixed;
-  top:150px; 
-  right:36px;
+  top:300px; 
+  right:26px;
   display:none;
   font-size: 13px;
   text-align: center; 
@@ -1471,7 +1494,37 @@ a.scrollToHome{
 }
 /* FIM IR HOME */ 
 
+.cactosdev{
+  width: 100%; 
+  height: 100%;
+}
 
+.cactosdev p{
+  margin-top: -12px;  
+  margin-bottom: -10px;
+}
+
+.cactosdev h3{
+  font-size: 20px; 
+}
+
+.cactosdev p.des-por{
+  margin-top: 5px; 
+  margin-bottom: -2px;  
+  font-size: 10px; 
+  margin-left: 18px; 
+}
+
+.cactosdev img.cacto{
+  margin-top: -18px; 
+  width: 35px;
+  height: 30px; 
+}
+
+.cactosdev img.email, img.whats{
+  width: 20px;
+  height: 20px; 
+}
 
 
 
