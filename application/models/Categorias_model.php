@@ -60,6 +60,7 @@ class Categorias_model extends CI_Model {
 
 	}
 
+	// para carregamento statico na pagina 
 	public function carrega_categorias_html(){
 
 		$this->db->order_by('titulo','ASC'); 
@@ -75,7 +76,7 @@ class Categorias_model extends CI_Model {
 		file_put_contents("application"	. DIRECTORY_SEPARATOR . 
 											"views" 			. DIRECTORY_SEPARATOR . 	
 											"frontend" 		. DIRECTORY_SEPARATOR .
-											"template" 		. DIRECTORY_SEPARATOR .
+											"static" 		. DIRECTORY_SEPARATOR .
 											"categorias-menu.php",$html_cat); 
 
 	}

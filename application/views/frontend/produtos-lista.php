@@ -33,6 +33,7 @@ endforeach;
                 <div class="col-md-3 col-sm-6">
                     <a href = "<?php echo base_url('home/detalhe_produto/').md5($idproduto); ?>"> 
                         <div class="single-shop-product">
+                            <!-- STATICO --> 
                             <div class="product-upper">
                                 <h1 class="img-lista-produto">
                                     <?php echo img($img,'class="img-fluid"'); ?>
@@ -60,6 +61,8 @@ endforeach;
                                 endif;
                                 ?>
                             </div>  
+                            
+                            <!-- FIM ESTATICO --> 
                                                  
                         </div>
                     </a>

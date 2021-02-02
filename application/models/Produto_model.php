@@ -196,4 +196,81 @@ class Produto_model extends CI_Model
 	}
 
 
+	// ===  para carregamento statico no site 
+	public function carrega_produto_promocao_html(){
+
+		$this->db->where('vlpromocao > ',0);
+		$this->db->where('vlpromocao < vlpreco'); 
+		$this->db->order_by('desproduto','ASC'); 
+		$produto_pro = $this->db->get('produto')->result();  
+
+		$html_promocao = []; 
+
+		foreach ($produto_pro as $row){
+			$img 				= $row->img; 
+			$idproduto 	= $row->idproduto;
+			$nome  			= $row->nomeproduto;
+			$imagem = '<?php echo img(\''.$img.'\',\'class="img-fluid"\'); ?>';
+			$vlpromocao	= $row->vlpromocao; 
+			$vlpreco		= $row->vlpreco;
+
+			array_push($html_promocao,' 
+				<div class="col-md-3 col-sm-6">
+					<a href = "<?php echo base_url(\'home/detalhe_produto/'.md5($idproduto).'\'); ?>"> 
+				
+					    <div class="single-shop-product">
+					        <div class="product-upper">
+					            <h1 class="img-lista-produto">
+					                '.$imagem.'
+					            </h1>
+
+					        </div>
+
+					        <br> 
+					        <h2>
+					        	<a href="<?php echo base_url(\'home/detalhe_produto/'.md5($idproduto).'\'); ?>"> <?php echo \''.$nome.'\'; ?>
+					        	</a>
+					        </h2>
+
+					       
+					        <div class="product-carousel-price">
+					            <?php 
+					            if ('.$vlpromocao.' > 0):
+					            ?>
+					                <del>
+					                    <?php echo "De R$ '.$vlpreco.' por" ?>
+					                </del>
+					                <br> 
+					                <ins>
+					                	<?php echo "R$ '.$vlpromocao.'" ?> 
+					                </ins>
+					 
+					            <?php
+					            else:
+					            ?>
+					                <br> 
+					                <ins>
+					                	<?php echo "R$ '.$vlpreco.'" ?> 
+					                </ins>
+					            <?php
+					            endif;
+					            ?>
+					       		</div>  
+					                             
+					    	</div>
+						</a>
+					</div>
+    	');
+
+		}
+
+		file_put_contents("application"	. DIRECTORY_SEPARATOR . 
+											"views" 			. DIRECTORY_SEPARATOR . 	
+											"frontend" 		. DIRECTORY_SEPARATOR .
+											"static" 		. DIRECTORY_SEPARATOR .
+											"produtos-promocao-st.php",$html_promocao); 
+
+	}
+
+
 }
