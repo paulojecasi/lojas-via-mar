@@ -39,7 +39,7 @@
             ?>
 
 
-            		<div class="produto-detalhes">
+            	<div class="produto-detalhes">
 
             			<h2> <?php echo $nome ?>  </h2>
 
@@ -74,7 +74,7 @@
                         <label class="label-des"> Peso: </label>
                         <p class="paragraf-des"> <?php echo $vlpeso; ?> <b> kg </b> </p> 
 	                </div>
-	              </div>
+	           </div>
 	            
 
             <?php

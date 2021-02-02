@@ -289,13 +289,18 @@ div.coupon input[type="text"] {
     font-size: 22px;
   }
 
-.nossa-localizacao h3{
+  .nossa-localizacao h3{
     font-size: 18px; 
     padding: 3px; 
   }
   .nossa-localizacao iframe{
     min-height: 100%;
     min-width: 100%; 
+  }
+
+  .produto-detalhes div.descricao-pro label.label-des{
+    font-size: 17px; 
+
   }
 
 }

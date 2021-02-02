@@ -183,5 +183,13 @@ endif;
     </div>
 </div> <!-- End footer bottom area -->
 
+
+
 <?php endforeach ?>
+<div >
+    <a class="scrollToTop" > <i class="fa fa-angle-double-up"></i> <br> Topo </a>
+    <br> 
+  
+    <a class="scrollToHome" href = "<?php echo base_url('home'); ?>" > <i class="fa fa-home"></i> <br> Inicio  </a>
+</div>
 

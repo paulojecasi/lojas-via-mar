@@ -218,5 +218,7 @@ foreach ($categorias as $categoria):
 
         <?php
         endif; 
+        
 endforeach;
 ?>
+

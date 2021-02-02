@@ -1413,6 +1413,65 @@ h2.display4:hover {
   margin-top: -5px; 
 }
 
+/* IR PARA O TOPO DA PAGINA  - PJCS */
+html {
+  scroll-behavior: smooth;
+}
+.scrollToTop{   
+  position:fixed;
+  top:75px; 
+  right:40px;
+  display:none;
+  font-size: 13px;
+  text-align: center; 
+  text-decoration: none; 
+  text-decoration-style: none; 
+  list-style: none; 
+  overflow: hidden;
+}
+
+a.scrollToTop{   
+
+  text-align: center; 
+  text-decoration: none; 
+  text-decoration-style: none; 
+  list-style: none; 
+}
+
+.scrollToTop i{ 
+  font-size: 50px;  
+
+}
+/* FIM IR TOPO */ 
+
+/* IR PARA O HOME DA PAGINA  - PJCS */
+.scrollToHome{   
+  position:fixed;
+  top:150px; 
+  right:36px;
+  display:none;
+  font-size: 13px;
+  text-align: center; 
+  text-decoration: none; 
+  text-decoration-style: none; 
+  list-style: none; 
+}
+
+a.scrollToHome{   
+
+  text-align: center; 
+  text-decoration: none; 
+  text-decoration-style: none; 
+  list-style: none; 
+}
+
+.scrollToHome i{ 
+  font-size: 40px;  
+
+}
+/* FIM IR HOME */ 
+
+
 
 
 
