@@ -69,6 +69,7 @@ class Produto_model extends CI_Model
 
 	}
 
+	/* substituido por listagem estatica (carrega_produto_promocao_html) - PJCS  
 	public function listar_produtos_promocao()
 	{
 
@@ -76,6 +77,153 @@ class Produto_model extends CI_Model
 		$this->db->where('vlpromocao < vlpreco'); 
 		$this->db->order_by('desproduto','ASC'); 
 		return $this->db->get('produto')->result(); 
+
+	}
+	*/ 
+
+	// ===  para carregamento statico no site 
+	public function carrega_produto_promocao_html(){
+		$this->valida_produtos(); 
+		$this->db->where('vlpromocao > ',0);
+		$this->db->where('vlpromocao < vlpreco'); 
+		$this->db->order_by('desproduto','ASC'); 
+		$produto_pro = $this->db->get('produto')->result();  
+
+		$html_promocao = []; 
+
+		foreach ($produto_pro as $row){
+			$img 				= $row->img; 
+			$idproduto 	= $row->idproduto;
+			$nome  			= $row->nomeproduto;
+			$imagem = '<?php echo img(\''.$img.'\',\'class="img-fluid"\'); ?>';
+			$vlpromocao	= number_format($row->vlpromocao,2,",",".");
+			$vlpreco		= number_format($row->vlpreco,2,",",".");
+
+			array_push($html_promocao,' 
+				<div class="col-md-3 col-sm-6">
+					<a href = "<?php echo base_url(\'home/detalhe_produto/'.md5($idproduto).'\'); ?>"> 
+				
+					    <div class="single-shop-product">
+					        <div class="product-upper">
+					            <h1 class="img-lista-produto">
+					                '.$imagem.'
+					            </h1>
+					        </div>
+
+					        <br> 
+					        <h2>
+					        	<a href="<?php echo base_url(\'home/detalhe_produto/'.md5($idproduto).'\'); ?>"> <?php echo \''.$nome.'\'; ?>
+					        	</a>
+					        </h2>
+
+					        <div class="product-carousel-price">
+					            <?php 
+					            if ("'.$vlpromocao.' > 0"):
+					            ?>
+					                <del>
+					                    <?php echo "De R$ '.$vlpreco.' por" ?>
+					                </del>
+					                <br> 
+					                <ins>
+					                	<?php echo "R$ '.$vlpromocao.'" ?> 
+					                </ins>
+					 
+					            <?php
+					            else:
+					            ?>
+					                <br> 
+					                <ins>
+					                	<?php echo "R$ '.$vlpreco.'" ?> 
+					                </ins>
+					            <?php
+					            endif;
+					            ?>
+					       		</div>  
+					                             
+					    	</div>
+						</a>
+					</div>
+    	');
+		}
+
+		file_put_contents("application"	. DIRECTORY_SEPARATOR . 
+											"views" 			. DIRECTORY_SEPARATOR . 	
+											"frontend" 		. DIRECTORY_SEPARATOR .
+											"static" 			. DIRECTORY_SEPARATOR .
+											"produtos-promocao-st.php",$html_promocao); 
+
+	}
+
+	// ===  para carregamento statico no site 
+	public function carrega_produto_destaque_html(){
+
+		$this->valida_produtos(); 
+		$this->db->where('produtodestaque=',1); 
+		$this->db->order_by('desproduto','ASC'); 
+		$produto_des= $this->db->get('produto')->result();  
+
+		$html_destaque = []; 
+
+		foreach ($produto_des as $row):
+			$img 				= $row->img; 
+			$idproduto 	= $row->idproduto;
+			$nome  			= '<?php echo substr(wordwrap("'.$row->nomeproduto.'", 33,"<br />\n"),0,100); ?>';
+			$imagem = '<?php echo "'.$img.'"; ?>';
+			$vlpromocao	= number_format($row->vlpromocao,2,",",".");
+			$vlpreco		= number_format($row->vlpreco,2,",",".");
+
+			array_push($html_destaque,' 
+				<li>
+          <img src="'.$imagem.'" >
+          <div class="caption-group">
+              <h2 class="caption title title-product-destaque">
+              		'.$nome.'
+                   <br>
+              </h2>
+              
+              <br> 
+              <h1 class="caption title" >
+                  <?php 
+                  if ("'.$vlpromocao.'" > "0,00" && "'.$vlpromocao.'" < "'.$vlpreco.'"):
+                  ?> 
+                      <span class="primary"> 
+                          <?php echo "De R$ '.$vlpreco.'"; ?>
+                          <br> 
+                          <strong>
+                              <?php echo "Por R$ '.$vlpromocao.'"; ?>
+                          </strong>
+                      </span>
+                  <?php
+                  else:
+                  ?>
+                      <span class="primary"> 
+                          Apenas R$
+                          <strong> <?php echo "'.$vlpreco.'"; ?> </strong>
+                      </span>
+                  <?php
+                  endif;
+                  ?>
+
+              </h1>
+           
+              <h4 class="caption subtitle"> </h4>
+              <a class="caption button-radius" href="<?php echo base_url(\'home/detalhe_produto/'.md5($idproduto).'\'); ?>">
+                  <span class="icon"></span>
+                  Mais detalhes
+              </a>
+          </div>
+      </li>
+				
+
+    	'); 
+
+		endforeach;
+
+		file_put_contents("application"	. DIRECTORY_SEPARATOR . 
+											"views" 			. DIRECTORY_SEPARATOR . 	
+											"frontend" 		. DIRECTORY_SEPARATOR .
+											"static" 			. DIRECTORY_SEPARATOR .
+											"produtos-destaque-st.php",$html_destaque); 
 
 	}
 
@@ -196,81 +344,6 @@ class Produto_model extends CI_Model
 	}
 
 
-	// ===  para carregamento statico no site 
-	public function carrega_produto_promocao_html(){
-
-		$this->db->where('vlpromocao > ',0);
-		$this->db->where('vlpromocao < vlpreco'); 
-		$this->db->order_by('desproduto','ASC'); 
-		$produto_pro = $this->db->get('produto')->result();  
-
-		$html_promocao = []; 
-
-		foreach ($produto_pro as $row){
-			$img 				= $row->img; 
-			$idproduto 	= $row->idproduto;
-			$nome  			= $row->nomeproduto;
-			$imagem = '<?php echo img(\''.$img.'\',\'class="img-fluid"\'); ?>';
-			$vlpromocao	= $row->vlpromocao; 
-			$vlpreco		= $row->vlpreco;
-
-			array_push($html_promocao,' 
-				<div class="col-md-3 col-sm-6">
-					<a href = "<?php echo base_url(\'home/detalhe_produto/'.md5($idproduto).'\'); ?>"> 
-				
-					    <div class="single-shop-product">
-					        <div class="product-upper">
-					            <h1 class="img-lista-produto">
-					                '.$imagem.'
-					            </h1>
-
-					        </div>
-
-					        <br> 
-					        <h2>
-					        	<a href="<?php echo base_url(\'home/detalhe_produto/'.md5($idproduto).'\'); ?>"> <?php echo \''.$nome.'\'; ?>
-					        	</a>
-					        </h2>
-
-					       
-					        <div class="product-carousel-price">
-					            <?php 
-					            if ('.$vlpromocao.' > 0):
-					            ?>
-					                <del>
-					                    <?php echo "De R$ '.$vlpreco.' por" ?>
-					                </del>
-					                <br> 
-					                <ins>
-					                	<?php echo "R$ '.$vlpromocao.'" ?> 
-					                </ins>
-					 
-					            <?php
-					            else:
-					            ?>
-					                <br> 
-					                <ins>
-					                	<?php echo "R$ '.$vlpreco.'" ?> 
-					                </ins>
-					            <?php
-					            endif;
-					            ?>
-					       		</div>  
-					                             
-					    	</div>
-						</a>
-					</div>
-    	');
-
-		}
-
-		file_put_contents("application"	. DIRECTORY_SEPARATOR . 
-											"views" 			. DIRECTORY_SEPARATOR . 	
-											"frontend" 		. DIRECTORY_SEPARATOR .
-											"static" 		. DIRECTORY_SEPARATOR .
-											"produtos-promocao-st.php",$html_promocao); 
-
-	}
 
 
 }

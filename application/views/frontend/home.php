@@ -27,57 +27,11 @@ if ($destaques):
             <ul class="" id="bxslider-home4">
 
                 <?php 
-                foreach ($destaques as $destaque):  
-                    $img= $destaque->img; 
-                    $idproduto = $destaque->idproduto; 
-                    $noproduto = $destaque->nomeproduto ;
-                    $vlproduto = number_format($destaque->vlpreco,2,",","."); 
-                    $vlpromocao= number_format($destaque->vlpromocao,2,",",".");
+                        
+                   $this->load->view('frontend/static/produtos-destaque-st');
+                        
                 ?>
-                    <li>
-                        <img src="<?php echo $img; ?>" >
-                        <div class="caption-group">
-                            <h2 class="caption title title-product-destaque">
-                            
-                                <?php
-                                //quebra linha a casa 33 crt, maximo 100 crt - PJCS 
-                                echo substr(wordwrap($noproduto, 33,"<br />\n"),0,100);
-                                ?> <br>
-                            </h2>
-                            <br> 
-                            <h1 class="caption title" >
-                                <?php 
-                                if ($vlpromocao > 0 && $vlpromocao < $vlproduto):
-                                ?> 
-                                    <span class="primary"> 
-                                        <?php echo "De R$ ".$vlproduto; ?>
-                                        <br> 
-                                        <strong>
-                                            <?php echo "Por R$ ".$vlpromocao; ?>
-                                        </strong>
-                                    </span>
-                                <?php
-                                else:
-                                ?>
-                                    <span class="primary"> 
-                                        Apenas R$
-                                        <strong> <?php echo $vlproduto; ?> </strong>
-                                    </span>
-                                <?php
-                                endif;
-                                ?>
-
-                            </h1>
-                            <h4 class="caption subtitle">Verifique desconto na etiqueta*</h4>
-                            <a class="caption button-radius" href="<?php echo base_url('home/detalhe_produto/').md5($idproduto); ?>">
-                                <span class="icon"></span>
-                                Mais detalhes
-                            </a>
-                        </div>
-                    </li>
-                <?php
-                endforeach;
-                ?> 
+                   
             </ul>
         </div>
         <!-- ./Slider -->

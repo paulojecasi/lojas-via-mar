@@ -182,6 +182,8 @@ class Produto extends CI_Controller {
 
 				//-carregar html de produtos em promoção  
 				$this->modelproduto->carrega_produto_promocao_html(); 
+				//-carregar html de produtos em destaque   
+				$this->modelproduto->carrega_produto_destaque_html(); 
 				
 			} else {
 
@@ -223,6 +225,9 @@ class Produto extends CI_Controller {
 			$this->session->set_userdata('mensagem',$mensagem); 
 			//-carregar html de produtos em promoção  
 			$this->modelproduto->carrega_produto_promocao_html();
+			//-carregar html de produtos em destaque   
+			$this->modelproduto->carrega_produto_destaque_html(); 
+
 		} else {
 			$mensagem ="Erro ao Excluir Produto!"; 
 			$this->session->set_userdata('mensagemErro',$mensagem);
@@ -290,7 +295,9 @@ class Produto extends CI_Controller {
 				$mensagem ="Produto Alterado Com Sucesso !"; 
 				$this->session->set_userdata('mensagem',$mensagem);
 				//-carregar html de produtos em promoção  
-				$this->modelproduto->carrega_produto_promocao_html(); 
+				$this->modelproduto->carrega_produto_promocao_html();
+				//-carregar html de produtos em destaque   
+				$this->modelproduto->carrega_produto_destaque_html();  
 				
 			} else {
 
