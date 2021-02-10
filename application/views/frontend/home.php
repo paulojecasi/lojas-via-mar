@@ -1,5 +1,5 @@
 <?php 
-if ($destaques):
+ 
    
     foreach ($loja as $lojasviamar):
         if ($lojasviamar->promocaosite == 1):
@@ -38,10 +38,7 @@ if ($destaques):
     </div>
         
    
-<?php
 
-endif;
-?> 
 
 <div class="promo-area">
     <div class="zigzag-bottom"></div>

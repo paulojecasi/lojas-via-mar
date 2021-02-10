@@ -8,10 +8,7 @@ class Home extends CI_Controller {
 
 		parent::__construct(); 
 
-		// como vai aparecer em todas a paginas, chamamos o model aqui no construtor - PJCS 
-		// vamos chamar o model "Categorias_model" para listagem dos models cadastrados
-				// como fosse:
-				// modelcategorias = new Categorias_model(); 
+
 		$this->load->model('categorias_model','modelcategorias');
 		$this->load->model('produto_model','modelprodutos'); 
 		$this->load->model('loja_model','modelloja'); 
@@ -20,7 +17,7 @@ class Home extends CI_Controller {
 
 				// vamos cria uma var "$categorias" e carrega-la com o resultado 
 		$this->categorias = $this->modelcategorias->listar_categorias(); 
-		$this->destaques  = $this->modelprodutos->produtos_destaques(); 
+		//$this->destaques  = $this->modelprodutos->produtos_destaques(); 
 		$this->produtosdacategoria = $this->modelprodutos->produtos_da_categoria(); 
 		$this->loja 			= $this->modelloja->listar_loja(); 
 		$this->cores 			= $this->modelcores->listar_cores(); 
@@ -33,23 +30,26 @@ class Home extends CI_Controller {
 		// vamos carregar os "$dados" com a variavel "$categoria" carregado no CONSTRUTOR
 		$dados = array(
 			'categorias' 	=> $this->categorias, 
-			'destaques' 	=>	$this->destaques,
+			//'destaques' 	=>	$this->destaques,
 			'produtoscategoria'	=> $this->produtosdacategoria,
 			'loja' 				=> $this->loja
 		) ;
 
+		foreach ($this->loja as $lojasviamar){
+        $siteonline =$lojasviamar->siteonline;
+    } 
 
-		// dados a serem enviados para o cabeçalho
-		//$dados['nomeblog'] 	= "Blog do Paulão"; 
-		//$dados['titulo'] 		= 'Pagina Inicial';
-		//$dados['subtitulo'] = 'Postagens Recentes';
-
-		$this->load->view('frontend/template/html-header', $dados);
-		$this->load->view('frontend/template/header');
-		$this->load->view('frontend/home');
-		$this->load->view('frontend/template/aside');
-		$this->load->view('frontend/template/footer');
-		$this->load->view('frontend/template/html-footer'); 
+    if ($siteonline != 1){
+    	$this->load->view('frontend/template/html-header', $dados);
+    	$this->load->view('frontend/template/siteoff');
+    }else{
+			$this->load->view('frontend/template/html-header', $dados);
+			$this->load->view('frontend/template/header');
+			$this->load->view('frontend/home');
+			$this->load->view('frontend/template/aside');
+			$this->load->view('frontend/template/footer');
+			$this->load->view('frontend/template/html-footer'); 
+		} 
 
 	}
 
@@ -73,10 +73,11 @@ class Home extends CI_Controller {
 	}
 
 	public function lista_produtos_promocao(){
+		/* agora os produtos em promoção soa carregados estaticamente 
+		'listaprodutosprom'	=> $this->modelprodutos->listar_produtos_promocao(),
+		*/
 
-		
 		$dados = array(
-			'listaprodutosprom'	=> $this->modelprodutos->listar_produtos_promocao(),
 			'loja' 				=> $this->loja
 		) ;
 

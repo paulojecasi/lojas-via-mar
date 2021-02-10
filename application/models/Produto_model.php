@@ -315,6 +315,7 @@ class Produto_model extends CI_Model
 	}
 
 	// lista os produtos em destaques no site 
+	/* agora é estatico, substituido por "carrega_produto_destaque_html()" - PJCS
 	public function produtos_destaques(){
 
 		$this->valida_produtos(); 
@@ -323,6 +324,7 @@ class Produto_model extends CI_Model
 		return  $this->db->get('produto')->result();
 
 	}
+	*/
 
 	// pra listar as categorias que ficarao em destaques no site
 	public function produtos_da_categoria(){	
