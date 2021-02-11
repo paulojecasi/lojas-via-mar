@@ -63,7 +63,7 @@
                             <a href="<?php echo base_url('admin/usuarios') ?>"><i class="fa fa-wrench fa-fw"></i> Usuários</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-television"></i> Ir para o Site</a>
+                            <a href="/"><i class="fa fa-television"></i> Ir para o Site</a>
                         </li>
                         <li>
                             <a href=" <?php echo base_url('admin/usuarios/logout') ?>"><i class="fa fa-sign-out fa-fw"></i> Sair do Sistema</a>

@@ -272,7 +272,8 @@
                                 $botaoalterar = anchor(base_url('admin/produto/alterar/'.md5($produto->idproduto)),
                                     '<i class="fas fa-edit"> </i> Alterar');
                         
-                                $botaoexcluir= '<button type="button" class="btn btn-link" data-toggle="modal" data-target=".excluir-modal-'.$produto->idproduto.'"><i class="fa fa-remove fa-fw"></i> Excluir</button>';
+                     
+                                $botaoexcluir= '<button type="button" class="btn btn-link" data-toggle="modal" data-target=".excluir-modal-'.$produto->idproduto.'"> <h4 class="btn-excluir"><i class="fa fa-remove fa-fw"></i>  Excluir </h4> </button>';
 
                                 echo $modal= ' <div class="modal fade excluir-modal-'.$produto->idproduto.'" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog modal-sm">

@@ -39,12 +39,29 @@ class Home extends CI_Controller {
         $siteonline =$lojasviamar->siteonline;
     } 
 
+    // o admnistrador saberá se o site está on ou off quando estiver na área de
+    // ADM 
+    $somenteadm ="";
+    if ($this->session->userdata('logado') && $siteonline ==1){
+				 $somenteadm ="on"; 
+		} elseif ($this->session->userdata('logado') && $siteonline !=1){ 
+				$siteonline =1; 
+				$somenteadm ="off";
+		} 
     if ($siteonline != 1){
     	$this->load->view('frontend/template/html-header', $dados);
     	$this->load->view('frontend/template/siteoff');
     }else{
 			$this->load->view('frontend/template/html-header', $dados);
 			$this->load->view('frontend/template/header');
+
+			// mostrara a mensagem de ON ou OFF para o ADM 
+			if ($somenteadm == "off"){
+					$this->load->view('frontend/template/siteoffadm');
+			} elseif ($somenteadm =="on"){
+					$this->load->view('frontend/template/siteonadm');
+			}
+
 			$this->load->view('frontend/home');
 			$this->load->view('frontend/template/aside');
 			$this->load->view('frontend/template/footer');

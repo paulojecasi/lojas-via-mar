@@ -35,17 +35,74 @@
                             ?> 
 
                             
-                                <div class = "form-group col-lg-4">
+                                <div class = "form-group col-lg-12">
                                     <label> Nome da Loja </label>
                                     <input id="nome" name="nome" type="text"class = "form-control" placeholder ="Digite o nome da Loja"
                                     value = "<?php echo $loj_alt->nome ?>"> 
                                 </div>
 
-                                <div class = "form-group col-lg-4">
+                                <div class = "form-group col-lg-12">
                                     <label> Endereço </label>
                                     <input id="endereco" name="endereco" type="text"class = "form-control" placeholder ="Digite o Endereço"
                                     value = "<?php echo $loj_alt->endereco ?>"> 
                                 </div>
+
+                                <div class = "form-group col-lg-12">
+                                    <label> Email da Loja </label>
+                                    <input id="email" name="email" type="email"class = "form-control" placeholder ="Digite o Email"
+                                    value = "<?php echo $loj_alt->email ?>"> 
+                                </div>
+
+                                <div class = "form-group col-lg-12">
+                                    <label> Facebook </label>
+                                    <input id="facebook" name="facebook" type="text"class = "form-control" placeholder ="Informe o Facebook"
+                                    value = "<?php echo $loj_alt->facebook ?>"> 
+                                </div>
+
+                                <div class = "form-group col-lg-12">
+                                    <label> Instagran </label>
+                                    <input id="instagram" name="instagram" type="text"class = "form-control" placeholder ="Informe o Instagram"
+                                    value = "<?php echo $loj_alt->instagram ?>"> 
+                                </div>
+
+                                <div class = "form-group col-lg-4">
+                                    <label> Whatsapp  </label>
+                                    <input id="whatsapp" name="whatsapp" type="text"class = "form-control" placeholder ="Informe o Whatsapp"
+                                    value = "<?php echo $loj_alt->whatsapp ?>"> 
+                                </div>
+
+                                <div class = "form-group col-lg-4">
+                                    <label> Telefone Celular  </label>
+                                    <input id="fonecelular" name="fonecelular" type="text"class = "form-control" placeholder ="Informe o Telefone Celular"
+                                    value = "<?php echo $loj_alt->fonefixo ?>"> 
+                                </div>
+
+                                <div class = "form-group col-lg-4">
+                                    <label> Telefone Fixo  </label>
+                                    <input id="fonefixo" name="fonefixo" type="text"class = "form-control" placeholder ="Informe o Telefone Fixo"
+                                    value = "<?php echo $loj_alt->fonefixo ?>"> 
+                                </div>
+
+                                <div class = "form-group col-lg-12">
+                                    <label> Localização Google  </label>
+                                    <textarea id="localgoogle" name="localgoogle" type="text"class = "form-control" placeholder ="Informe a Localização">
+                                      <?php echo $loj_alt->localgoogle ?> 
+                                    </textarea> 
+                                </div>
+
+                                <div class = "form-group col-lg-12">
+                                    <label> Sobre Nós  </label>
+                                    <textarea id="sobrenos" name="sobrenos" type="text"class = "form-control" placeholder ="Escreva Sobre a Loja">
+                                       <?php echo $loj_alt->sobrenos ?> 
+                                    </textarea>
+                                </div>
+
+                                <div class="panel-heading text-center">
+                                    <h3>
+                                        <?php echo "Configuração de Exibição no Site" ?>
+                                    </h3>
+                                </div>
+
 
                                 <div class="form-group col-lg-4">
                                   <label for="enderecosite"> O Endereço da Loja estará no Site? </label>
@@ -93,11 +150,7 @@
                                   </select>
                                 </div>
 
-                                <div class = "form-group col-lg-4">
-                                    <label> Email da Loja </label>
-                                    <input id="email" name="email" type="email"class = "form-control" placeholder ="Digite o Email"
-                                    value = "<?php echo $loj_alt->email ?>"> 
-                                </div>
+                                
 
                                 <div class="form-group col-lg-4">
                                   <label for="emailsite"> O Email Aparecerá no Site? </label>
@@ -121,11 +174,7 @@
                                   </select>
                                 </div>
 
-                                <div class = "form-group col-lg-4">
-                                    <label> Facebook </label>
-                                    <input id="facebook" name="facebook" type="text"class = "form-control" placeholder ="Informe o Facebook"
-                                    value = "<?php echo $loj_alt->facebook ?>"> 
-                                </div>
+                                
 
                                 <div class="form-group col-lg-4">
                                   <label for="facebooksite"> O Facebook Aparecerá no Site? </label>
@@ -149,11 +198,7 @@
                                   </select>
                                 </div>
 
-                                <div class = "form-group col-lg-4">
-                                    <label> Instagran </label>
-                                    <input id="instagram" name="instagram" type="text"class = "form-control" placeholder ="Informe o Instagram"
-                                    value = "<?php echo $loj_alt->instagram ?>"> 
-                                </div>
+                                
 
                                 <div class="form-group col-lg-4">
                                   <label for="instagramsite"> O Instagram Aparecerá no Site? </label>
@@ -177,11 +222,7 @@
                                   </select>
                                 </div>
 
-                                <div class = "form-group col-lg-4">
-                                    <label> Whatsapp  </label>
-                                    <input id="whatsapp" name="whatsapp" type="text"class = "form-control" placeholder ="Informe o Whatsapp"
-                                    value = "<?php echo $loj_alt->whatsapp ?>"> 
-                                </div>
+                                
 
                                 <div class="form-group col-lg-4">
                                   <label for="whatsappsite"> O Whatsapp Aparecerá no Site? </label>
@@ -205,11 +246,7 @@
                                   </select>
                                 </div>
 
-                                <div class = "form-group col-lg-4">
-                                    <label> Telefone Fixo  </label>
-                                    <input id="fonefixo" name="fonefixo" type="text"class = "form-control" placeholder ="Informe o Telefone Fixo"
-                                    value = "<?php echo $loj_alt->fonefixo ?>"> 
-                                </div>
+                                
 
                                 <div class="form-group col-lg-4">
                                   <label for="fonefixosite"> O Telefone Fixo Aparecerá no Site? </label>
@@ -233,11 +270,7 @@
                                   </select>
                                 </div>
 
-                                <div class = "form-group col-lg-4">
-                                    <label> Telefone Celular  </label>
-                                    <input id="fonecelular" name="fonecelular" type="text"class = "form-control" placeholder ="Informe o Telefone Celular"
-                                    value = "<?php echo $loj_alt->fonefixo ?>"> 
-                                </div>
+                                
 
                                 <div class="form-group col-lg-4">
                                   <label for="fonecelularsite"> O Telefone Celular Aparecerá no Site? </label>
@@ -261,11 +294,7 @@
                                   </select>
                                 </div>
 
-                                <div class = "form-group col-lg-4">
-                                    <label> Localização Google  </label>
-                                    <input id="localgoogle" name="localgoogle" type="text"class = "form-control" placeholder ="Informe a Localização"
-                                    value = "<?php echo $loj_alt->localgoogle ?>"> 
-                                </div>
+                                
 
                                 <div class="form-group col-lg-4">
                                   <label for="localgooglesite"> A Localização Aparecerá no Site? </label>
@@ -289,11 +318,7 @@
                                   </select>
                                 </div>
 
-                                <div class = "form-group col-lg-4">
-                                    <label> Sobre Nós  </label>
-                                    <input id="sobrenos" name="sobrenos" type="text"class = "form-control" placeholder ="Escreva Sobre a Loja"
-                                    value = "<?php echo $loj_alt->sobrenos ?>"> 
-                                </div>
+                                
 
                                 <div class="form-group col-lg-4">
                                   <label for="sobrenossite"> O Sobre Nós Aparecerá no Site? </label>
@@ -348,11 +373,13 @@
                             endforeach;
                             ?> 
 
-                            <a href="">
-                                <button class="btn btn-primary" > 
-                                    Atualizar Loja
-                                </button> 
-                            </a>
+                            <div class = "form-group col-lg-12">
+                              <a href="">
+                                  <button class="btn btn-primary" > 
+                                      Atualizar Loja
+                                  </button> 
+                              </a>
+                            </div>
                       
                             <?php 
                             // fechar o formulario 

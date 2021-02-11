@@ -100,6 +100,26 @@ h4.modal-title{
 }
 
 
+h4.btn-itens {
+	margin-top: 2px;
+	color: #228B22;
+	font-size: 15px;  
+}
+
+h4.btn-alterar {
+	margin-top: 0px;
+	color: #4169E1;
+	font-size: 15px;  
+}
+
+h4.btn-excluir {
+	margin-top: -10px; 
+	margin-bottom: -15px;
+	color: #FF0000;
+	font-size: 15px;  
+}
+
+
 
 
       

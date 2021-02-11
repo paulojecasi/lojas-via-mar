@@ -107,7 +107,7 @@ class CI_Session {
 		{
 			if (is_php('5.4'))
 			{
-				session_set_save_handler($class, TRUE);
+				//session_set_save_handler($class, TRUE);
 			}
 			else
 			{
@@ -281,13 +281,14 @@ class CI_Session {
 		}
 		else
 		{
-			ini_set('session.name', $params['cookie_name']);
+			//ini_set('session.name', $params['cookie_name']);
 		}
 
 		isset($params['cookie_path']) OR $params['cookie_path'] = config_item('cookie_path');
 		isset($params['cookie_domain']) OR $params['cookie_domain'] = config_item('cookie_domain');
 		isset($params['cookie_secure']) OR $params['cookie_secure'] = (bool) config_item('cookie_secure');
 
+        /*
 		session_set_cookie_params(
 			$params['cookie_lifetime'],
 			$params['cookie_path'],
@@ -295,6 +296,7 @@ class CI_Session {
 			$params['cookie_secure'],
 			TRUE // HttpOnly; Yes, this is intentional and not configurable for security reasons
 		);
+		*/ 
 
 		if (empty($expiration))
 		{
@@ -313,10 +315,10 @@ class CI_Session {
 		$this->_config = $params;
 
 		// Security is king
-		ini_set('session.use_trans_sid', 0);
-		ini_set('session.use_strict_mode', 1);
-		ini_set('session.use_cookies', 1);
-		ini_set('session.use_only_cookies', 1);
+		//ini_set('session.use_trans_sid', 0);
+		//ini_set('session.use_strict_mode', 1);
+		//ini_set('session.use_cookies', 1);
+		//ini_set('session.use_only_cookies', 1);
 
 		$this->_configure_sid_length();
 	}
@@ -374,7 +376,7 @@ class CI_Session {
 			{
 				// Add as many more characters as necessary to reach at least 160 bits
 				$sid_length += (int) ceil((160 % $bits) / $bits_per_character);
-				ini_set('session.sid_length', $sid_length);
+				//ini_set('session.sid_length', $sid_length);
 			}
 		}
 

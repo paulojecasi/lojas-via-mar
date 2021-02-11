@@ -8,6 +8,7 @@ class Home extends CI_Controller {
 		parent::__construct(); 
 
 		//vamos verificar se o usuario esta logado para acessar a pagina
+
 		if (!$this->session->userdata('logado')){
 				redirect(base_url('admin/login')); 
 		}
